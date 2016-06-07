@@ -1,0 +1,99 @@
+/*车辆地址列表*/
+.new_velist{
+    width: 90%;
+    margin: 1.5em auto auto;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+   /* border-radius:5px;
+    border:solid 1px #d1d1d1;*/
+    background-color: #ffffff;
+}
+.new_velist li{
+    width: 96%;
+    margin-left: 4%;
+	
+  /*  height: auto;*/
+    padding: 0.6em 0 0.4em 0;
+    line-height: 2.5;
+ border-bottom: solid 1px #d1d1d1;
+    overflow: hidden;
+}
+.new_velist li:last-child{
+    border-bottom:none;
+}
+.new_velist .input-tips{
+    float: left;
+    font-size: 1.75em;
+}
+.new_velist li input {
+    display: inline-block;
+    margin-top:0;
+    width: 70%;
+    height: 2.25em;
+    color: #666666;
+    font-size: 1.75em;
+    background: none;
+    border: none;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+}
+.new_velist li input[type=date] {
+    padding-top: 0.5em;
+    height: 1.75em;
+}
+.new_velist li input.chepai {
+    width: 40%;
+}
+.new_velist li select {
+    display: inline-block;
+    margin-top: 0;
+    width: 70%;
+    height: 2.25em;
+    color: #666666;
+    font-size: 1.75em;
+    background: none;
+    border: none;
+}
+.new_velist li select.address {
+    width: 23%;
+}
+.new_velist li select.chepai {
+    width: 12%;
+    text-align: center;
+}
+.new_velist li select.models {
+    width: 28%;
+}
+.new_velist li textarea {
+    display: inline-block;
+    margin-top: 0.15em;
+    width: 70%;
+    height: 3.4em;
+    line-height: 1.9;
+    color: #666666;
+    font-size: 1.75em;
+    background: none;
+    border: none;
+    overflow: hidden;
+}
+.new_velist li input.areacode {
+    width: 15%;
+    border-right: solid 1px #cccccc;
+}
+.new_velist li input.phone {
+    padding-left: 0.75em;
+    width: 33%;
+    border-right: solid 1px #cccccc;
+}
+.new_velist li input.ext {
+    padding-left: 0.75em;
+    width: 15%;
+}
+
+
+.navdown{ height:6em; color:#000; font-size:1.5em; background:url(../images/libg.png) no-repeat center 0;
+ background-size:100% auto; }
+ .navdown .liaddrs{ height:2em; padding-left:3em; padding-right:5em; line-height:1.5em; }
+.new_velist .lileft{ width:50%; float:left; height:2em;  }
+.new_velist .liright{ width:50%; float:right; text-align:right; height:2em;}

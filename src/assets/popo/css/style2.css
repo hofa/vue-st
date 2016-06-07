@@ -1,0 +1,24 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td {margin:0;padding:0;}
+/*body,button,input,select,textarea {font:12px/1.125 microsoft yahei,arial;color:#333;}*/
+ul,ol,li{list-style:none;}
+img{ border:0;}
+em,i{font-style:normal;}
+a{ text-decoration:none; color:#333;}
+a:hover{ text-decoration:none;}
+
+
+.padd{ padding:0 14px;}
+
+
+/*0311ÐÂÔö*/
+.list_0311{ width:100%; line-height:1.4; font-size:16px; }
+.list_0311 p a{ color:#598abf; display:inline; width:auto; }
+.list_0311 p i{ vertical-align:middle; display:inline-block; margin:0 0 0 6px; }
+.list_0311 p img{ width:18px; height:18px; }
+.list_0311 .span2{ display:block; font-size:10px; color:#999; padding-top:10px;}
+.list_0311 ul{ width:300px; clear:both; overflow:hidden; margin-top:5px;}
+.list_0311 li{ float:left; padding:5px 5px 0 0; width: auto;}
+.list_0311 li img{ display:block;}
+.list_0311 .video{ width:160px; height:160px; position:relative;}
+.list_0311 .video img{ width:160px; height:160px;display:block;}
+.list_0311 .video i{ position:absolute; width:61px; height:61px; left:50%; top:50%; background:url(/images/weibo/video.png) no-repeat; background-size:61px; display:block; margin:-30px 0 0 -30px;}

@@ -1,0 +1,18 @@
+ul.thumbnails.image_picker_selector {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px; }
+  ul.thumbnails.image_picker_selector li {
+	  width:20%;
+    float: left;
+	height:10em;
+	}
+	ul.thumbnails.image_picker_selector li img{ width:90%;}
+    ul.thumbnails.image_picker_selector li .thumbnail {
+    
+	 }
+    ul.thumbnails.image_picker_selector li .thumbnail.selected {
+      background: #0088cc; }

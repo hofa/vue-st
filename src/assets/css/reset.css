@@ -1,0 +1,233 @@
+@charset "utf-8";
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,menu,nav,section,summary,time,mark,audio,video,input {margin:0;padding:0; border:none;outline:0;font-size:100%;vertical-align: baseline;}
+html,body,form,fieldset,p,div,h1,h2,h3,h4,h5,h6 {-webkit-text-size-adjust: none;}
+article,aside,details,figcaption,figure,footer,header,menu,nav,section {display: block;}
+/* HTML5 媒体文件跟 img 保持一致 */
+audio,canvas,video {display:inline-block;*display:inline;*zoom:1;}
+html, body{width:100%;	position:relative;
+font-family:"Lantinghei SC","Hiragino Sans GB","Helvetica Neue","Microsoft Yahei",Helvetica,Arial,sans-serif;
+line-height:1.78;font-size:14px;color:#666;
+background-color:#fefefe;
+}
+ol,ul {list-style:none;}
+blockquote,q {quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after {content:''; content:none;}
+ins {text-decoration:none;}
+del {text-decoration:line-through;}
+table {border-collapse:collapse; border-spacing:0;}
+a {text-decoration:none; color:#fff; outline: none;}
+a:hover, a:active {color:#fafafa; outline: none;}
+a img{border:0}
+/* 要注意表单元素并不继承父级 font 的问题 */
+button,input,select,textarea{font-size:14px;font-family:"Lantinghei SC","Hiragino Sans GB","Helvetica Neue","Microsoft Yahei",Helvetica,Arial,sans-serif;}
+/*让position:fixed在IE6下可用! */
+* html,* html body {background-attachment:fixed;}
+.clearfix:before,.clearfix:after {content: " "; display: table;}
+.clearfix:after {clear: both;}
+input[type=submit],input[type=reset],input[type=button],select,button{-webkit-appearance:none;border:none;outline:0}
+.dn{display:none}.fl{float:left}.fr{float:right}
+
+
+.imgs{background:url(../images/imgs.png) no-repeat; background-size:40em auto;}
+.icons {background:url(../images/icons.png) no-repeat; background-size:40em auto;}
+/*头部及导航栏*/
+#header {position:fixed;top:0;left:0;right:0;z-index:999;width:100%;height:6em;margin:0 auto; background-color:#fefefe;}
+#header .logo {position:absolute;left:1.25em;top:0.75em;width:15em; height:auto;}
+.btn-show {position:absolute;top:1.75em;right:1.25em;width:3em;height:3em;background:url(../images/menu.png) no-repeat center center;background-size:2.5em auto;}
+.nav {position:absolute;right:-176px;top:0;bottom:0;width:176px; z-index: 1000}
+.nav .mask {position: absolute;background:rgba(51,51,51,0.9);width:176px;}
+.nav .btn-close {position:absolute;top:3px;left:2px;width:24px;height:24px;background:url(../images/menu-close.png) no-repeat center center; background-size:16px 16px;z-index:102;}
+.nav .navlist {position:absolute;width:176px;left:0; top:34px;z-index:1001;}
+.nav .navlist li {width:164px; height:48px;padding-left:12px; line-height:48px;background:url(../images/nav-line.png) no-repeat right bottom;background-size:164px 1px;}
+.nav .navlist li p{
+    float:left;
+    color:#fff;
+    font-size:16px;
+}
+.nav .navlist li.on {
+    background:#262626;
+}
+.nav .navlist li .nav-icons {
+    width:30px;height:48px; float:left;
+    background:url(../images/nav-icons.png) no-repeat;
+    background-size:24px auto;
+}
+.nav .navlist li.home .nav-icons {
+    background-position:0 0;
+}
+.nav .navlist li.apply .nav-icons {
+    background-position:0 -50px;
+}
+.nav .navlist li.member .nav-icons {
+    background-position:0 -100px;
+}
+.nav .navlist li.guide .nav-icons {
+    background-position:0 -150px;
+}
+.nav .navlist li.aboutus .nav-icons {
+    background-position:0 -200px;
+}
+.nav .navlist li .arrow {width:13px;height:18px;float:right;background:url(../images/arrow.png) no-repeat;background-size:13px auto; margin-top:13px; margin-right:12px;}
+/*底部及导航栏*/
+#footer {margin:0 auto;width:100%;z-index:999; padding:10px 0; background-color:#3d3d3d;}
+#footer .wrap {width:320px; margin:0 auto;}
+#footer .foot-nav {width:210px; margin:0 auto;}
+.foot-nav ul {width:210px; margin:15px auto; height:15px;}
+.foot-nav ul li{float:left; width:68px; line-height:15px; font-size:12px; text-align:center; border-left:solid 1px #5c5c5c; color:#dddddd;}
+.foot-nav ul li a{color:#dddddd;}
+.foot-nav ul li:first-child{border-left:none;}
+#footer .hotline{width:320px; margin-top:5px; text-align:center; color:#c4c4c4; font-size:10px;}
+#footer .hotline strong{color:#f75c46; font-size:17px; padding-left:9px; font-weight:400;}
+#footer .hotline span{color:#fff; font-size:9px; padding-left:4px}
+#footer .copyright {margin-top:20px; width:320px; font-size:10px; color:#acacac; text-align:center;}
+
+.banner{position:fixed;top:0;left:0;right:0;z-index:300; width:100%; height:5.5em; margin:0 auto; background-color:#f9f9f9;}
+.banner .btn-back{width:2.5em; height:3.75em; position:absolute; top:0.75em; left:0.6em; background:url(../images/back-arrow.png) no-repeat center center; background-size:1.625em auto;}
+.banner h3{line-height:2.75; text-align:center; font-size: 2.125em; font-weight:500;}
+.banner #mine-title{width:15.5em; margin: 0 auto; display: block; line-height:2.75; text-align:right; font-weight:500;color:#666666;}
+.banner #mine-title span{font-size: 2.125em;}
+.banner #mine-title .arr {float: right; width:2.5em; height:4em; background-position: 0 -15em;
+    transform-origin:50% 2.5em;
+    -moz-transform-origin:50% 2.5em;
+    -webkit-transform-origin:50% 2.5em;
+    transition: all .5s linear 0s;
+    -moz-transition:all .5s linear 0s;
+    -webkit-transition:all .5s linear 0s;
+    -webkit-transform:rotate3d(0,0,1,-180deg);-ms-transform:rotate3d(0,0,1,-180deg);transform:rotate3d(0,0,1,-180deg);
+}
+.banner #mine-title.open .arr {
+    -webkit-transform:rotate3d(0,0,1,0deg);-ms-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg);
+}
+.banner .btn-show {top:1.5em;}
+
+#catalog-mask{width:100%; height:100%;background-color:rgba(0, 0, 0, 0.7); position:fixed; top:0; left:0;bottom:0;z-index:189;}
+#catalog {position:absolute;left:0;top:-27em;width:100%; height:26em; background:#FFF; border-bottom: solid 1px #f5f5f5; z-index: 190;
+    transition: all .5s linear 0s;
+    -moz-transition:all .5s linear 0s;
+    -webkit-transition:all .5s linear 0s;
+}
+#catalog.cm {
+    height:15.5em;
+}
+#catalog.open {
+    top: 0;
+}
+#catalog .cataloglist {position:absolute;width:96%;right:0; top:0;z-index:191;}
+.cataloglist li {float:left;width:100%; height:4em; display:block; line-height:2.7; background:#FFF; border-bottom:solid 1px #e7e7e7; color:#666666;}
+.cataloglist li:last-child{border-bottom: none;}
+.cataloglist li p{
+    float:left;
+    font-size:1.85em;
+}
+.cataloglist li.on {
+    color: #24acf9;
+}
+.cataloglist li .icons {
+    width:3.5em;height:5em; float:left;
+}
+.cataloglist li.mine .icons {
+    background-position:-30em 0;
+}
+.cataloglist li.progress .icons {
+    background-position:-30em -5em;
+}
+.cataloglist li.gains .icons {
+    background-position:-35em -5em;
+}
+.cataloglist li.profile .icons {
+    background-position:0 -10em;
+}
+.cataloglist li.mycode .icons {
+    background-position:-5em -10em;
+}
+
+.cataloglist li.coupn .icons {
+    background-position:-5em -15em;
+}
+
+
+.cataloglist li.mall .icons {
+    background-position:0 -15em;
+}
+.cataloglist li.points .icons {
+    background-position:0 -15em;
+}
+.cataloglist li.record .icons {
+    background-position:0 -15em;
+}
+.cataloglist li .arrow {width:5em;height:5em;float:right; background-position: -30em -5em;}
+@font-face {
+    font-family: 'dr';
+    src: url("fonts/icomoon.eot?rtazbu");
+    src: url("fonts/icomoon.eot?rtazbu#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?rtazbu") format("truetype"), url("fonts/icomoon.woff?rtazbu") format("woff"), url("fonts/icomoon.svg?rtazbu#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'dr' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+.icon-arrow-hollow-right{  float: right;
+    line-height: 3em;}
+.icon-arrow-hollow-down:before {
+
+    content: "\e900"; }
+
+.icon-arrow-hollow-right:before {
+    content: "\e901"; }
+
+.icon-arrow-hollow-up:before {
+    content: "\e902"; }
+
+.icon-arrow-solid-down:before {
+    content: "\e903"; }
+
+.icon-back:before {
+    content: "\e904"; }
+
+.icon-car-name .path1:before {
+    content: "\e905";
+    color: #458bff; }
+
+.icon-car-name .path2:before {
+    content: "\e906";
+    margin-left: -1em;
+    color: white; }
+
+.icon-check-nor:before {
+    content: "\e907"; }
+
+.icon-check-sel:before {
+    content: "\e908"; }
+
+.icon-close:before {
+    content: "\e904"; }
+
+.icon-note:before {
+    content: "\e909"; }
+
+.icon-people-name:before {
+    content: "\e90a"; }
+
+.icon-promp-mark:before {
+    content: "\e90c"; }
+
+.icon-radio-nor:before {
+    content: "\e90d"; }
+
+.icon-radio-sel:before {
+    content: "\e90e"; }
+
+.icon-share:before {
+    content: "\e90f"; }
+
+
+
+

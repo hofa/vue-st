@@ -1,0 +1,41 @@
+/*≥µ¡æπ ’œ¬Î*/
+.wrapper .nomessage{ width:20em; height:20em; border-radius:10em; background-color:#dcdcdc; text-align:center; color:#FFF;/*line-height:20em;*/ margin-left:auto; margin-right:auto; margin-top:20em;}
+.nomessage .tan{ font-size:10em;}
+.nomesstips{ text-align:center; color:#d1d1d1; font-size:2em;}
+
+.data_get input{ width:8em; height:3em; background:url(../images/date_get.png) center right no-repeat; border: #ccc solid 1px;  }
+.data_get{ padding-left:1em; height:8em;}
+.data_get .date_one{ width:35%; float:left;}
+.data_get .date_two{ width:35%; float:left;}
+.data_get .date_search{ width:30%; float:left;}
+.date_search .btn_blue {display:block;
+    width:90%;height: 2.75em; line-height: 2.75em; font-size:2.2em; color:#fff; text-align:center; background:#22a6f9;
+    -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;margin:0 auto;
+ }
+.date_search .btn_blue:hover {
+    background:#159aee; color: #58bfff;
+}
+
+
+.fault_list{ width:100%; }
+.fault_list ul{ width:100%;}
+.fault_list ul li{ float:left;}
+
+.fault_list .faultnumber{ width:30%; font-size:1.5em; text-align:center; color:#cbcbcb;}
+.fault_list .codelist{ width:70%; }
+.fault_list .codlist-left{ float:left;width:80%; }
+.fault_list .codlist-right{ color:#22a6f9; width:20%; float:right; }
+.fault_list .codlist-list{ border-bottom:1px solid #ccc; display: table;}
+
+.fault-page{ width:100%; height:5em; margin:0px auto; padding-top:5em; padding-left:2em;}
+.fault-page div,#pageGro div ul li{ font-size:1.5em; color:#000; line-height:4em; float:left; margin-left:5px;}
+.fault-page div ul li{  text-align:center; cursor:pointer; width:1.8em; height:4em;}
+.fault-page div ul li.on{ color:#22a6f9; }
+
+.fault-page .pageUp{  display:block;
+    width:20%;height: 2.75em; line-height: 2.75em; font-size:2.2em; color:#fff; text-align:center; background:#22a6f9;
+    -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;margin:0 auto;}
+.fault-page .pageDown{  display:block;
+    width:20%;height: 2.75em; line-height: 2.75em; font-size:2.2em; color:#fff; text-align:center; background:#22a6f9;
+    -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;margin:0 auto;}
+

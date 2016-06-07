@@ -1,0 +1,502 @@
+@charset "utf-8";
+h1, .hide{display:none;}
+section {display:block;}
+html{width:100%;}
+body {max-width:640px; width:100%; margin:0 auto;font-size:16px;position:relative;}
+@media screen and (max-width:960px) {
+    body { font-size: 140%;  }
+}
+@media screen and (max-width:768px) {
+    body { font-size: 120%;  }
+}
+@media screen and (max-width:720px) {
+    body { font-size: 112.5%;  }
+}
+@media screen and (max-width:650px) {
+    body { font-size: 100%;  }
+}
+@media screen and (max-width:600px) {
+    body { font-size: 93.75%;  }
+}
+@media screen and (max-width:550px) {
+    body { font-size: 83.5%;  }
+}
+@media screen and (max-width:490px) {
+    body { font-size: 75%;  }
+}
+@media screen and (max-width:432px) {
+    body { font-size: 67.5%;  }  /** 432px mx3 **/
+}
+@media screen and (max-width:400px) {
+    body { font-size: 62.5%;  }
+}
+@media screen and (max-width:414px) {
+    body { font-size: 64.6875%;  } /** i6 plus**/
+}
+@media screen and (max-width:384px) {
+    body { font-size: 60%;  }
+}
+@media screen and (max-width:380px) {
+    body { font-size: 58%;  }
+}
+@media screen and (max-width:375px) {
+    body { font-size: 58.59375%;  } /** i6 **/
+}
+@media screen and (max-width:360px) {
+    body { font-size: 56.25%;  }
+}
+@media screen and (max-width:330px) {
+    body { font-size: 50%;  }
+}
+
+
+/*
+新版收益页面*/
+#cargains .wrapper {width:100%; margin-top:5.5em;}
+
+#cargains .gains {
+    position: relative;
+    width: 100%;
+    height: 15em;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#f49213), to(#ff7f01));
+}
+#cargains .gains .gains-title {
+    position: absolute;
+    width: 12.5em;
+    left: 1.875em; top: 1.875em;
+    padding-left:0.5em;
+    height: 2em; line-height: 1;
+    color: #FFFFFF;
+}
+#cargains .gains .gains-title span{
+    font-size: 2em;
+}
+#cargains .question-mark {
+    width: 3em; height: 3em;
+    position: absolute;
+    display: block;
+    right: 1.5em; top:1.5em;
+    background-position:-10em -10em;
+}
+#cargains .none {
+    position: absolute;
+    width: 100%;
+    top: 5em; left: 0;
+    line-height: 1.5;
+    color: #FFFFFF;
+    text-align: center;
+}
+#cargains .none span {
+    font-size: 8em;
+}
+#cargains .mygains {
+    position: absolute;
+    width: 22em;
+    top: 3em; left: 50%; margin-left: -10.5em;
+}
+#cargains .mygains .gainstotal{ text-align: center; color: #FFFFFF; font-size: 4em;}
+#cargains .mygains .gainsprve{text-align: center; color: #FFFFFF; font-size: 2em;}
+#cargains .mygains li {
+    float: left;
+    width:4em;
+    margin-left: 0.5em;
+    height: 5.5em;
+    text-align: center;
+    color: #f7f7f7;
+    line-height: 1.1;
+    background-position: -5em -15em;
+}
+#cargains .mygains li span {
+    font-size: 4.5em;
+}
+#cargains .mygains li.gray {
+    color: #cccccc;
+}
+#cargains .mygains li.white {
+    width:1em;
+    color:white;
+}
+#cargains .gains-data {
+    background: #f7f7f7;
+    width:100%;
+    height: 11.5em;
+    overflow: hidden;
+    padding-top: 1em;
+}
+#cargains .gains-data li {
+    float: left;
+    width:49%;
+    height: 10.625em;
+    text-align: center;
+}
+#cargains .gains-data li:first-child {
+    border-right: solid 1px #dcdcdc;
+}
+#cargains .gains-data li p {
+    line-height: 2.3;
+    color: #b4b4b4;
+    font-size: 1.5em;
+}
+#cargains .gains-data li h3 {
+    line-height: 1.7;
+    color: #666666;
+    font-size: 3em;
+    font-weight: 500;
+}
+#cargains .gains-data .balloons {
+    margin-top: 1.3em;
+    margin-left: 4em;
+    width: 15em;
+    height: 3em;
+}
+#cargains .gains-data .balloons .balloon {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 1.5em;
+    height: 2.625em;
+    float: left;
+    position: relative;
+    background:url(../images/imgs.png) no-repeat; background-size:40em auto;
+    background-position: -10em bottom;
+}
+#cargains .gains-data .balloons .balloon .inner{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background:url(../images/imgs.png) no-repeat; background-size:40em auto;
+    background-position: 0 bottom;
+}
+#cargains .mine-def-title {
+    margin-top: 1.75em;
+    margin-left: 2em;
+    height: 2em;
+    width: 25em;
+    line-height: 0.4;
+    padding-left: 0.5em;
+
+}
+#cargains  .cleartw{ height: 1px; width: 100%; border-bottom: 1px solid #cccccc;}
+#cargains .clearbg{ background: #f4f4f4; height: 1em; width: 100%; border-bottom: 1px solid #cccccc;}
+#carhistory .clearline{ background: #f4f4f4; height: 1em; width: 100%; margin-top: 4em; border-bottom: 1px solid #cccccc; border-top: 1px solid #cccccc;}
+#cargains .clearline{ background: #f4f4f4; height: 1em; width: 100%; margin-top: 10px; border-bottom: 1px solid #cccccc; border-top: 1px solid #cccccc;}
+#cargains .gainslist-title{ font-size: 2em; color: #666666;  height: 3em; line-height: 3em; border-bottom: 1px solid #cccccc; padding-left: 2em; }
+#cargains .gainslist{ margin-top: 1em;}
+#cargains .gainslist ul li{ width: 90%; margin: 0 auto; height: 3em; font-size: 2em; line-height: 3em; border-bottom: 1px solid #cccccc;}
+#cargains .gainslist .gainsmoney{ text-align: right; color: #ff9933;}
+#cargains .gainslist div{ width: 33%; float: left;}
+#cargains .mine-def-title span{
+    color: #666666;
+    font-size: 2em;
+}
+#cargains .yield-curve {
+    margin: 1.5em auto auto;
+    width: 98%;
+    height: 17em;
+}
+#cargains .yield-curve canvas {
+    width: 100%;
+    height: 100%;
+}
+#cargains  #footer {background:none;}
+#cargains .gains-all {
+    width:92%;
+    position: relative;
+    margin: 0 auto;
+    height: 10.75em;
+    overflow: hidden;
+}
+#cargains .gains-all p{
+    margin-top: 1em;
+    line-height: 1.9;
+    color: #999999;
+    font-size: 1.5em;
+}
+#cargains .gains-all h3 {
+    color: #22a6f9;
+    line-height: 1.4;
+    font-size: 3em;
+    font-weight:300;
+}
+#cargains .gains-all .btns {
+    position: absolute;
+    top: 3.75em;
+    left: 50%;
+    margin-left: 1.25em;
+    width: 8.5em; height: 3.75em;
+    line-height: 2;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+#cargains .gains-all .btn-blue {
+    background: #22a6f9;
+    color: #FFFFFF;
+}
+#cargains .gains-all .btn-gray {
+    background: #cccccc;
+    color: #FFFFFF;
+}
+#cargains .gains-all .btns:last-child{
+    margin-left: 11em;
+}
+#cargains .gains-all .btns span{
+    font-size: 1.75em;
+}
+#cargains .gains-week {
+    width:100%;
+    position: relative;
+    margin: 0 auto;
+    height: 7em;
+    padding-top: 0.5em;
+    overflow: hidden;
+    background: #f7f7f7;
+}
+#cargains .gains-week li {
+    float: left;
+    width:45%;
+    padding-left: 5%;
+    height: 6em;
+    position: relative;
+}
+#cargains .purse{ height: 5em; margin-top: 2em;}
+#cargains .purse .pure{ font-size: 1.75em;}
+#cargains .purse .purseleft{ width: 50%; float: left; height: 3em; line-height: 3em; padding-left: 2em;}
+#cargains .purse .purseright{ width: 40%; float: right; height: 3em;}
+#cargains .pursemoney{ font-size: 2.5em; color: #ff9933; margin-left: 0.5em;}
+
+#cargains .purse .purseright .balloons {
+    /*margin-left: 4em;*/
+    height: 3em;
+}
+#cargains .purse .purseright .balloons .balloon {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 5em;
+    height: 3em;
+    float: left;
+    position: relative;
+}
+
+#cargains .purse .purseright .balloons .balloontwo {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 5em;
+    height: 3em;
+    float: left;
+    position: relative;
+
+}
+
+
+#cargains .purse .purseright .balloons .balloonthree {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 5em;
+    height: 3em;
+    float: left;
+    position: relative;
+
+    background-position: -10em bottom;
+}
+
+
+#cargains .purse .purseright .balloons .balllight {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 5em;
+    height: 3em;
+    float: left;
+    position: relative;
+
+    background-position: 1em top;
+}
+
+
+
+
+#cargains .purse .purseright.balloons .balllighttwo {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 5em;
+    height: 3em;
+    float: left;
+    position: relative;
+}
+
+#cargains .purse .purseright .balloons .balllightthree {
+    margin-left:0.9em; margin-right: 0.5em;
+    width: 5em;
+    height: 3em;
+    float: left;
+    position: relative;
+
+}
+
+#cargains .purse .purseright .balloons .ballhref {
+    display:block;
+    width:5em;
+    height: 3em;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 3em;
+    background-color:#00a3fe;
+    border-radius:5px;
+
+}
+
+#cargains .purse .purseright .balloons .balltwo {
+    display:block;
+    width:5em;
+    height: 3em;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 3em;
+    background-color:#ff9933;
+    border-radius:5px;
+    margin-left: 1em;
+
+}
+
+
+#cargains .gains-week li:first-child {
+    width:44%;
+    border-right: solid 1px #dcdcdc;
+}
+#cargains .gains-week li p {
+    line-height: 1.75;
+    color: #999999;
+    font-size: 1.5em;
+}
+#cargains .gains-week li h3 {
+    line-height: 1.5;
+    color: #666666;
+    font-size: 2.25em;
+    font-weight: 400;
+}
+#cargains .yesterday-driving-habits {
+    margin-top: 1.5em;
+    border-top: solid 1px #eaeaea;
+}
+#cargains .driving-habits {
+    width: 95%;
+    margin-left: 5%;
+}
+/*新版顶部*/
+.newbanner{position:fixed;top:0;left:0;right:0;z-index:300; width:100%; height:5.5em; margin:0 auto; background-color:#f9f9f9;}
+.newbanner .btn-back{width:2.5em; height:3.75em; position:absolute; top:0.75em; left:0.6em; background:url(../images/back-arrow.png) no-repeat center center; background-size:1.625em auto;}
+.newbanner h3{line-height:2.75; text-align:center; font-size: 2.125em; font-weight:500;}
+.newbanner #mine-title{width:10em; margin-top: 0.75em; margin-left: auto; margin-right: auto; display: block; line-height:2.75; text-align:center; font-weight:500;color:#666666;}
+.newbanner #mine-title span{font-size: 2.125em;}
+.newbanner #mine-title .arr {float: right; width:2.5em; height:4em; background-position: 0 -15em;
+    transform-origin:50% 2.5em;
+    -moz-transform-origin:50% 2.5em;
+    -webkit-transform-origin:50% 2.5em;
+    transition: all .5s linear 0s;
+    -moz-transition:all .5s linear 0s;
+    -webkit-transition:all .5s linear 0s;
+    -webkit-transform:rotate3d(0,0,1,-180deg);-ms-transform:rotate3d(0,0,1,-180deg);transform:rotate3d(0,0,1,-180deg);
+}
+.newbanner #mine-title.open .arr {
+    -webkit-transform:rotate3d(0,0,1,0deg);-ms-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg);
+}
+.newbanner .btn-show {top:1.5em;}
+.newbanner .btn-menu{position:absolute;top:0.5em;right:0.5em;width:8em;height:3em; color: #0e0e0e; font-size: 1.75em; line-height: 3em;}
+.newbanner .arr {float: right; width:2.5em; height:4em; background-position: 0 -15em;
+    transform-origin:50% 2.5em;
+    -moz-transform-origin:50% 2em;
+    -webkit-transform-origin:50% 2em;
+    transition: all .5s linear 0s;
+    -moz-transition:all .5s linear 0s;
+    -webkit-transition:all .5s linear 0s;
+    -webkit-transform:rotate3d(0,0,1,-180deg);-ms-transform:rotate3d(0,0,1,-180deg);transform:rotate3d(0,0,1,-180deg);
+}
+
+/*驾驶排名*/
+#cartop .wrapper {width:100%; margin-top:5.5em;}
+
+#cartop .gains {
+    position: relative;
+    width: 100%;
+    height: 15em;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#f59011), to(#ff9933));
+}
+#cartop .topnumber{ font-size: 2.5em; color: #FFFFFF;  position:absolute;top:1em; width: 100%; }
+#cartop .topnumber span{ width: 50%; text-align: center; display: block;  float: left;}
+#cartop .mygains{ width: 100%; height: 10em; position: absolute; top: 5em; color: #FFFFFF;}
+#cartop .mygains .gainstotal{ width: 50%; float: left;  text-align: center; }
+#cartop .mygains .gainsprve{ width: 50%; float: left; text-align: center;  }
+#cartop .mygains span{ font-size: 5em; color: #FFFFFF;}
+#cartop .clearline{ background: #f4f4f4; height: 1em; width: 100%; /*margin-top: 10px;*/ border-bottom: 1px solid #cccccc; border-top: 1px solid #cccccc;}
+#cartop .driveinfo{ height: 4em; line-height: 4em; font-size: 1.75em; border-bottom: 1px solid #cccccc;}
+#cartop .driveinfo span{ width: 40%; float: left;}
+#cartop .info{ height: 20em;}
+#cartop .info ul li{ width: 30%; float: left; margin-left: 1em; border-bottom: 1px solid #cccccc; height: 8em; margin-top: 1em;}
+#cartop .number{ font-size: 3em; color: #ff9933;}
+#cartop .toptitle{ height: 3em; line-height: 3em; margin-top: 1em; font-size: 2em; padding-left: 1em; border-bottom: 1px solid #cccccc;}
+#cartop .topten ul{ width: 90%; margin: 0 auto;}
+#cartop .topten ul li{ height: 7em; border-bottom: 1px solid #cccccc;  margin-top: 1em;}
+#cartop .toporder{ font-size: 2em; display: block; width:5em; line-height: 3em; float: left; }
+#cartop .carnb{ width: 5em; float: left; font-size: 1.75em; line-height: 3em; margin-left: 1em;}
+#cartop .score{ width: 5em; float: right; font-size: 1.75em; line-height: 3em;}
+#cartop .score strong{ color: #ff9933;}
+#cartop .nickpic { width: 5em; float:left; }
+#cartop .nickpic img{border-radius:50%; height: 50px; width: 50px;}
+#cartop .icoremind{ margin-left: 2em; margin-top: 1em;}
+#cartop .icoremind p{ font-size: 2em; color:#ff9933; line-height: 1em; height: 2em; }
+#cartop .icoremind img{ width: 20px; float: left; }
+
+/*
+历史记录*/
+#carhistory { background: #f4f4f4;}
+#carhistory .info{ height: 20em;}
+#carhistory .info ul li{ width: 30%; float: left; margin-left: 1em; border-bottom: 1px solid #cccccc; height: 8em; margin-top: 1em;}
+#carhistory .number{ font-size: 3em; color: #ff9933;}
+/*#carhistory .info span{ font-size: 1.75em;}*/
+#carhistory .datetime { height: 3em;  font-size: 1.75em; line-height: 3em; background: #FFFFFF; border-bottom: 1px solid #cccccc; padding-left: 1em; padding-right: 1em;}
+.hide {
+    display: none !important;
+}
+.newbanner .icon-arrow-hollow-right:before{
+    content:"\e900";
+}
+
+ .dnt .icon-arrow-hollow-right:before{
+    content:"\e900";
+}
+#carhistory .datelist{ height: 2em; font-size: 1.25em; line-height: 2em; padding-left: 2em;}
+
+
+/*侧边栏*/
+.newbanner .rightnav {position:absolute;right:-250px;top:0;bottom:0;width:250px; z-index: 1000}
+.newbanner .rightnav .mask {position: absolute;background: #f5f5f5; width:250px;}
+.newbanner .rightnav .btn-close {position:absolute;top:3px;left:2px;width:24px;height:24px;z-index:102;}
+.newbanner .rightnav .navlist {position:absolute;width:250px;left:0; top:10px;z-index:1001;}
+.newbanner .rightnav .navlist li {width:200px; height:48px;padding-left:12px; line-height:48px; border-bottom: 1px solid #cccccc; margin-left: 10px;}
+
+
+.newbanner .rightnav .navlist li p{
+    float:left;
+    color:#000000;
+    font-size:16px;
+}
+
+.newbanner .rightnav .navlist li .arrow { color:#ff9933;
+    font-size:1.75em; float: right;}
+.line{ color: #ff3b2f;}
+#cargains .topcar{ width:100%; height:2em; }
+#cargains .topcar a { color: #ff9933; font-size: 1.75em;  }
+#cargains .topcar{ text-align:center; color:#ff9933; line-height:2em; font-size:1.25em;}
+.icon-arrow:before{
+    content:"\e900";
+
+}
+
+/*弹窗*/
+#dialogBg{width:100%;height:100%;background-color:#000000;opacity:.6;filter:alpha(opacity=60);position:fixed;top:0;left:0;z-index:9999;display:none;}
+#dialog{width:250px;height:240px;margin:0 auto;display:none;background-color:#ffffff;position:fixed;top:50%;left:50%;margin:-120px 0 0 -130px;z-index:10000;border:1px solid #ccc;border-radius:10px;-webkit-border-radius:10px;-webkit-box-shadow:3px 2px 4px #ccc;}
+
+.animated ul{ width:90%; margin-left:auto; margin-right:auto; font-size:2em;}
+.animated ul li{ height:2em; border-bottom:1px solid #dcdcdc;}
+.dialogTop{width:90%;margin:0 auto;border-bottom:1px dotted #ccc;letter-spacing:1px;padding:10px 0; font-size:2.125em; color:#ff9933;}
+.dialogIco{width:50px;height:50px;position:absolute;top:-25px;left:50%;margin-left:-25px;}
+.editInfos{padding:15px 0;}
+.editInfos li{width:90%;margin:8px auto auto;text-align: center;}
+.ipt{border:1px solid #ccc;padding:5px;border-radius:3px;-webkit-border-radius:3px;box-shadow:0 0 3px #ccc inset;-webkit-box-shadow:0 0 3px #ccc inset;margin-left:5px;}
+.ipt:focus{outline:none;border-color:#66afe9;box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);-webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);}
