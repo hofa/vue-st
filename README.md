@@ -6,6 +6,10 @@
 
 # [vueex](http://vuex.vuejs.org/zh-cn/intro.html)
 
+# [vue视频-laravist](https://laravist.com/series/vue-js-1-0-in-action-series)
+
+# [awesome-vue](https://github.com/vuejs/awesome-vue)
+
 # lol
 
 > lol
