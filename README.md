@@ -1,3 +1,8 @@
+# [vue-router 中文](http://router.vuejs.org/zh-cn/index.html)
+
+# [vue-js 教程](http://guowenfh.github.io/2016/03/24/vue-webpack-01-base/)
+
+
 # lol
 
 > lol
