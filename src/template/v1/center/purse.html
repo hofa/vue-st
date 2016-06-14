@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>提现</title>
+<meta name="keywords" content="路比官网" />
+<meta name="description" content="路比官网" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/layer.css" />
+</head>
+
+<body>
+<header class="banner"><a href="mine.html" class="btn-back"></a>
+  <h3>提现</h3>
+</header>
+<section id="postal" class="postal">
+  <div class="wrapper">
+      <div class="clearbg"></div>
+    <ul class="new_vehicle">
+                <li><span class="input-tips">金额：</span>
+                    <input id="weixinname" type="text" placeholder="输入提现金额" value="" class="border_btm">
+                    
+                </li>
+            </ul>
+     <div class="postalmoney">
+        <div class="postalmoney-title">最多可提取驾驶收益为600元<br>我们将提现至您当前登录的微信帐号的钱包里</div>
+     </div>
+    
+     <input type="submit" class="btn_blue" id="btn-register" value="下一步" />
+    
+  </div>
+
+  <!--注册信息出错提示层---->
+</section>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/layer.js"></script>
+<script>
+    $(".btn_blue").click( function () {
+
+        layer.open({
+            content: '你是想确认呢，还是想取消呢？',
+            btn: ['确认', '取消'],
+            shadeClose: false,
+            yes: function(){
+                layer.open({content: '你点了确认', time: 1});
+            }, no: function(){
+                layer.open({content: '你选择了取消', time: 1});
+            }
+        });
+    })
+
+</script>
+</body>
+</html>

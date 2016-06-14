@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>路比官网</title>
+<meta name="keywords" content="路比官网" />
+<meta name="description" content="路比官网" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+<header class="banner"> <a href="mine.html" class="btn-back"></a>
+  <h3>车辆信息</h3>
+</header>
+<section id="data" class="data1">
+  <div class="wrapper">
+    <ul class="data_nav">
+      <li><a href="profile.html">账户信息</a></li>
+      <li><a href="mycar.html" class="on">车辆信息</a></li>
+      <li><a href="address.html">邮寄地址</a></li>
+    </ul>
+
+    <!--车辆信息默认页start-->
+    <div class="data_moren" style="display:block;">
+      <ul class="list-inner">
+        <li>
+          <label><i></i>车牌号码</label>
+          <div class="dtxt"> <strong>粤B12345</strong> </div>
+        </li>
+        <li>
+          <label><i></i>车型</label>
+          <div class="dtxt carchoose"> <strong>雪佛兰 / 爱唯欧 / 欧厢1.48v</strong> </div>
+        </li>
+        <li>
+          <label><i></i>车架号</label>
+          <div class="dtxt"> <strong>LHGCP2681122262</strong> </div>
+        </li>
+        <li>
+          <label><i></i>发动机号</label>
+          <div class="dtxt"> <strong>72316216</strong> </div>
+        </li>
+        <li>
+          <label><i></i>绑定设备号</label>
+          <div class="dtxt"> <strong>12349321###</strong> </div>
+        </li>
+      </ul>
+      <a href="mycar_add.html" class="btn_blue">点击编辑信息</a> </div>
+    <!--车辆信息默认页end--> 
+
+    
+  </div>
+  <footer id="footer">
+    <div class="wrap">
+      <div class="copyright">&copy;深圳鼎然信息科技有限公司&nbsp;&nbsp;&nbsp;ICP备14065655号-3</div>
+    </div>
+  </footer>
+  <!--注册信息出错提示层---->
+  <div id="pop-mask" class="hide"></div>
+  <div id="pop-reg-tips" class="pop-tips hide">
+    <div class="pop-bd">
+      <p class="hide">资料修改成功！</p>
+    </div>
+    <a href="javascript:void(0);" id="btn-submit" class="btn_blue_s">确定</a> </div>
+</section>
+
+<!--车辆信息－编辑－车型选择-->
+<div class="carchose_box" style="display:none;">
+  <div class="carchose_btn"><a href="#" class="fr">确定</a><a href="#" class="fl">取消</a></div>
+  <div class="carchose_con">
+    <ul class="cardata_nav">
+      <li><a class="on">账户信息</a></li>
+      <li><a>车辆信息</a></li>
+      <li><a>邮寄地址</a></li>
+    </ul>
+    <div class="car_box">
+      <div class="car_con1">
+        <dl>
+          <dt>A-G</dt>
+          <dd>
+            <ul>
+              <li>AC宝马</li>
+              <li>AMG</li>
+              <li>阿斯顿马丁</li>
+              <li>AC宝马</li>
+              <li>AMG</li>
+              <li>阿斯顿马丁</li>
+              <li>AC宝马</li>
+              <li>AMG</li>
+              <li>阿斯顿马丁</li>
+            </ul>
+          </dd>
+          <dd><a>&gt;</a></dd>
+        </dl>
+        <dl>
+          <dt>H-K</dt>
+          <dd>
+            <ul>
+              <li>哈飞</li>
+              <li>哈佛</li>
+              <li>海格</li>
+              <li>哈飞</li>
+              <li>哈佛</li>
+              <li>海格</li>
+            </ul>
+          </dd>
+          <dd><a>&gt;</a></dd>
+        </dl>
+        <dl>
+          <dt>L-S</dt>
+          <dd>
+            <ul>
+              <li>林宝坚尼</li>
+              <li>劳伦士</li>
+              <li>劳斯莱斯</li>
+              <li>林宝坚尼</li>
+              <li>林宝坚尼</li>
+              <li>劳斯莱斯</li>
+            </ul>
+          </dd>
+          <dd><a>&gt;</a></dd>
+        </dl>
+        <dl>
+          <dt>H-K</dt>
+          <dd>
+            <ul>
+              <li class="on">泰卡特</li>
+              <li>斯特拉</li>
+              <li>腾势</li>
+              <li>威麟</li>
+              <li>沃尔沃</li>
+              <li>五菱</li>
+              <li>五十铃</li>
+              <li>西雅特</li>
+              <li>现代</li>
+              <li>雪佛兰</li>
+              <li>雪铁龙</li>
+              <li>野马汽车</li>
+            </ul>
+          </dd>
+          <dd><a class="cur">&gt;</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="carchose_tip hide"> <img src="../images/center_img.jpg">
+      <p><strong>您还未选择品牌</strong></p>
+      <p>请您先选择汽车品牌</p>
+    </div>
+  </div>
+</div>
+<!--车辆信息－编辑－车型选择--> 
+<script src="../js/jquery.min.js"></script>
+<script src="../js/chepai.js"></script>
+<script>
+    $(function() {
+        chepaiInit('Area0', 'Area1');
+        $("#btn-register").click(function () {
+            //如果注册条件不满足，则显示弹出层
+            var screenHeight = $(window).height();
+            $("#pop-mask").css({height: screenHeight}).fadeIn(500);
+            $("#pop-reg-tips").fadeIn(500);
+        });
+        $("#btn-submit").click(function() {
+            $("#pop-mask").fadeOut(500);
+            $("#pop-reg-tips").fadeOut(500);
+        })
+    });
+</script>
+</body>
+</html>

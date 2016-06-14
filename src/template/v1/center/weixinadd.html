@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>路比官网</title>
+<meta name="keywords" content="路比官网" />
+<meta name="description" content="路比官网" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+<header class="banner"><a href="mine.html" class="btn-back"></a>
+  <h3>我的微信账户</h3>
+</header>
+<section id="data" class="data1">
+  <div class="wrapper">
+    
+     <a href="mycar_add.html" class="btn_blue">+</a> </div>
+    
+  </div>
+  <footer id="footer">
+    <div class="wrap">
+      <div class="copyright">&copy;深圳鼎然信息科技有限公司&nbsp;&nbsp;&nbsp;ICP备14065655号-3</div>
+    </div>
+  </footer>
+  <!--注册信息出错提示层---->
+  <div id="pop-mask" class="hide"></div>
+  <div id="pop-reg-tips" class="pop-tips hide">
+    <div class="pop-bd">
+      <p>资料修改成功！</p>
+    </div>
+    <a href="javascript:void(0);" id="btn-submit" class="btn_blue_s">确定</a> </div>
+</section>
+<script src="../js/jquery.min.js"></script> 
+<script>
+    $(function() {
+        $("#btn-register").click(function () {
+            //如果注册条件不满足，则显示弹出层
+            var screenHeight = $(window).height();
+            $("#pop-mask").css({height: screenHeight}).fadeIn(500);
+            $("#pop-reg-tips").fadeIn(500);
+        });
+        $("#btn-submit").click(function() {
+            $("#pop-mask").fadeOut(500);
+            $("#pop-reg-tips").fadeOut(500);
+        })
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!doctype html>
+<html style="background: #efeff4;">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>车辆信息</title>
+<meta name="keywords" content="车辆信息" />
+<meta name="description" content="车辆信息" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/layer.css" />
+    <link rel="stylesheet" href="../css/city.css" />
+    <link rel="stylesheet" href="../css/demo.css" />
+</head>
+
+<body>
+<header class="banner"> <a href="mine.html" class="btn-back"></a>
+  <h3>车辆信息</h3>
+</header>
+<section id="data" class="data1">
+  <div class="wrapper">
+    <!--车辆信息－新建start-->
+    <div class="datacar_new">
+      <ul class="new_vehicle">
+          <li><span class="input-tips">车主：</span>
+              <input type="text" placeholder="请输入车主真实姓名" id="owname" class="border_btm" />
+          </li>
+
+          <li><span class="input-tips">身份证号：</span>
+              <input type="text" placeholder="请输入身份证号" id="owcarid" class="border_btm" />
+          </li>
+
+        <li><span class="input-tips">车牌号：</span>
+          <select class="chepai" id="Area0"></select><input type="text" id="carnumber" placeholder="请输入车牌号码" class="border_btm chepai" />
+        </li>
+      </ul>
+
+        <div class="carline"></div>
+      <ul class="new_vehicle">
+          <li><span class="input-tips">行使城市：</span>
+             <div style="height: 2.5em; width: 70%; float: left;" id="toubao_city" value=""></div>
+          </li>
+
+          <li><span class="input-tips">品牌型号：</span>
+              <input type="text"  id="carbrand" readonly>
+          </li>
+        <li><span class="input-tips">车辆识别码：</span>
+          <input type="text" placeholder="" id="my_ChassisNumber" name="my_ChassisNumber" class="border_btm" />
+        </li>
+        <li><span class="input-tips">发动机号：</span>
+          <input type="text" placeholder="" id="my_EngineNumber" name="my_EngineNumber" class="border_btm" />
+        </li>
+
+          <li><span class="input-tips">注册日期：</span>
+              <input type="text" placeholder="" id="my_EngineNumber" name="my_EngineNumber" class="border_btm" />
+          </li>
+          <li><span class="input-tips">过户日期：</span>
+              <input type="text" placeholder="" id="my_EngineNumber" name="my_EngineNumber" class="border_btm" />
+          </li>
+
+
+      </ul>
+        <div class="carline"></div>
+        <ul class="new_vehicle">
+            <li><span class="input-tips">绑定设备：</span>
+                <input type="text" placeholder="" id="my_Equipment" name="my_Equipment" class="border_btm" />
+            </li>
+
+        </ul>
+
+
+      <a href="javascript:" id="btn-modify" class="btn_blue">立即添加</a>
+      <div class="err-tips icons"><span>   </span></div>
+    </div>
+
+    <!--车辆信息－新建end-->
+  </div>
+
+</section>
+<!--车辆品牌信息－编辑－车型选择-->
+<div id="bg"></div>
+<div class="payment_time_mask">
+    <!--新增全国-->
+    <div class="screening">
+        <ul>
+            <li class="Regional">选择车辆品牌</li>
+        </ul>
+    </div>
+    <!-- End screening -->
+    <!-- grade -->
+
+
+        <div class="grade-eject">
+
+            <ul class="grade-w" id="gradew">
+                <script type="text/html" id="tpl123">
+                    [%   for(var i=0;i< dd.length;  i++){%]
+                    [% console.log(123)%]
+
+                    <li id="[%=dt.data[i]["factoryid"]%]" onclick="grade1(this)">[%=dt.data[i]["factoryname"]%]</li>
+                    [%}%]
+
+                </script>
+            </ul>
+
+            <ul class="grade-t" id="gradet">
+                <script type="text/html" id="tplcar">
+
+                    [%   for(var i=0;i< dd.length;  i++){%]
+                    [% console.log(123)%]
+
+                    <li id="[%=dt.data[i]["factoryid"]%]" onclick="gradet(this)">[%=dt.data[i]["modelname"]%]</li>
+                    [%}%]
+
+                </script>
+            </ul>
+
+
+        </div>
+
+
+
+
+    <!--新增结束-->
+</div>
+<!--车辆品牌信息－编辑－车型选择-->
+
+
+<!--车辆信息－编辑－车型选择-->
+<div id="pop_city_layer" style="display:none;">
+</div>
+<script type="text/html" id="tplPop">
+    [%if(typeof(toPosi)!="undefined"){%]
+    <ul class="white-box block-box clearfix">
+        <li data-areaNumber="[%=toPosi.areaNumber%]" data-platenum="[%=toPosi.plateNum%]" data-id="[%=toPosi.id%]"
+            onclick="chooseCity(this);"><span>[%=toPosi.areaName%]</span></li>
+    </ul>
+
+    [%}%]
+
+    <div class="tit-box">热门城市</div>
+     <ul class="white-box block-box clearfix">
+         [%if(typeof(area_hold["深圳市"])!="undefined"){%]
+         <li data-areaNumber="[%=area_hold["深圳市"]["areaNumber"]%]" data-platenum="[%=area_hold["深圳市"]["plateNum"]%]" data-id="[%=area_hold["深圳市"]["id"]%]"
+         data-city="深圳市" onclick="chooseCity(this);"><span>深圳市</span></li>
+         [%}%]
+         [%if(typeof(area_hold["广州市"])!="undefined"){%]
+         <li data-areaNumber="[%=area_hold["广州市"]["areaNumber"]%]" data-platenum="[%=area_hold["广州市"]["plateNum"]%]" data-id="[%=area_hold["广州市"]["id"]%]"
+         data-city="广州市" onclick="chooseCity(this);"><span>广州市</span></li>
+         [%}%]
+         [%if(typeof(area_hold["重庆市"])!="undefined"){%]
+         <li data-areaNumber="[%=area_hold["重庆市"]["areaNumber"]%]" data-platenum="[%=area_hold["重庆市"]["plateNum"]%]" data-id="[%=area_hold["重庆市"]["id"]%]"
+         data-city="重庆市" onclick="chooseCity(this);"><span>重庆市</span></li>
+         [%}%]
+         [%if(typeof(area_hold["济南市"])!="undefined"){%]
+         <li data-areanumber="[%=area_hold["济南市"]["areaNumber"]%]" data-platenum="[%=area_hold["济南市"]["plateNum"]%]" data-id="[%=area_hold["济南市"]["id"]%]"
+         data-city="济南市" onclick="chooseCity(this);"><span>济南市</span></li>
+         [%}%]
+     </ul>
+    <div class="tit-box">全部城市（按首字母顺序）</div>
+    <div class="letters-wrap white-box  clearfix">
+        [%
+        var
+        templetters=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        for(var k in templetters){
+        if(typeof(lc[templetters[k]])!="undefined"){
+        %]
+        <a href="#[%=templetters[k]%]">[%=templetters[k]%]</a>
+        [%}%]
+        [%}%]
+    </div>
+    <!--begin of 字母城市-->
+    [%
+    for(var p in templetters){
+    if(typeof(lc[templetters[p]])!="undefined"){
+    %]
+    <div id="[%=templetters[p]%]" class="tit-box">[%=templetters[p]%]</div>
+    <ul class="white-box line-box">
+        [%for(var m=0;m<lc [templetters[p]].length;m++){ %]
+        <li data-areanumber="[%=lc[templetters[p]][m]["areaNumber"]%]" data-id="[%=lc[templetters[p]][m]["id"]%]" data-platenum="[%=lc[templetters[p]][m]["plateNum"]%]"
+        data-city="[%=lc[templetters[p]][m]["areaName"]%]"
+        onclick="chooseCity(this)">[%=lc[templetters[p]][m]["areaName"]%]</li>
+        [%}%]
+    </ul>
+    [%}
+    }
+    %]
+    <!--end of 字母城市-->
+</script>
+<!--车辆信息－编辑－车型选择--> 
+<script src="../js/jquery.min.js"></script>
+<script src="../js/layer.js"></script>
+<script src="../js/art-template.js"></script>
+<script src="../js/demo.js"></script>
+<script>
+    var letter_cities = {},
+            area_hold = {};
+    $(".btn-modify").click( function () {
+        layer.open({
+            content: "姓名不能为空",
+            style: 'background-color:#000; color:#fff; border:none;',
+            time: 3
+        });
+
+
+    });
+
+    $("#toubao_city").on("click", function () {
+        if (Object.keys(letter_cities).length == 0) {
+            var mindex = layer.open({
+                shadeClose: false, type: 2,
+                content: "加载中"
+            });
+            var cityid = $("#toubao_city").attr('value');
+            //加载地区
+            $.ajax({
+                url: 'http://api.ubi001.dev/v1/offer/getCityList',
+                type: "get",
+                contentType: 'application/json',
+                dataType: 'json',
+                async: true,
+                data: '',
+                //jsonp:'callback',
+                success: function (respon) {
+                    if (respon.errcode == "0") {
+                        console.log(respon.data)
+                        if (respon.data) {
+                            for (var i = 0; i < respon.data.length; i++) {
+                                var temp = respon.data[i],
+                                        templetter = temp.shortName.substr(0, 1).toUpperCase();
+                                if (typeof(letter_cities[templetter]) != "undefined") {
+                                    letter_cities[templetter].push(temp);
+                                } else {
+                                    letter_cities[templetter] = [temp];
+                                }
+                                area_hold[temp.areaName] = temp;
+                            }
+                            var now = template.render("tplPop", {"lc": letter_cities, "ah": area_hold});
+                            layer.close(mindex);
+                            $("#pop_city_layer").append(template.render("tplPop", {
+                                "lc": letter_cities,
+                                "ah": area_hold
+                            })).show();
+                            //console.log(now);
+                        }
+                    }
+                },
+                error: function (httpReq, textStatus, errorThrown) {
+                    if (textStatus && textStatus == 'timeout') {
+                        $("#loading_wrap").remove();
+                        layer.open({
+                            content: "请求超时，请稍后刷新重试",
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                        return;
+                    }
+                    layer.open({
+                        content: httpReq.responseText,
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                }
+            })
+        } else {
+            $("#pop_city_layer").show();
+        }
+        if (this === document.getElementById('cs-brand')) {
+            $("#pop_city_layer").data('city-type', 1);
+        } else {
+            $("#pop_city_layer").data('city-type', 2);
+        }
+    });
+    function chooseCity(ele) {
+        var _this = $(ele);
+        var $pop_city_layer = $("#pop_city_layer");
+        window.scrollTo(0, 0);
+        if ($pop_city_layer.data('city-type') === 1) {
+           // $("#toubao_city").text(_this.data("platenum")).data("areaname", _this.text()).data("id", _this.data("id")).data("areanumber", _this.data("areanumber")).data("platenum", _this.data("platenum")).attr("value", _this.data("platenum"));
+            $("#pop_city_layer").hide();
+        } else {
+            chooseToubaoCity(ele);
+           // $("#toubao_city").val($("#toubao_city").data('platenum'));
+        }
+    }
+    function chooseToubaoCity(ele){
+        var _this = $(ele);
+        $("#toubao_city").text(_this.data("city")).data("id",_this.data("id")).data("areanumber",_this.data("areanumber")).data("city",_this.data("city")).data("platenum",_this.data("platenum")).attr("value",_this.data("platenum")).addClass('js-highlight');
+        $("#pop_city_layer").hide();
+    }
+
+
+
+
+
+</script>
+
+<!--<script src="../js/chepai.js"></script>
+<script>
+    $(function() {
+        chepaiInit('Area0', 'Area1');
+        /*
+         * 提交修改邮寄地址表单
+         * */
+        $("#btn-modify").click(function () {
+            //如果注册条件不满足，则显示弹出层
+            var chassisNumber =  $('#my_ChassisNumber').val();
+            var engineNumber =  $('#my_EngineNumber').val();
+            var Equipment =  $('#my_Equipment').val();
+            var blnChassis = false, blnEngine = false, blnEquipment = false;
+            if (Equipment == '') {
+                $('.err-tips').html('<span>对不起，绑定设备不能为空！</span>').show();
+                blnEquipment = false;
+            } else {
+                blnEquipment = true;
+            }
+            if (engineNumber == '') {
+                $('.err-tips').html('<span>对不起，发动机号不能为空！</span>').show();
+                blnEngine = false;
+            } else {
+                blnEngine = true;
+            }
+            if (chassisNumber == '') {
+                $('.err-tips').html('<span>对不起，车架号不能为空！</span>').show();
+                blnChassis = false;
+            } else {
+                blnChassis = true;
+            }
+
+            console.log(blnChassis + ' ' + blnEngine + ' ' + blnEquipment);
+            if (blnChassis && blnEngine && blnEquipment) {
+                //输入正确，提交信息
+                $('.err-tips').hide();
+                //提交信息完毕后，显示弹出层
+                var screenHeight = $(window).height();
+                $("#pop-mask").css({height: screenHeight}).fadeIn(500);
+                $("#pop-reg-tips").fadeIn(500);
+            } else {
+
+            }
+        });
+
+        $("#btn-submit").click(function() {
+            $("#pop-mask").fadeOut(500);
+            $("#pop-reg-tips").fadeOut(500);
+        })
+    });
+</script>-->
+</body>
+</html>

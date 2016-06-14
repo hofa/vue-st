@@ -1,0 +1,254 @@
+@charset "utf-8";
+h1, .hide{display:none;}
+section {display:block;}
+html{width:100%; height:100%;}
+body {max-width:640px; width:100%; height:100%; margin:0 auto;font-size:16px;position:relative; background-color: #fefefe;}
+@media screen and (max-width:960px) {
+    body { font-size: 140%;  }
+}
+@media screen and (max-width:768px) {
+    body { font-size: 120%;  }
+}
+@media screen and (max-width:720px) {
+    body { font-size: 112.5%;  }
+}
+@media screen and (max-width:650px) {
+    body { font-size: 100%;  }
+}
+@media screen and (max-width:600px) {
+    body { font-size: 93.75%;  }
+}
+@media screen and (max-width:550px) {
+    body { font-size: 83.5%;  }
+}
+@media screen and (max-width:490px) {
+    body { font-size: 75%;  }
+}
+@media screen and (max-width:432px) {
+    body { font-size: 67.5%;  }  /** 432px mx3 **/
+}
+@media screen and (max-width:400px) {
+    body { font-size: 62.5%;  }
+}
+@media screen and (max-width:414px) {
+    body { font-size: 64.6875%;  } /** i6 plus**/
+}
+@media screen and (max-width:384px) {
+    body { font-size: 60%;  }
+}
+@media screen and (max-width:380px) {
+    body { font-size: 58%;  }
+}
+@media screen and (max-width:375px) {
+    body { font-size: 58.59375%;  } /** i6 **/
+}
+@media screen and (max-width:360px) {
+    body { font-size: 56.25%;  }
+}
+@media screen and (max-width:330px) {
+    body { font-size: 50%;  }
+}
+#guide {position: relative; width: 100%; height: 100%;}
+.swiper-container {width:100%; position: absolute; top:5.5em;}
+.swiper-slide {
+/* Center slide text vertically */
+display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;
+-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;
+justify-content:center;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;
+}
+.swiper-slide img {
+	width:100%;
+}
+.arrow-box {
+    width: 10.25em;
+    height: 4em;
+    position: absolute;
+    left: 50%; margin-left: -5em;
+    bottom: 0;
+    background-position: 0 -10em;
+    z-index: 200;
+}
+.arrow{
+    width:2.25em;height:1.5em;
+    position:absolute;
+    bottom:3em; left:4em;
+    display:block;
+    opacity:0;
+    background-position: -15em -10em;
+    animation:arrowInUp 1.6s 0s linear infinite;
+    -webkit-animation:arrowInUp 1.6s 0s linear infinite;
+    -moz-animation:arrowInUp 1.6s 0s linear infinite
+}
+.arrow2{
+    width:2.25em;height:1.5em;
+    position:absolute;
+    bottom:3em; left:4em;
+    display:block;
+    opacity:0;
+    background-position: -15em -10em;
+    animation:arrowInUp 1.6s 0.8s linear infinite;
+    -webkit-animation:arrowInUp 1.6s 0.8s linear infinite;
+    -moz-animation:arrowInUp 1.6s 0.8s linear infinite
+}
+.arrow:active{color:transparent}
+@keyframes arrowInUp{
+    0%{opacity:0.3;transform:translateY(0em) scale(0.5)}
+    50%{opacity:1;transform:translateY(2em) scale(1)}
+    65%,100%{opacity:0;transform:translateY(2em) scale(1)}
+}
+@-webkit-keyframes arrowInUp{
+    0%{opacity:0.3;-webkit-transform:translateY(0em) scale(0.5)}
+    50%{opacity:1;-webkit-transform:translateY(2em) scale(1)}
+    65%,100%{opacity:0;-webkit-transform:translateY(2em) scale(1)}
+}
+.s0 .arrow-box {
+    background-position: 0 -5em;
+}
+.s0 .arrow{
+    background-position: -15em -5em;
+}
+.s0 .arrow2{
+    background-position: -15em -5em;
+}
+.s0 {background: url("../images/guide/s0.png") no-repeat center 0; background-size: 100% auto;}
+.s1 {background: url("../images/guide/s1.png") no-repeat center 0; background-size: 100% auto;}
+.s2 {background: url("../images/guide/s2.png") no-repeat center 0; background-size: 100% auto;}
+.s3 {background: url("../images/guide/s3.png") no-repeat center 0; background-size: 100% auto;}
+.s4 {background: url("../images/guide/s4.png") no-repeat center 0; background-size: 100% auto;}
+.s5 {background: url("../images/guide/s5.png") no-repeat center 0; background-size: 100% auto;}
+
+.wrap {
+    position: relative;
+    width:100%;
+    height: 50em;
+}
+.s1 .tabs {
+    width:93%; height: 14.325em;
+    margin: 11.75em auto auto;
+}
+.s1 .tabs li {
+    width: 50%;
+    height: 14.5em;
+    float: left;
+    position: relative;
+}
+.s1 .tabs li .hover {
+    width: 3em;
+    height: 2.5em;
+    position: absolute;
+    left: 50%; margin-left: -1.5em;
+    bottom: 0;
+    opacity: 0;
+    transition: all .3s linear 0s;
+    -moz-transition:all .3s linear 0s;
+    -webkit-transition:all .3s linear 0s;
+}
+.s1 .tabs li.current .hover {
+    bottom: -2em;
+    opacity: 1;
+}
+.s1 .tabs li:first-child {
+    background: url("../images/guide/pc.png") no-repeat center center; background-size: 18.75em auto;
+}
+.s1 .tabs li:first-child .hover {
+    background-position: -25em -5em;
+}
+.s1 .tabs li:last-child {
+    background: url("../images/guide/mobile.png") no-repeat center center; background-size: 18.75em auto;
+}
+.s1 .tabs li:last-child .hover {
+    background-position: -25em -10em;
+}
+.s1 .pc,.s1 .mobile {
+    width: 85%;
+    margin: 3em auto auto;
+    line-height: 2.5;
+}
+.s1 .pc li,.s1 .mobile li {
+    font-size: 1.5em;
+    color:#666666
+}
+.explain {
+    width: 85%;
+    margin: 29em auto auto;
+    line-height: 2.5;
+    color:#666666;
+    text-align: center;
+}
+.explain p {
+    font-size: 1.5em;
+    color:#666666
+}
+.s4 .explain {
+    text-align: left;
+}
+.FAQs {
+    width: 100%;
+    margin: 7.5em auto auto;
+}
+.FAQs ul {
+    width: 96%;
+    margin-left: 4%;
+}
+.FAQs ul li{
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+    line-height: 2.5;
+    border-bottom: solid 1px #e7e7e7;
+}
+.FAQs ul li.faq{
+}
+.FAQs ul li a span.text {
+    font-size: 2em;
+    color: #666666;
+    float: left;
+}
+.FAQs ul li em.fq{
+    width: 4.5em;
+    height: 5em;
+    float: left;
+    display: inline-block;
+    background-position: -20em -5em;
+}
+.FAQs ul li em.fa{
+    width: 4.5em;
+    height: 5em;
+    float: left;
+    display: inline-block;
+    background-position: -25em -5em;
+}
+.FAQs ul li span.arr{
+    width: 5em;
+    height: 5em;
+    display: block;
+    float: right;
+    background-position: -30em -5em;
+    -webkit-transform:rotate3d(0,0,1,90deg);-ms-transform:rotate3d(0,0,1,90deg);transform:rotate3d(0,0,1,90deg);
+    transition: all .5s linear 0s;
+    -moz-transition:all .5s linear 0s;
+    -webkit-transition:all .5s linear 0s;
+}
+.FAQs ul li.current span.arr{
+    -webkit-transform:rotate3d(0,0,1,-90deg);-ms-transform:rotate3d(0,0,1,-90deg);transform:rotate3d(0,0,1,-90deg);
+}
+.FAQs ul li.open {
+    line-height: 1.75;
+    overflow: hidden;
+    display: none;
+}
+.FAQs .words {
+    float:left;
+    padding-top: 0.75em;
+    padding-bottom: 2em;
+    display: inline-block;
+    width: 80%;
+    font-size: 1.5em;
+}
+
+@media screen and (device-aspect-ratio:2/3){
+
+}
+@media screen and (device-aspect-ratio:40/71){
+
+}

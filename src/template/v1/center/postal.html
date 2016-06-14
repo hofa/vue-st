@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>提现</title>
+<meta name="keywords" content="路比官网" />
+<meta name="description" content="路比官网" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/layer.css" />
+</head>
+
+<body>
+<header class="banner"><a href="mine.html" class="btn-back"></a>
+  <h3>我的钱包</h3>
+</header>
+<section id="postal" class="postal">
+  <div class="wrapper">
+      <div class="clearbg"></div>
+    <ul class="new_vehicle posmoney">
+        <li><span class="ico_lock">金额</span>
+            <span class="money">￥1000</span>
+            <a href="purse.html" class="btn_gray_s fr">提现</a>
+        </li>
+            </ul>
+     <div class="postallist">
+        <div class="postallist-title">明细</div>
+     </div>
+
+
+      <div class="rewardlist">
+          <span class="icopoint"><img src="../images/point.png"> </span>
+          <div class="rew_title">
+              <p class="totle">返现奖励</p>
+              <span class="totle-ms">返现奖励返现奖励返现奖励返现奖励返现奖励返现奖励返现奖励返现奖励返现奖励</span>
+              <p class="time">15：30 2016/04/26</p>
+          </div>
+
+          <span class="udmoney">+400</span>
+      </div>
+      <div class="cut-off"></div>
+
+    
+  </div>
+
+  <!--注册信息出错提示层---->
+</section>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/layer.js"></script>
+<script>
+    $(".btn_blue").click( function () {
+
+        layer.open({
+            content: '你是想确认呢，还是想取消呢？',
+            btn: ['确认', '取消'],
+            shadeClose: false,
+            yes: function(){
+                layer.open({content: '你点了确认', time: 1});
+            }, no: function(){
+                layer.open({content: '你选择了取消', time: 1});
+            }
+        });
+    })
+
+</script>
+</body>
+</html>

@@ -3,11 +3,23 @@ import App from './App'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 
+
+// components
+import appLogin from './components/app-login'
+
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.http.options.emulateJSON = true;
 
 var router = new VueRouter()
+
+var Home = Vue.extend({
+    template: '<p>我是首页</p>',
+    created: function () {
+      this.$route.router.go('/login')
+    }
+})
+
 // 定义组件
 var Foo = Vue.extend({
     template: '<p>This is foo!</p>'
@@ -30,13 +42,25 @@ var router = new VueRouter()
 // 创建的组件构造函数，也可以是一个组件选项对象。
 // 稍后我们会讲解嵌套路由
 router.map({
+    '/': {
+      component: Home
+    },
     '/foo': {
         component: Foo
     },
     '/bar': {
         component: Bar
-    }
+    },
+    '/login': {
+      component: appLogin
+    },
 })
 
+router.beforeEach(function(transition) {
+  console.log(111);
+  transition.next()
+})
+
+// router.redirect('/login')
 router.start(App, 'app')
 

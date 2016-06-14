@@ -1,23 +1,36 @@
 <template>
   <div id="app">
-    <h1>Hello App!1</h1>
-    <p>
-      <!-- 使用指令 v-link 进行导航。 -->
-      <a v-link="{ path: '/foo' }">Go to Foo</a>
-      <a v-link="{ path: '/bar' }">Go to Bar</a>
-    </p>
     <!-- 路由外链 -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import Header from  './components/Header'
 
-// export default {
-//   components: {
-//     Header
-//   }
-// }
+  import blogHead from './components/blog-head.vue'
+  import blogFoot from './components/blog-foot.vue'
+
+  export default {
+    data: function() {
+      return {
+        message: "hello world"
+      }
+    },
+    methods: {
+      alert: function() {
+        // alert(1)
+        this.$route.router.go('/login')
+        // console.log(this.$route.router.go('/foo'))
+      }
+    },
+    components: {
+      blogHead,
+      blogFoot
+    }
+  }
 </script>
 
+<style lang=less>
+@import "./template/v1/css/reset.css";
+@import "./template/v1/css/style.css";
+</style>

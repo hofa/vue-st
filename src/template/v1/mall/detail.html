@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>路比官网</title>
+<meta name="keywords" content="路比官网" />
+<meta name="description" content="路比官网" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+<h1 class="thumbnails" style="width:0; height:0; overflow:hidden; position:absolute;">
+    路比官网
+    <p>路比官网</p>
+    <img src="about:blank" title="分享图片地址" style="width:0; height:0; overflow:hidden; position:absolute;">
+</h1>
+<header class="banner">
+    <a href="points.html" class="btn-back"></a>
+    <a href="javascript:void(0);" id="mine-title"><span>奖品详情</span><em class="imgs arr"></em></a>
+    <a class="btn-show" href="javascript:void(0);"></a>
+    <nav class="nav">
+        <div class="mask"></div>
+        <a class="btn-close" href="javascript:void(0);"></a>
+        <ul class="navlist">
+            <li class="home" data-page-id="0"><span class="nav-icons"></span><p>首页</p><span class="arrow"></span></li>
+            <li class="apply" data-page-id="1"><span class="nav-icons"></span><p>免费申领</p><span class="arrow"></span></li>
+            <li class="member" data-page-id="2"><span class="nav-icons"></span><p>个人中心</p><span class="arrow"></span></li>
+            <li class="guide" data-page-id="3"><span class="nav-icons"></span><p>新手指引</p><span class="arrow"></span></li>
+            <li class="aboutus" data-page-id="4"><span class="nav-icons"></span><p>关于我们</p><span class="arrow"></span></li>
+        </ul>
+        <div class="login-box">
+            <div class="unlogin">
+                <a href="../register/register.html" class="btn-reg">免费注册</a>
+                <a href="../login/login.html" class="gologin">已有账号，去登录<div class="arrow"></div></a>
+            </div>
+            <div class="logined hide">
+                <div class="welcome">Hi，Orange</div>
+                <a href="../logout.html" class="btn-logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div id="catalog-mask" class="hide"></div>
+<nav id="catalog" class="cm">
+    <ul class="cataloglist">
+       <li class="mall" data-page-id="221"><span class="icons"></span><p>保险返现收益兑优惠</p><span class="arrow imgs"></span></li>
+        <li class="record" data-page-id="223"><span class="icons"></span><p>我的保险返现收益兑换纪录</p><span class="arrow imgs"></span></li>
+    </ul>
+</nav>
+
+<section id="mine">
+    <div class="wrapper">
+        <div class="points-detail">
+            <div class="photo"><img src="../images/gifts-photo-640.png" width="100%" ></div><!--奖品详情图片，宽度100% -->
+            <div class="explain">
+                <h3>20元哈根达斯冰激凌券</h3>
+                <h4><span class="blue">1000</span> 收益</h4>
+                <p>已有<span class="red">52</span>人兑换了该产品</p>
+            </div>
+            <a href="javascript:" class="btn-exchange">立即兑换</a>
+        </div>
+
+    </div>
+
+    　<script language="javascript">
+    function readTxt()
+    {
+        alert(window.clipboardData.getData("text"));
+    }
+    function setTxt()
+    {
+        var t=document.getElementById("txt");
+        t.select();
+        window.clipboardData.setData('text',t.createTextRange().text);
+    }
+</script>
+    　　<input id="txt" name="txt" value="测试">
+    　　<input type="button" value="复制" onclick="setTxt()">
+    　　<input type="button" value="读取" onclick="readTxt()">
+
+
+    <!--收益兑换时，收益不足的提示框---->
+    <div id="pop-mask" class="hide"></div>
+    <div id="pop-lose" class="pop-lose hide">
+        <div class="pop-bd">
+            <p>很遗憾！您的保险返现不足够兑换此商品，马上赚取收益吧！</p>
+        </div>
+        <a href="javascript:" id="btn-iknow"><span>我知道了</span></a>
+        <a href="javascript:" class="imgs btn-close"></a>
+    </div>
+</section>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/main.js"></script>
+<script>
+    $(function() {
+        var user_integral = 1000;
+        $('.btn-exchange').click(function() {
+            if (user_integral >= 1000) {
+                window.location.href = 'exchange.html';
+            } else {
+                //当用户的积份不够时，显示弹出层
+                $("#pop-mask").fadeIn(500);
+                $("#pop-lose").fadeIn(500);
+            }
+        });
+        $("#btn-iknow").click(function() {
+            $("#pop-mask").fadeOut(500);
+            $("#pop-lose").fadeOut(500);
+        });
+        $(".btn-close").click(function() {
+            $("#pop-mask").fadeOut(500);
+            $("#pop-win").fadeOut(500);
+            $("#pop-lose").fadeOut(500);
+        });
+
+    });
+</script>
+</body>
+</html>
