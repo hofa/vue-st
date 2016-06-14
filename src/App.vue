@@ -1,22 +1,23 @@
 <template>
   <div id="app">
-    <index></index>
+    <h1>Hello App!</h1>
+    <p>
+      <!-- 使用指令 v-link 进行导航。 -->
+      <a v-link="{ path: '/foo' }">Go to Foo</a>
+      <a v-link="{ path: '/bar' }">Go to Bar</a>
+    </p>
+    <!-- 路由外链 -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import Hello from './components/Hello'
-import Index from './views/Index'
-
+import Header from  './components/Header'
 
 export default {
   components: {
-    Index
+    Header
   }
 }
 </script>
 
-<style>
-@import './assets/popo/css/style.css';
-@import './assets/popo/css/style2.css';
-</style>
