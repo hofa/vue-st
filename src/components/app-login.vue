@@ -31,9 +31,7 @@
                 <!--当条件满足时，将class"btn_gray"切换为"btn_blue"-->
                 <!--完成这步后，转到填写车辆信息"reg_vehicle.html"-->
                 <div class="register_text"><a href="../login/register.html">免费注册，即送车险UBI</a> <a href="../accountPwd/toReset.html" class="resetPwd fr">忘记密码</a></div>
-                <div class="register_login_bar">
-                    <a href="../login/login_qq.html" class="login_qq"><span class="icons ico_qq"></span><p>QQ登录</p></a>
-                </div>
+
 
             </form>
             </div>
@@ -52,13 +50,10 @@
                             <a href="javascript:void(0)" class="btn_gray_s fr">获取验证码</a>
                         </li>
                     </ul>
-                    <div class="register_text"><label><input type="checkbox" checked=""><span> 我同意</span><a href="../privacy.html">鼎然科技用户使用协议</a></label></div>
+
                     <input type="submit" class="btn_gray" id="btn-login" value="登  录" />
                     <!--当条件满足时，将class"btn_gray"切换为"btn_blue"-->
                     <!--完成这步后，转到填写车辆信息"reg_vehicle.html"-->
-                    <div class="register_login_bar">
-                        <a href="../login/login_qq.html" class="login_qq"><span class="icons ico_qq"></span><p>QQ登录</p></a>
-                    </div>
 
                 </form>
 
@@ -74,30 +69,37 @@
 
 
 <script>
+  import request from '../request'
   export default {
     ready: function() {
-
-      var resource = this.$resource('http://api.ubi001.com/v1/');
+      // var RQ = new request
+      request.g('http://api.ubi001.com/v1/', {id: 1}, false, function(res) {
+        console.log(res)
+      });
+      // var resource = this.$resource('http://api.ubi001.com/v1/')
 
       // get item
-      resource.get({id: 1}).then(function (response) {
-          this.$set('item', response.item)
-      });
+      // resource.get({id: 1}).then(function (response) {
+      //     this.$set('item', response.item)
+      // });
 
       // save item
-      resource.save({id: 1}, {item: this.item}).then(function (response) {
-          // success callback
-      }, function (response) {
-          // error callback
-      });
+      // resource.save({id: 1}).then(function (response) {
+      //     // success callback
+      //     console.log('success');
+      // }, function (response) {
+      //     // error callback
+      //     console.log('error');
+      // });
 
       // delete item
-      resource.delete({id: 1}).then(function (response) {
-          // success callback
-      }, function (response) {
-          // error callback
-      });
+      // resource.delete({id: 1}).then(function (response) {
+      //     // success callback
+      // }, function (response) {
+      //     // error callback
+      // });
 
+      // console.log(resource);
     },
     data: function() {
       return {
