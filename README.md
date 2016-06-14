@@ -10,6 +10,7 @@
 
 # [awesome-vue](https://github.com/vuejs/awesome-vue)
 
+# [vue-resource](https://github.com/vuejs/vue-resource)
 # lol
 
 > lol
