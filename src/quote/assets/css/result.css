@@ -1,0 +1,190 @@
+// 基本字体大小
+$gbfsize: 64;
+@import "_common.scss";
+body,html{
+	color:#333;
+}
+.cor-red{
+	color:#ff7700;
+}
+#quote_result_wrap>.compn-count{
+	@include pt(30);
+	@include pb(30);
+	background-color:#eee;
+	text-align:center;
+}
+#quote_result_wrap>.compn-ing{
+	@include pt(20);
+	@include pb(30);
+	@include pl(28);
+	@include pr(28);
+	background-color:#eee;
+}
+#quote_result_wrap>.compn-ing>.progress-bar-wrap{
+	position:relative;
+	width:100%;
+	@include h(36);
+	@include lh(36);
+	@include mt(15);
+	border:2px solid #ddd;
+	background-color:#fff;
+	@include bdr(16);
+}
+#quote_result_wrap>.compn-ing .progress-bar-in{
+	position:absolute;
+	//left:-2px;
+	top:-2px;
+	width:0%;
+	@include h(36);
+	@include bdr(16);
+	background-color:#76a9ff;
+	text-align:right;
+	-webkit-transition: width .5s ease-in-out;
+}
+/*#quote_result_wrap>.compn-ing .progress-bar-in.w-percen40{
+	width:40%;
+	-webkit-transition:width 0.4s ease-in;
+	transition:width 0.4s ease-in;
+}*/
+#quote_result_wrap>.compn-ing .progress-bar-in #spaProgress{
+	@include pr(20);
+	@include fz(24);
+	color:#fff;
+}
+#quote_result_wrap .fz-nrml{
+	@include lh(35);
+	@include fz(24);
+	color:#666;
+}
+#quote_result_wrap>.compn-count>.compn-count-total{
+	@include pt(6);
+	@include lh(40);
+	@include fz(28);
+
+}
+#quote_result_wrap .insur-tit{
+	@include pl(30);
+	@include h(87);
+	@include lh(87);
+	@include fz(28);
+}
+#quote_result_wrap .busin-insur-list{
+	@include ml(30);
+	@include mb(30);
+}
+#quote_result_wrap .busin-insur-list>li{
+	@include pr(30);
+	border-bottom:1px solid #e5e5e5;
+	overflow:hidden;
+}
+#quote_result_wrap .busin-insur-list>li>img{
+	float:left;
+	@include w(151);
+	@include h(38);
+	@include mt(25);
+	@include mr(15);
+}
+
+#quote_result_wrap .busin-insur-list>li>.insur-name{
+	float:left;
+	@include lh(87);
+	@include fz(28);
+	color:#666;
+}
+#quote_result_wrap .busin-insur-list>li>.insur-price{
+	float:right;
+	@include lh(87);
+	@include fz(28);
+}
+#quote_result_wrap  .force-insur-list{
+	@include ml(30);
+	@include mt(30);
+}
+#quote_result_wrap  .force-insur-list>li{
+	@include h(87);
+	@include lh(87);
+	@include pr(30);
+	overflow:hidden;
+	border-bottom:1px solid #e5e5e5;
+	@include fz(28);
+}
+#quote_result_wrap  .force-insur-list>li>.insur-name{
+	float:left;
+}
+#quote_result_wrap  .force-insur-list>li>.insur-price{
+	float:right;
+}
+#quote_result_wrap .icon-arrow-hollow-right{
+	color:#999;
+}
+#quote_result_wrap .dn .icon-arrow-hollow-right:before{
+	content:"\e902";
+}
+#quote_result_wrap .fail>.fail-wrap{
+	clear:left;
+	@include pt(20);
+	@include pb(20);
+	@include pl(16);
+	@include pr(16);
+	@include mb(28);
+}
+#quote_result_wrap .fail>.fail-wrap>p{
+	@include lh(40);
+	@include fz(24);
+	text-align:center;
+}
+#quote_result_wrap .fail>.fail-wrap>.fail-reason{
+	color:#666;
+}
+#quote_result_wrap .fail>.fail-wrap>.fail-info{
+	@include pt(6);
+	color:#ccc;
+}
+#quote_result_wrap .busin-insur-list > li > img{    float: left;
+    width: 1.55938rem;
+    height: 1.375rem;
+    margin-top: 0.29063rem;
+    margin-right: 0.23438rem;}
+#quote_result_wrap .busin-insur-list > li{    padding-right: 0.46875rem;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;}
+#quote_result_wrap .busin-insur-list > li > .insur-price{float:right; line-height:1.35938rem;font-size:0.4075rem;}
+#quote_result_wrap .busin-insur-list > li > .insur-name{    float: left;
+    line-height: 1.65938rem;
+    font-size: 0.3rem;
+    color: #666;}
+	#quote_result_wrap .icon-arrow-hollow-right{    color: #999;}
+#quote_result_wrap .icon-arrow-hollow-tel{    color: #ff9933;}
+	#quote_result_wrap .fail  .fail-wrap{  clear: left;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    margin-bottom: 0.4375rem;}
+ .fail-reason{color: #666;}
+ .fail-wrap  p{    line-height: 0.625rem;
+    font-size: 0.375rem;
+    text-align: left;}
+	
+	#quote_result_wrap .fz-nrml{    line-height: 0.54688rem;
+    font-size: 0.375rem;
+    color: #666;}
+	#quote_result_wrap .compn-count-total{    padding-top: 0.09375rem;
+    line-height: 0.625rem;
+    font-size: 0.4375rem;}
+	
+	.btn-two {
+  display: block;
+  margin-left: 0.4375rem;
+  margin-right: 0.4375rem;
+  height: 1.175rem;
+  line-height:1.175rem;
+  margin-top: 0.46875rem;
+  background-color: #ff9933;
+  border-radius: 0.125rem 0.125rem 0.125rem 0.125rem;
+  font-size: 0.4rem;
+  color: #fff;
+  text-align: center; }
+  
+  	.btn-two a { color:#fff;}
+	

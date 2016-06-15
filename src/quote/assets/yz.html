@@ -1,0 +1,216 @@
+<html style="font-size: 75px;">
+<head>
+    <meta charset="utf-8">
+    <title>身份验证</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <link href="css/base/base.css" type="text/css" rel="stylesheet">
+    <link href="css/base/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/base/layer.css">
+    <link rel="stylesheet" type="text/css" href="css/cx-step2.css">
+    <script src="js/lib/flexible.js"></script>
+
+
+</head>
+<body style="font-size: 24px; ">
+<div id="wrapper">
+    <header id="cx-app-heaer">
+        <a class="icon-back " href="index.html"></a>
+        身份验证
+    </header>
+    <section id="step2-wrap" class="com-frm-input">
+        <div class="clearcor"></div>
+
+        <div class="input-wrap">
+            <label>手机号码</label>
+            <input id="txtIdCarmobile" type="text" name="ownermobile" placeholder="手机号码"
+                   validator="required  id_card min_length:11  " valid-name="手机号码">
+        </div>
+
+
+        <div class="input-wrap">
+            <label>验证码</label>
+            <input id="mobilecode" type="text" name="mobilecode" placeholder="验证码" validator="required   " valid-name="验证码"> <a
+                class="btn-orgcode" href="javascript:void(0)" id="sendMobile">发送验证码</a>
+        </div>
+
+
+        <div class="btn-two" id="jsput">确认</div>
+
+    </section>
+</div>
+
+
+
+<script type="text/javascript" src="js/third/layer.js"></script>
+<script type="text/javascript" src="js/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+<script type="text/javascript" src="js/lib/store.min.js"></script>
+<script type="text/javascript" src="js/widget/notification.js"></script>
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+<script src="qiniujs/moxie.js"></script>
+<script src="qiniujs/plupload.dev.js"></script>
+<script src="qiniujs/qiniu.min.js"></script>
+<script>
+    prevdatatwo = store.get("dtstep1");
+
+    $("#txtIdCarmobile").val(prevdatatwo.drmobile);
+    var jq = params('jq');
+    var carmoney = params('carmoney');
+    var bunn = params('bunn');
+
+    var comm = params('channel');
+
+    var company = params('company');
+
+    if (jq) {
+
+        store.set("resultorder", {jq: jq, carmoney: carmoney, bunn: bunn, tb: comm,company:company});
+    }
+
+
+    function params(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+        var tmpStr = window.location.href.substr(window.location.href.indexOf("?") + 1).match(reg);
+        if (tmpStr != null) {
+            return unescape(tmpStr[2]);
+        }
+        return null;
+    }
+
+
+
+
+    var mt = 120;
+    var isOn = 1;
+
+    function showTime(t)
+    {
+        t = t - 1;
+        if (t > 0)
+        {
+            $('#sendMobile').text(''+ t + ' 秒');
+            setTimeout("showTime("+t+")", 1000);
+        }
+        else
+        {
+            $('#sendMobile').text('发送验证码');
+            isOn = 1;
+        }
+    }
+
+    $("#sendMobile").on("click", function() {
+        if (isOn == 0) {
+            return;
+        }
+
+        var txtIdCarmobile = $("#txtIdCarmobile").val();
+        if (!txtIdCarmobile) {
+            layer.open({
+                content: '手机号码格式不正确',
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+            return;
+        }
+
+        $.ajax({
+            url:'http://api.ubi001.com/v1/offerStep/sendMsg',
+            type:"get",
+            dataType:'json',
+            data:{verifyMobile: $('#txtIdCarmobile').val()},
+            //jsonp:'callback',
+            success:function(respon){
+
+                if (respon.errcode != 0) {
+                    layer.open({
+                        content: respon.errmsg,
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                } else {
+                    isOn = 0;
+                    showTime(120);
+                }
+            }
+        });
+    });
+
+    $(".btn-two").on("click", function () {
+        var txtIdCarmobile = $("#txtIdCarmobile").val();
+        if (!txtIdCarmobile) {
+            layer.open({
+                content: '手机号码格式不正确',
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+            return;
+        }
+
+        var mobilecode = $("#mobilecode").val();
+        if (!mobilecode) {
+            layer.open({
+                content: '手机验证码不正确',
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+            return;
+        }
+
+        $.ajax({
+            url:'http://api.ubi001.com/v1/offerStep/stepFive',
+            type:"get",
+            dataType:'json',
+            data:{quote_number: store.get("dtstep1").orderid, verifyMobile: $('#txtIdCarmobile').val(), verify: $('#mobilecode').val()},
+            //jsonp:'callback',
+            success:function(respon){
+                if (respon.errcode != 0) {
+                    layer.open({
+                        content: "验证码错误",
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                } else {
+                    location.href="orderinfo.html";
+                }
+            }
+        });
+
+    });
+</script>
+
+<div class="dw-hidden" role="alert"></div>
+<script src="http://7xq870.com1.z0.glb.clouddn.com/baidu.js"></script>
+</body>
+</html>

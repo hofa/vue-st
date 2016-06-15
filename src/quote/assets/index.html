@@ -1,0 +1,803 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>路比UBI车险</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/layer.css">
+    <link rel="stylesheet" type="text/css" href="css/cx-step1.css">
+    <link href="skins/all.css?v=1.0.2" rel="stylesheet">
+    <script src='js/lib/flexible.js'></script>
+    <script src='js/widget/config.js'></script>
+    <style>
+        .iradio_flat-red {
+            margin-top: 0.4rem;
+        }
+
+    </style>
+
+
+</head>
+<body style="background:#f0f0f0;">
+<header class="com-header"><img src="image/index_banner.png"></header>
+<section class="step1-wrap valid-box">
+    <div class="select-wrap ml-26" style="height: 1rem;">  <div class="inptname" style="line-height: 1rem">行驶城市：</div> <span id="toubao_city" value="" validator="required" valid-name="投保城市"></span>
+        <div class="" id="toubao_ciick">更改城市</div>
+    </div>
+    <div class="input-wrap ico2-out" >
+        <div class="input-inner-wrap">
+            <div class="inptname">是否未上牌：</div>
+
+                <input  type="checkbox" id="hascar" style="" value="0"><div style="height: 1.34375rem;  line-height:1.34375rem; ">未上牌</div>
+
+    </div>
+    </div>
+    <div class="input-wrap ico1-out" id="chenumber">
+        <div class="input-inner-wrap">
+            <div class="inptname">车辆牌号：</div>
+            <input type="text" id="cs-brand" placeholder="请输入车牌号" validator="required" valid-name="车牌号"
+                   class="ui-text-uppercase"/>
+    </div>
+    </div>
+    <div class="input-wrap ico2-out">
+        <div class="input-inner-wrap">
+            <div class="inptname">车主姓名：</div>
+            <input id="txtDRName" type="text" placeholder="请输入车主姓名" validator="required" valid-name="车主姓名"/>
+    </div>
+    </div>
+    <div class="input-wrap ico3-out">
+        <div class="input-inner-wrap">
+            <div class="inptname"> 手机号码：</div>
+            <input id="txtDRmobile" type="text" placeholder="请输入手机号码" validator="required" valid-name="手机号码"/>
+    </div>
+    </div>
+    <div id="btnQuery" class="btn-blue validator_btn">
+        <input type="hidden" id="orderid" name="orderid" value="0">
+        下一步
+    </div>
+    <div class="frhelp">填写太麻烦？</div>
+    <div class="insurance-buttn"><a href="upphoto.html" class="btn_blue" id="btn-success">拍照报价</a> <a
+            href="tel:075584357001" class="btn_org" id="btn-success">电话询价</a></div>
+    <div id="gototop" onclick="gototop();" style="display:none;"></div>
+
+</section>
+<div class="foote"><img src="image/Information.png"></div>
+<div id="pop_city_layer" style="display:none;">
+    <div class="pop-tit"> 选择城市 <span id="icon-close" class="icon-close"></span></div>
+    <div class="pop-con-wrap"></div>
+</div>
+<script type="text/html" id="tplPop">
+    <div class="tit-box">定位城市</div>
+    [%if(typeof(toPosi)!="undefined"){%]
+    <ul class="white-box block-box clearfix">
+        <li data-areaNumber="[%=toPosi.areaNumber%]" data-platenum="[%=toPosi.plateNum%]" data-id="[%=toPosi.id%]"
+            onclick="chooseCity(this);"><span>[%=toPosi.areaName%]</span></li>
+    </ul>
+    [%}else{%]
+    <div class="white-box fail-wrap ">X&nbsp;定位失败</div>
+    [%}%]
+
+   <!-- <div class="tit-box">热门城市</div>
+    <ul class="white-box block-box clearfix">
+        [%if(typeof(area_hold["深圳市"])!="undefined"){%]
+        <li data-areaNumber="[%=area_hold["深圳市"]["areaNumber"]%]" data-platenum="[%=area_hold["深圳市"]["plateNum"]%]" data-id="[%=area_hold["深圳市"]["id"]%]"
+        data-city="深圳市" onclick="chooseCity(this);"><span>深圳市</span></li>
+        [%}%]
+        [%if(typeof(area_hold["重庆市"])!="undefined"){%]
+        <li data-areaNumber="[%=area_hold["重庆市"]["areaNumber"]%]" data-platenum="[%=area_hold["重庆市"]["plateNum"]%]" data-id="[%=area_hold["重庆市"]["id"]%]"
+        data-city="重庆市" onclick="chooseCity(this);"><span>重庆市</span></li>
+        [%}%]
+        [%if(typeof(area_hold["济南市"])!="undefined"){%]
+        <li data-areanumber="[%=area_hold["济南市"]["areaNumber"]%]" data-platenum="[%=area_hold["济南市"]["plateNum"]%]" data-id="[%=area_hold["济南市"]["id"]%]"
+        data-city="济南市" onclick="chooseCity(this);"><span>济南市</span></li>
+        [%}%]
+    </ul>-->
+    <div class="tit-box">全部城市（按首字母顺序）</div>
+    <div class="letters-wrap white-box  clearfix">
+        [%
+        var
+        templetters=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        for(var k in templetters){
+        if(typeof(lc[templetters[k]])!="undefined"){
+        %]
+        <a href="#[%=templetters[k]%]">[%=templetters[k]%]</a>
+        [%}%]
+        [%}%]
+    </div>
+    <!--begin of 字母城市-->
+    [%
+    for(var p in templetters){
+    if(typeof(lc[templetters[p]])!="undefined"){
+    %]
+    <div id="[%=templetters[p]%]" class="tit-box">[%=templetters[p]%]</div>
+    <ul class="white-box line-box">
+        [%for(var m=0;m<lc [templetters[p]].length;m++){ %]
+        <li data-areanumber="[%=lc[templetters[p]][m]["areaNumber"]%]" data-id="[%=lc[templetters[p]][m]["id"]%]" data-platenum="[%=lc[templetters[p]][m]["plateNum"]%]"
+        data-city="[%=lc[templetters[p]][m]["areaName"]%]"
+        onclick="chooseCity(this)">[%=lc[templetters[p]][m]["areaName"]%]</li>
+        [%}%]
+    </ul>
+    [%}
+    }
+    %]
+    <!--end of 字母城市-->
+</script>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script src="js/icheck.js"></script>
+<script type="text/javascript" src="js/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+<script type="text/javascript" src="js/lib/store.min.js"></script>
+<script type="text/javascript" src="js/widget/notification.js"></script>
+<script type="text/javascript" src="js/widget/validator.js"></script>
+<script type="text/javascript" src="js/widget/form-submit.js"></script>
+<script type="text/javascript" src="js/lib/art-template.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if(typeof store.get("dtstep1") != "undefined" &&  store.get("dtstep1").hascar == 1)
+        {
+            $("#hascar").val(1);
+            $("#hascar").iCheck('check');
+          //  console.log('store.get("dtstep1").hascar');
+
+        }
+
+        FastClick.attach(document.body);
+    })
+</script>
+<script>
+    $('#hascar').iCheck({
+        labelHover : false,
+        cursor : true,
+        checkboxClass: 'iradio_flat-red',
+        radioClass: 'iradio_flat-red'
+
+    });
+
+    $('#hascar').on('ifChecked', function (event) {
+        $("#hascar").val("1");
+        $("#cs-brand").attr('readonly', 'readyonly');
+        $("#cs-brand").css('backgroundColor', '#ddd');
+
+    });
+
+    $('#hascar').on('ifUnchecked', function (event) {
+        $("#hascar").val("0");
+        $("#cs-brand").removeAttr('readonly');
+        $("#cs-brand").css('backgroundColor', '');
+
+    });
+
+</script>
+<script type="text/javascript">
+
+
+
+    var localSearch = sessionStorage.localSearch = location.search.replace('?', '');//url的参数
+    var tmpPlatformFlag, tmpThirdPlatformKey;
+
+
+    location.search.replace(/^\?|&?(\w+)=(\w+)?/g, function (str, key, val) {
+        if (key === 'packageId') {
+            store.set("packageAction", "doPackageEnquiry");
+        } else if (key === 'platformFlag') {
+            tmpPlatformFlag = val;
+        } else if (key === 'thirdPlatformKey') {
+            tmpThirdPlatformKey = val;
+        }
+    });
+
+    if (typeof tmpPlatformFlag != "undefined" && typeof tmpThirdPlatformKey != "undefined") {
+        var platform = {platformFlag: tmpPlatformFlag, thirdPlatformKey: tmpThirdPlatformKey};
+        store.set("platform", platform);
+            }
+
+    var letter_cities = {},
+            area_hold = {};
+    var tempindex = -1;
+    var toPosi;
+    window.scrollTo(0, 0);
+   // alert(123)
+    function gototop() {
+        window.scrollTo(0, 0);
+            }
+   window.onscroll = function () {
+        if ($("#pop_city_layer").is(":visible")) {
+            var e = document.getElementById("gototop");
+            if (e) {
+                window.pageYOffset > window.innerHeight * 2 - 60 ? e.style.display = "block" : e.style.display = "none";
+            }
+        }
+    };
+
+    $(function () {
+        // 临时方案，修复定位框“是”与“否”无法选中
+        $('body').on('click', '.geolocation .layermbtn span', function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            if ($this.attr('type') == 1) {
+                layer.closeAll();
+            } else {
+                getLocation();
+            }
+        });
+
+        //初始化cache
+        if (store && typeof(store.get("dtstep1")) != "undefined") {
+            /* store.set("dtstep1",{"areaid":_starget.data("id"),"areanumber":_starget.data("areanumber"),"platenum":_starget.data("platenum"),"platenumtxt":_starget.next().val(),"hzname":$("#txtHzName").val(),"platecity":_starget.text()});*/
+            var _brand = $("#cs-brand"),
+                    toubao_city = $('#toubao_city');
+            _brand.val(store.get("dtstep1").platenum + store.get("dtstep1").platenumtxt).data("id", store.get("dtstep1").areaid).data("areaname", store.get("dtstep1").areaname).data("areanumber", store.get("dtstep1").areanumber).data("platenum", store.get("dtstep1").platenum);
+
+            toubao_city.text(store.get("dtstep1").toubaocity).attr("value", store.get("dtstep1").toubaocitynum).data("id", store.get("dtstep1").toubaocityid).data("city", store.get("dtstep1").toubaocity).data("platenum", store.get("dtstep1").toubaoplatenum).data('areanumber', store.get('dtstep1').toubaocitynum).addClass('js-highlight');
+
+            //_brand.next().val(store.get("dtstep1").platenumtxt);
+            $("#txtDRName").val(store.get("dtstep1").hzname);
+            $("#txtDRmobile").val(store.get("dtstep1").drmobile);
+
+
+            var ua = window.navigator.userAgent.toLowerCase();
+            var reftype  = "t1";
+            var ref = "t1";
+
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                var reftype  = "WX";
+                var ref = "WX";
+                store.set("wx",{"reftype":reftype,"ref":ref});
+            }else {
+
+                store.set("wx",{"reftype":"","ref":""});
+            }
+
+            var refty = "wx";
+
+            if(refty == "undefined"){
+               var  arr = {area: store.get("dtstep1").toubaocitynum,refType:"",ref:""};
+            }else{
+               var  arr = {area: store.get("dtstep1").toubaocitynum,refType:reftype,ref:ref};
+
+            }
+
+
+            $.ajax({
+                url: 'http://api.ubi001.com/v1/offer/generator',
+                type: "get",
+                contentType: 'application/json',
+                dataType: 'json',
+                async: true,
+                data: arr,
+                //jsonp:'callback',
+                success: function (respon) {
+                    if (respon.errcode == '0') {
+
+                        $("#orderid").val(respon.data);
+                        var dtstep1 = store.get("dtstep1");
+                        dtstep1.orderid = respon.data;
+                        store.set("dtstep1", dtstep1);
+
+                    } else {
+
+                        layer.open({
+                            content: "请求超时，请稍后刷新重试",
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                        return;
+
+
+                    }
+
+
+
+                }
+
+            })
+
+
+            //$("#orderid").val(store.get("dtstep1").orderid);
+        } else {
+            //if启用定位
+            layer.open({
+                className: 'geolocation',
+                content: '是否允许定位地理位置用于自动填写车牌所属城市',
+                btn: ['否', '是'],
+                shadeClose: false,
+                no: function (index) {
+                    //layer.open({content: '你点了确认', time: 1});
+                    getLocation();
+                },
+                yes: function (index) {
+                    layer.close(index);
+                }
+
+            });
+                }
+        $("#toubao_city,#toubao_ciick").on("click", function () {
+            if (Object.keys(letter_cities).length == 0) {
+                var mindex = layer.open({
+                    shadeClose: false, type: 2,
+                    content: "加载中"
+                });
+
+
+                var cityid = $("#toubao_city").attr('value');
+
+
+                //加载地区
+                $.ajax({
+                    url: 'http://api.ubi001.com/v1/offer/getCityList',
+                    type: "get",
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    async: true,
+                    data: '',
+                    //jsonp:'callback',
+                    success: function (respon) {
+
+
+                        if (respon.errcode == "0") {
+
+                          //  console.log(respon.data)
+
+                            if (respon.data) {
+                                for (var i = 0; i < respon.data.length; i++) {
+                                    var temp = respon.data[i],
+                                            templetter = temp.shortName.substr(0, 1).toUpperCase();
+                                    if (typeof(letter_cities[templetter]) != "undefined") {
+                                        letter_cities[templetter].push(temp);
+                                    } else {
+                                        letter_cities[templetter] = [temp];
+                                    }
+                                    area_hold[temp.areaName] = temp;
+                                }
+                                //console.log("start print letter_cities");
+                                //console.log(letter_cities);
+                                //console.log("start print area_hold");
+                                //console.log(area_hold);
+                                var now = template.render("tplPop", {"lc": letter_cities, "ah": area_hold});
+                                layer.close(mindex);
+                                $("#pop_city_layer").append(template.render("tplPop", {
+                                    "lc": letter_cities,
+                                    "ah": area_hold
+                                })).show();
+                                //console.log(now);
+                            }
+
+
+
+
+
+                                }
+                    },
+                    error: function (httpReq, textStatus, errorThrown) {
+                        if (textStatus && textStatus == 'timeout') {
+                            $("#loading_wrap").remove();
+                            layer.open({
+                                content: "请求超时，请稍后刷新重试",
+                                style: 'background-color:#000; color:#fff; border:none;',
+                                time: 3
+                            });
+                            return;
+                        }
+                        layer.open({
+                            content: httpReq.responseText,
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                            }
+                })
+
+
+            } else {
+                $("#pop_city_layer").show();
+            }
+            if (this === document.getElementById('cs-brand')) {
+                $("#pop_city_layer").data('city-type', 1);
+            } else {
+                $("#pop_city_layer").data('city-type', 2);
+            }
+
+        })
+        //close城市层
+        $("#icon-close").on("click", function () {
+            $("#pop_city_layer").hide();
+            window.scrollTo(0, 0);
+        })
+        //begin比价
+        $("#btnQuery").on("click", function () {
+            var _starget = $("#cs-brand");
+            var $toubao_city = $('#toubao_city');
+            var specialChar = /[\~\`\!\@\#\$\%\^\&\{\}\,\-\_\]\[\+\:\;\"\'\=\|\\\<\>\?\/\.\(\)]/g;
+            var quanJiao = /[\uff00-\uffff]/g;
+            var chepaiText = $("#cs-brand").val();
+              var drname = $("#txtDRName").val();
+            var mobileyz = $("#txtDRmobile").val();
+
+            var orderid = $("#orderid").val();
+            var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            if(mobileyz == ''){
+                layer.open({
+                    content: "手机号码不能为空!",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 2
+                });
+                return;
+            }else if(mobileyz.length !=11){
+                layer.open({
+                    content: "请输入有效的手机号码!",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 2
+                });
+                return;
+
+            }else if(!myreg.test(mobileyz)){
+                layer.open({
+                    content: "请输入有效的手机号码!",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 2
+                });
+                return;
+            }else{
+
+            }
+
+
+            if ($toubao_city.attr("value").length == 0) {
+                        layer.open({
+                            content: "请选择投保城市",
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                return false;
+                    }
+            if( $("#hascar").val()==1){
+
+
+
+
+            }else{
+                if (chepaiText.length !== 7 || specialChar.test(chepaiText) || quanJiao.test(chepaiText)) {
+                    layer.open({
+                        content: "请输入正确的车牌号",
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                    return false;
+                }
+
+            }
+
+
+           /* if (chepaiText.length !== 7 || specialChar.test(chepaiText) || quanJiao.test(chepaiText)) {
+                layer.open({
+                    content: "请输入正确的车牌号",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                return false;
+            }*/
+            if (drname.match(/^[A-Za-z]{4}|[\u4E00-\u9FA5\uF900-\uFA2D]{6}$/)) {
+                layer.open({
+                    content: "请输入正确姓名",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                return false;
+            }
+
+
+
+            if ($(".valid-box").eq(0).find(".validator_fail").length == 0) {
+                store.set("dtstep1", {
+                    "orderid": orderid,
+                    "areaid": $toubao_city.data("id"),
+                    "areaname": $toubao_city.data("city"),
+                    "areanumber": $toubao_city.data("areanumber"),
+                    "platenum": _starget.val().slice(0, 2).toUpperCase(),
+                    "platenumtxt": _starget.val().slice(2).toUpperCase(),
+                    hascar: $("#hascar").val(),
+                    "hzname": $("#txtDRName").val(),
+                    "drmobile": $("#txtDRmobile").val(),
+                    "platecity": $toubao_city.data("platenum"),
+                    "toubaocityid": $toubao_city.data('id'),
+                    "toubaocity": $toubao_city.data('city'),
+                    "toubaocitynum": $toubao_city.data('areanumber'),
+                    "toubaoplatenum": $toubao_city.data('platenum')
+                });
+
+
+                $.ajax({
+                    url: 'http://api.ubi001.com/v1/offerStep/stepOne',
+                    type: "get",
+                    dataType: 'json',
+                    data: {
+                        quote_number: store.get("dtstep1").orderid,
+                        has_card: store.get("dtstep1").hascar,
+                        area: store.get("dtstep1").areanumber,
+                        area_name: store.get("dtstep1").areaname,
+                        vehicle_carcard: store.get("dtstep1").platenum + store.get("dtstep1").platenumtxt,
+                        owner_name: store.get("dtstep1").hzname,
+                        mobile: store.get("dtstep1").drmobile
+                    },
+                    //jsonp:'callback',
+                    success: function (respon) {
+                        if (respon.errcode == 0) {
+                            window.location.href = "cx-step2.html?" + localSearch;
+                        }
+                    }
+                })
+            }
+        })
+    })
+    function chooseCity(ele) {
+        var _this = $(ele);
+
+        //console.log(_this);
+        var $pop_city_layer = $("#pop_city_layer");
+
+        window.scrollTo(0, 0);
+        //$('#gototop').hide();
+        if ($pop_city_layer.data('city-type') === 1) {
+            $("#cs-brand").text(_this.data("platenum")).data("areaname", _this.text()).data("id", _this.data("id")).data("areanumber", _this.data("areanumber")).data("platenum", _this.data("platenum")).attr("value", _this.data("platenum"));
+            $("#pop_city_layer").hide();
+        } else {
+            chooseToubaoCity(ele);
+            $("#cs-brand").val($("#toubao_city").data('platenum'));
+
+            //alert(   $("#cs-brand").val($("#toubao_city").data('platenum')));
+
+        }
+        }
+    function chooseToubaoCity(ele) {
+
+
+        var _this = $(ele);
+
+
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            var reftype  = "WX";
+            var ref = "";
+            store.set("wx",{"reftype":reftype,"ref":ref});
+        }else {
+
+            store.set("wx",{"reftype":"","ref":""});
+        }
+
+        var refty = "wx";
+
+        if(refty == "undefined"){
+            var  arr = {area: _this.data("areanumber"),refType:"",ref:""};
+        }else{
+            var  arr = {area: _this.data("areanumber"),refType:store.get("wx").reftype,ref:""};
+
+        }
+
+        $.ajax({
+            url: 'http://api.ubi001.com/v1/offer/generator',
+            type: "get",
+            contentType: 'application/json',
+            dataType: 'json',
+            async: true,
+            data: arr,
+            //jsonp:'callback',
+            success: function (respon) {
+                if (respon.errcode == '0') {
+
+                    $("#orderid").val(respon.data);
+
+                } else {
+
+                    layer.open({
+                        content: "请求超时，请稍后刷新重试",
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                    return;
+
+
+                }
+
+
+
+
+                }
+
+        })
+
+
+        $("#toubao_city").text(_this.data("city")).data("id", _this.data("id")).data("areanumber", _this.data("areanumber")).data("city", _this.data("city")).data("platenum", _this.data("platenum")).attr("value", _this.data("platenum")).addClass('js-highlight');
+        $("#pop_city_layer").hide();
+        }
+    function getLocation() {
+        //检查浏览器是否支持地理位置获取
+        if (navigator.geolocation) {
+            //若支持地理位置获取,成功调用showPosition(),失败调用showError
+            tempindex = layer.open({
+                shadeClose: false, type: 2,
+                content: "加载中"
+            });
+            var config = {
+                timeout: 20000,
+                enableHighAccuracy: true
+                }
+            navigator.geolocation.getCurrentPosition(defyPosiSuccess, showError, config);
+        } else {
+            //alert("Geolocation is not supported by this browser.");
+            layer.open({
+                content: "定位失败,用户已禁用位置获取权限",
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+        }
+    }
+    function defyPosiSuccess(position) {
+        //获得经度纬度
+        var x = position.coords.latitude;
+        var y = position.coords.longitude;
+        var locatedCity;
+        //配置Baidu Geocoding API
+        var url = "http://api.map.baidu.com/geocoder/v2/";
+        $.ajax({
+            type: "post",
+            data: {
+                ak: 'G4eGG6TRibG59eNd6tNZ4MvinEPWYNAS',
+                output: 'json',
+                pois: '1',
+                location: x + ',' + y
+            },
+            dataType: "jsonp",
+            url: url,
+            success: function (json) {
+                //alert(json);
+                if (json == null || typeof (json) == "undefined") {
+                    return;
+                }
+                if (json.status != "0") {
+                    return;
+                }
+                locatedCity = json.result.addressComponent.city
+                /*layer.open({
+                 content: json.result.addressComponent.city,
+                 style: 'background-color:#000; color:#fff; border:none;',
+                 time: 3
+                 });*/
+                if (Object.keys(area_hold).length == 0) {
+
+
+
+
+                    //加载地区
+                    $.ajax({
+                        url: 'http://api.ubi001.com/v1/offer/getCityList',
+                        type: "get",
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        async: true,
+                        data: {},
+
+                        success: function (respon) {
+
+
+                            layer.close(tempindex);
+                            if (respon.errcode == "0") {
+                                if (respon.data) {
+                                    for (var i = 0; i < respon.data.length; i++) {
+                                        var temp = respon.data[i];
+                                        if (temp.areaName == locatedCity) {
+                                            toPosi = temp;
+                                            $("#cs-brand").data("id", temp["id"]).data("areaname", temp["areaName"]).data("areanumber", temp["areaNumber"]).data("platenum", temp["plateNum"]).val(temp["plateNum"]);
+                                            $('#toubao_city').text(temp["areaName"]).attr("value", temp["plateNum"]).data("id", temp["id"]).data("areanumber", temp["areaNumber"]).data("platenum", temp["plateNum"]).data("city", temp["areaName"]).addClass('js-highlight');
+                                        }
+                                        }
+                                    layer.close(mindex);
+                                    }
+
+
+                            }
+                        },
+                        error: function (httpReq, textStatus, errorThrown) {
+                            if (textStatus && textStatus == 'timeout') {
+                                layer.open({
+                                    content: "请求超时，请稍后刷新重试",
+                                    style: 'background-color:#000; color:#fff; border:none;',
+                                    time: 3
+                                });
+                                return;
+                            }
+                                layer.open({
+                                    content: httpReq.responseText,
+                                    style: 'background-color:#000; color:#fff; border:none;',
+                                    time: 3
+                                });
+                            }
+                    })
+                } else {
+                    if (typeof(area_hold[locatedCity]) != "undefined") {
+                        var tempcity = area_hold[locatedCity + "市"];
+                        $("#cs-brand").data("id", tempcity["id"]).data("areaname", tempcity["areaName"]).data("areanumber", tempcity["areaNumber"]).data("platenum", tempcity["plateNum"]).val(tempcity["plateNum"]);
+                        $('#toubao_city').text(tempcity["areaName"]).attr("value", tempcity["plateNum"]).data("id", tempcity["id"]).data("areanumber", tempcity["areaNumber"]).data("platenum", tempcity["plateNum"]).data("city", tempcity["areaName"]).addClass('js-highlight');
+                        }
+                    }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.close(tempindex);
+                layer.open({
+                    content: "定位失败，请手动选择城市！",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+            }
+        });
+        }
+    function showError(error) {
+        layer.close(tempindex);
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                layer.open({
+                    content: "定位失败,用户拒绝请求地理定位!",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                break;
+            case error.POSITION_UNAVAILABLE:
+                layer.open({
+                    content: "定位失败,位置信息是不可用！",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                break;
+            case error.TIMEOUT:
+                layer.open({
+                    content: "定位失败,请求获取用户位置超时！",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                break;
+            case error.UNKNOWN_ERROR:
+                layer.open({
+                    content: "定位失败,定位系统失效！",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                break;
+        }
+    }
+
+
+    /*  加载条
+     var m=layer.open({ shadeClose: false,type:2,
+     content: "nilanila"});*/
+</script>
+<script src="http://7xq870.com1.z0.glb.clouddn.com/baidu.js"></script>
+</body>
+</html>

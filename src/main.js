@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 
 // components
 import appLogin from './components/app-login'
+import quoteFirst from './quote/quote-first'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
@@ -16,7 +17,7 @@ var router = new VueRouter()
 var Home = Vue.extend({
     template: '<p>我是首页</p>',
     created: function () {
-      this.$route.router.go('/login')
+      this.$route.router.go('/quote')
     }
 })
 
@@ -54,10 +55,13 @@ router.map({
     '/login': {
       component: appLogin
     },
+    '/quote': {
+      component: quoteFirst
+    }
 })
 
 router.beforeEach(function(transition) {
-  console.log(111);
+  // console.log(111);
   transition.next()
 })
 

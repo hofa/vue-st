@@ -1,0 +1,730 @@
+<html style="font-size: 34px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title> 投保方案</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <link href="css/base/base.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/layer.css">
+    <link rel="stylesheet" type="text/css" href="css/hz-mobiscroll.css">
+    <link rel="stylesheet" type="text/css" href="css/cx-insur-scheme.css">
+    <link href="css/mobiscroll.css" rel="stylesheet"/>
+    <link href="css/mobiscroll_date.css" rel="stylesheet"/>
+    <!-- 是否进行rem布局 -->
+    <style>
+        .seatt .sg-insur-item-mp {
+            margin-left: 0.375rem;
+            margin-right: 0.15625rem;
+            padding-left: 0.3125rem;
+            padding-right: 0.3125rem;
+            padding-top: 0.09375rem;
+            padding-bottom: 0.09375rem;
+            background-color: #ff9933;
+            color: #fff;
+            font-size: 0.28125rem;
+            text-align: center;
+        }
+
+        .seatt .gray{ background-color: #ddd;}
+
+    </style>
+
+</head>
+<body style="font-size: 36px;">
+<div id="page-scheme">
+    <header id="cx-app-heaer">
+        <a class="icon-back " href="javascript:history.go(-1);"></a>
+        投保方案
+    </header>
+    <section id="scheme-wrap">
+
+
+        <div class="com-margin-box">
+            <span class="insur-type-tit">购买险种</span>
+            <div class="com-corn-box insur-type-con">
+                <em class="ico_corner"></em>
+                <p class="insur-type-item chosen" style="display: none;" data-type="sy" onClick="chooseUpTwo(this);">
+                    <span class="icon-radio-nor "></span>
+                    &nbsp;商业险
+                </p>
+                <p class="insur-type-item chosen" data-type="jq" onClick="chooseUpTwo(this);">
+                    <span class="icon-radio-nor "></span>
+                    &nbsp;交强险、代缴车船税
+                </p>
+
+            </div>
+            </div>
+        <div class="insur-box basic-insur-box">
+            <div class="tit-box">
+                <span>基本险</span>
+                <b id="ico-why" class="  " data="01"></b>
+            </div>
+            <ul>
+
+                <li class="sg-insur-item" id="uqCarLosInsur">
+                    <div class="item-up" onClick="siit(this, event);">
+
+                        <div class="sg-insur-item-tit chosen" data-insurid="1">
+                            <span class="icon-radio-nor "></span>
+                            &nbsp;
+                            车辆损失险
+                        </div>
+
+
+                        <div class="select-out " data-tbindex="1"></div>
+
+                        <span class="sg-insur-item-mp  " onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+
+                        <div class="sg-insur-item-tit chosen" data-insurid="02">
+                            <span class="icon-radio-nor "></span>
+                            &nbsp;
+                            第三者责任险
+                        </div>
+
+
+                        <div class="select-out ">
+                            <select>
+
+
+                                <option value="5">5万元</option>
+
+
+                                <option value="10">10万元</option>
+
+
+                                <option value="15">15万元</option>
+
+
+                                <option value="20" selected="">20万元</option>
+
+
+                                <option value="30">30万元</option>
+
+
+                                <option value="50">50万元</option>
+
+
+                                <option value="100">100万元</option>
+
+
+                                <option value="150">150万元</option>
+
+
+                                <option value="200">200万元</option>
+
+
+                            </select>
+                        </div>
+
+                        <span class="sg-insur-item-mp  " onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+
+                <li class="sg-insur-item">
+                    <div class="item-up chosen" onClick="siit(this, event);">
+
+                        <div class="sg-insur-item-tit chosen " data-insurid="03">
+                            <span class="icon-radio-nor "></span>
+                            &nbsp;
+                            全车盗抢险
+                        </div>
+
+
+                        <div class="select-out " data-tbindex="1"></div>
+
+                        <span class="sg-insur-item-mp  " onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+
+                        <div class="sg-insur-item-tit chosen" data-insurid="04">
+                            <span class="icon-radio-nor "></span>
+                            &nbsp;
+                            司机座位责任险
+                        </div>
+
+
+                        <div class="select-out ">
+                            <select>
+
+
+                                <option value="5000">5000元</option>
+
+
+                                <option value="10000" selected="">1万元</option>
+
+
+                                <option value="20000">2万元</option>
+
+
+                                <option value="30000">3万元</option>
+
+
+                                <option value="40000">4万元</option>
+
+
+                                <option value="50000">5万元</option>
+
+
+                                <option value="100000">10万元</option>
+
+
+                                <option value="200000">20万元</option>
+
+
+                            </select>
+                        </div>
+
+                        <span class="sg-insur-item-mp  " onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+
+                        <div class="sg-insur-item-tit chosen" data-insurid="05">
+                            <span class="icon-radio-nor "></span>
+                            &nbsp;
+                            乘客座位责任险
+                        </div>
+
+
+                        <div class="select-out " style="margin-top: 0.5rem;">
+                            <select>
+
+
+                                <option value="5000">5000元</option>
+
+
+                                <option value="10000" selected="">1万元</option>
+
+
+                                <option value="20000">2万元</option>
+
+
+                                <option value="30000">3万元</option>
+
+
+                                <option value="40000">4万元</option>
+
+
+                                <option value="50000">5万元</option>
+
+
+                                <option value="100000">10万元</option>
+
+
+                                <option value="200000">20万元</option>
+
+
+                                <option value="500000">50万元</option>
+
+
+                            </select>
+
+
+                        </div>
+                        <div class="seatt" >
+                        <select id="seat" style="margin-top: 0.1rem;">
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                        </select>
+
+
+                        <span class="sg-insur-item-mp" onClick="slideSwitch(this)">不计免赔</span>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <div class="insur-box attach-insur-box">
+            <div class="tit-box">
+                <span>附加险</span>
+            </div>
+            <ul>
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+                        <div class="sg-insur-item-tit " data-insurid="18">
+                            <span class="icon-radio-nor chosen"></span>
+                            &nbsp;
+                            自燃损失险
+                        </div>
+
+                        <div class="select-out hide" data-tbindex="1"></div>
+
+
+                        <span class="sg-insur-item-mp hide" onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+                        <div class="sg-insur-item-tit " data-insurid="08">
+                            <span class="icon-radio-nor chosen"></span>
+                            &nbsp;
+                            玻璃单独破碎险
+                        </div>
+
+                        <div class="select-out hide">
+                            <select>
+
+
+                                <option value="0" selected="">国产</option>
+
+
+                                <option value="1">进口</option>
+
+
+                            </select>
+                        </div>
+
+
+                        <span class="sg-insur-item-mp hide" onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+                        <div class="sg-insur-item-tit " data-insurid="17">
+                            <span class="icon-radio-nor chosen"></span>
+                            &nbsp;
+                            车身划痕险
+                        </div>
+
+                        <div class="select-out hide">
+                            <select>
+
+                                <option value="2000" selected="">2000元</option>
+
+
+                                <option value="5000">5000元</option>
+
+
+                                <option value="10000">10000元</option>
+
+
+                                <option value="20000">2万元</option>
+
+
+                            </select>
+                        </div>
+
+
+                        <span class="sg-insur-item-mp hide" onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+                <li class="sg-insur-item">
+                    <div class="item-up" onClick="siit(this, event);">
+                        <div class="sg-insur-item-tit " data-insurid="41">
+                            <span class="icon-radio-nor chosen"></span>
+                            &nbsp;
+                            发动机涉水损失险
+                        </div>
+
+                        <div class="select-out hide" data-tbindex="1"></div>
+
+
+                        <span class="sg-insur-item-mp hide" onClick="slideSwitch(this)">不计免赔</span>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="insurance-buttn">    <a href="record-detail.html" class="btn_blue" >保障范围</a>      <a onClick="queryPrice(this);"  class="btn_org" >立即比价</a></div>
+      <!--  <div class="btn-org" onClick="queryPrice(this);">询&nbsp;价</div>-->
+    </section>
+        </div>
+
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+<script type="text/javascript" src="js/lib/store.min.js"></script>
+<script type="text/javascript" src="js/lib/art-template.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script src="js/mobiscroll_date.js" charset="gb2312"></script>
+<script src="js/mobiscroll.js"></script>
+<script src="js/moment.js"></script>
+
+
+<script>
+
+    var isSimuSuccess,
+            queryOrderNo,
+            tmpBussinessInvalidDateStr,
+            tmpBussinessInvalidDate,
+            tmpStrongInvalidDateStr,
+            tmpStrongInvalidDate,
+            isHasDate = false;
+
+
+    function formatDate(format, date) {
+        if (!date) return "";
+        if (typeof date == "number") date = new Date(date * 1000);
+        var o = {
+            "M+": date.getMonth() + 1, //month
+            "d+": date.getDate(),    //day
+            "h+": date.getHours(),   //hour
+            "m+": date.getMinutes(), //minute
+            "s+": date.getSeconds(), //second
+            "q+": Math.floor((date.getMonth() + 3) / 3), //quarter
+            "S": date.getMilliseconds(), //millisecond
+            "w": "日一二三四五六".charAt(date.getDay())
+        }
+        format = format.replace(/y{4}/g, date.getFullYear())
+                .replace(/y{2}/g, date.getFullYear().toString().substring(2))
+
+        for (var k in o) {
+            var reg = new RegExp(k, "g");
+            format = format.replace(reg, function (m) {
+                return m.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length);
+            });
+        }
+
+        return format;
+    }
+
+    function setCity(carInfo) {
+        var li = document.createElement('li');
+        li.setAttribute('data-areanumber', carInfo.areanumber);
+        li.setAttribute('data-platenum', carInfo.platenum);
+        li.setAttribute('data-id', carInfo.areaid);
+        li.setAttribute('data-city', carInfo.areaname);
+        chooseCity(li);
+    }
+
+    function slideSwitch(ele) {
+        $(ele).toggleClass("gray");
+
+    }
+    function chooseCity(ele) {
+        var _this = $(ele);
+        $("#cs-brand").text(_this.data("city")).data("id", _this.data("id")).data("areanumber", _this.data("areanumber")).data("platenum", _this.data("platenum")).attr("value", _this.data("platenum"));
+        $("#pop_city_layer").hide();
+    }
+    //两大险
+    function chooseUpTwo(ele) {
+        var _this = $(ele),
+                _pa = _this.parent();
+        if (typeof(_this.data("type")) != "undefined") {
+            if (_this.data("type") == "sy") {
+                /*_pa.parent().next().toggle();
+                 _pa.parent().next().next().toggle();*/
+                if (_this.hasClass("chosen")) {
+                    _this.removeClass("chosen");
+                    _pa.parent().next().addClass("hide");
+                    _pa.parent().next().next().addClass("hide");
+                } else {
+                    _this.addClass("chosen");
+                    _pa.parent().next().removeClass("hide");
+                    if (_pa.parent().next().find(".sg-insur-item-tit").eq(0).hasClass("chosen")) {
+                        _pa.parent().next().next().removeClass("hide");
+                    }
+                }
+
+            } else if (_this.data("type") == "jq") {
+                _this.toggleClass("la");
+                if (_this.hasClass("chosen")) {
+                    _this.removeClass("chosen");
+                    _this.next().addClass("hide");
+                } else {
+                    _this.addClass("chosen");
+                    _this.next().removeClass("hide");
+                }
+                       
+                    }
+        } else {
+            _this.toggleClass("chosen");
+                }
+
+    }
+    //选中险种
+    function siit(ele, event) {
+
+        var _this = $(ele).find('.sg-insur-item-tit'),
+                _pa = _this.parent().parent();
+
+        if (event.target.className.indexOf('item-up') === -1 && event.target.className.indexOf('sg-insur-item-tit') === -1) {
+            return false
+        }
+        ;
+
+        if (_this.hasClass("chosen")) {
+                    _this.next().addClass("hide");
+            _this.next().next().addClass("hide");
+        } else {
+                    _this.next().removeClass("hide");
+            _this.next().next().removeClass("hide");
+                }
+        if (_pa.attr("id") == "uqCarLosInsur") {
+            //则为车辆损失险
+            if (_this.hasClass("chosen")) {
+                _pa.parent().parent().next().addClass("hide");
+            } else {
+                _pa.parent().parent().next().removeClass("hide");
+            }
+
+        }
+        _this.toggleClass("chosen");
+            }
+    //询价
+
+
+    function queryPrice(ele) {
+
+        var _csbrand = $("#cs-brand"),
+                areaId = store.get("dtstep1").areaid,
+                areaName = store.get("dtstep1").areaname,
+                areaNum = store.get("dtstep1").areanumber,
+        //carId=params("clid"),
+                vehicleId = params("cxid");
+        if ($("#cs-brand").text() == "请选择城市") {
+            layer.open({
+                content: '<div style="padding:0.625rem 0.46875rem;">请选择城市</div>',
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+            return false;
+        }
+        var _chosens = $("#scheme-wrap").find(".insur-type-item[data-type]").filter(".chosen");
+        if (_chosens.length == 0) {
+            layer.open({
+                content: '<div style="padding:0.625rem 0.46875rem;">请选择要购买的保险</div>',
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+            return false;
+        }
+        if (_chosens.filter('[data-type="sy"]').length > 0) {
+            if ($(".basic-insur-box").eq(0).find(".sg-insur-item-tit").filter(".chosen").length == 0) {
+                layer.open({
+                    content: '<div style="padding:0.625rem 0.46875rem;">请选择要购买的商业险的具体险种</div>',
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                });
+                return false;
+            }
+        }
+
+        var belay_index = layer.open({
+            content: '<div id="uqInsurPopLayer"  ><h4 style="height:1.35938rem;line-height:1.35938rem;border-bottom:1px solid #ddd; text-align: center;font-size:0.4375rem;color:#999;">保单信息</h4><div id="loading_wrap"></div><div class="uqInsurPopLayer-in" style="visibility: visible;"><p style="height:1.0625rem;line-height:1.0625rem;padding-left:0.4375rem;background-color:#f9f9f9;color:#999;font-size:0.375rem;text-align:left;">您的保险起期如下，请确认</p><div class="com-frm-input"><div class="input-wrap posi-rela"><label>商业险起期</label><input id="sy_date" type="text" name="registerDate" placeholder="请选择商业险起期" validator="required" valid-name="商业险起期"><em class="icon-arrow-solid-down " ></em></div><div class="input-wrap posi-rela" ><label>交强险起期</label><input id="jq_date" type="text" name="registerDate" placeholder="请选择交强险起期" validator="required" valid-name="商业险起期"><em class="icon-arrow-solid-down " ></em></div></div><div class="box"><div class="key" style="color:#ff9933; padding-left:0.5em; display: block;">生效日期哪里找?</div><div class="text" style="font-size:0.4375rem; display: none;"><img src="image/img.png" width="100%" />请您在您的车险保单中间位置查找您的保 险期间，<br/> 正确填写您本次投保的保险起期;<br/> 新车用户的保单会在投保日的次日生效。<br/> </div></div><div id="btnConfirm" onclick="confirmInsureDate(this)">确认</div></div></div>'
+        });
+
+       $(".key").click(function(){
+           $(this).css( "display", "block");
+           $(".text").css( "display", "block");
+        });
+
+        var _uqInsurPopLayer = $("#uqInsurPopLayer");
+        if (isHasDate === true) {
+            if (typeof(tmpBussinessInvalidDateStr) != "undefined") {
+                _uqInsurPopLayer.find("#sy_date").eq(0).val(tmpBussinessInvalidDateStr);
+            }
+            if (typeof(tmpStrongInvalidDateStr) != "undefined") {
+                _uqInsurPopLayer.find("#jq_date").eq(0).val(tmpStrongInvalidDateStr);
+            }
+            if (typeof(tmpBussinessInvalidDateStr) == "undefined" || typeof(tmpStrongInvalidDateStr) == "undefined") {
+                if (typeof(tmpBussinessInvalidDateStr) == "undefined" && typeof(tmpStrongInvalidDateStr) == "undefined") {
+                    _uqInsurPopLayer.find(">.uqInsurPopLayer-in").eq(0).find(">p").eq(0).text("保险起期查询失败，请手动选择");
+                } else {
+                    _uqInsurPopLayer.find(">.uqInsurPopLayer-in").eq(0).find(">p").eq(0).text(typeof(tmpBussinessInvalidDateStr) == "undefined" ? "商业险起期查询失败，请手动选择" : "交强险起期查询失败，请手动选择");
+                }
+            }
+            _uqInsurPopLayer.find("#loading_wrap").eq(0).remove();
+            _uqInsurPopLayer.find("#btnConfirm").show();
+            _uqInsurPopLayer.find(">.uqInsurPopLayer-in").eq(0).css("visibility", "visible");
+            initDate();
+        } else if (typeof(queryOrderNo) != 'undefined') {
+            getInsurDate(queryOrderNo, belay_index);
+        }
+
+        var currYear = (new Date()).getFullYear();
+        var opt = {};
+        opt.date = {preset: 'date'};
+        opt.datetime = {preset: 'datetime'};
+        opt.time = {preset: 'time'};
+        opt.default = {
+            theme: 'android-ics light', //皮肤样式
+            //display: 'top', //显示方式
+            mode: 'scroller', //日期选择模式
+            dateFormat: 'yyyy-mm-dd',
+            cancelText: '取消',
+            lang: 'zh',
+            // showNow: true,
+            nowText: "明天",
+            startYear: currYear - 50, //开始年份
+            endYear: currYear + 10 //结束年份
+        };
+
+
+        $("#sy_date").mobiscroll($.extend(opt['date'], opt['default']));
+        $("#jq_date").mobiscroll($.extend(opt['date'], opt['default']));
+
+
+        $('.dwo').click(function () {
+            $('#ghdate').mobiscroll('clear');
+            return false;
+        });
+
+
+        /*$(".insur-type-item[data-type=sy]").hasClass('chosen') || _uqInsurPopLayer.find('.input-wrap').eq(0).hide().find('input').removeAttr('validator');
+         $(".insur-type-item[data-type=jq]").hasClass('chosen') || _uqInsurPopLayer.find('.input-wrap').eq(1).hide().find('input').removeAttr('validator');*/
+            }
+    //get保险起期
+
+
+    //confirm保险起期
+    function confirmInsureDate(ele) {
+        var _this = $(ele),
+                _csbrand = $("#cs-brand"),
+                _p = _this.parent().find(">p").eq(0),
+                pprevtxt = _p.text();
+        var $sy_date = $('#sy_date'),
+                $jq_date = $('#jq_date');
+
+        if ($sy_date.is(':visible') && $sy_date.val().length == 0) {
+            _p.text("请选择商业险起期").addClass("error");
+            return false;
+                }
+        if ($jq_date.is(':visible') && $jq_date.val().length == 0) {
+            _p.text("请选择交强险起期").addClass("error");
+            return false;
+        }
+        /*if(!$sy_date.is(':visible') && $sy_date.val().length==0) {
+         $sy_date.val($jq_date.val());
+         }
+         if(!$jq_date.is(':visible') && $jq_date.val().length==0) {
+         $jq_date.val($sy_date.val());
+         }*/
+        var sy = [];
+        var jq = 0, ccs = 0;//save商业险交强险，默认不够买
+        var parchosens = $(".insur-type-item", "#scheme-wrap");
+        var jq = parchosens.eq(1).hasClass("chosen") ? 1 : 0,
+                ccs = parchosens.eq(1).hasClass("chosen") && _this.is(":visible") ? 1 : 0;
+        if (parchosens.eq(0).hasClass("chosen")) {
+            var belowsys = $(".sg-insur-item-tit", "#scheme-wrap").filter(".chosen");
+            $.each(belowsys, function () {
+                var _subthis = $(this);
+                if (_subthis.is(":visible")) {
+                    sy.push({
+                        "code": _subthis.data("insurid"),
+                        "amount": typeof(_subthis.next().data("tbindex")) != "undefined" ? _subthis.next().data("tbindex") : _subthis.next().children().eq(0).val(),
+                        "deduction": _subthis.next().next().hasClass("gray") ? "0" : "1"
+                    });
+                }
+            })
+        }
+
+        var seat = $("#seat option:selected").text();
+        ;
+        //alert(seat)
+        store.set("dutys", {dutys: sy});
+        store.set("dtinsurscheme", {
+            dutys: sy,
+            jq: jq,
+            ccs: ccs,
+            areaid: store.get("dtstep1").areaid,
+            areaname: store.get("dtstep1").areaname,
+            areanum: store.get("dtstep1").areanumber,
+            carid: params("clid"),
+            vehicleid: params("cxid"),
+            carcode: params("carcode"),
+            seat: seat,
+            busiInsureStartTime: $("#sy_date").val(),
+            trafficInsureStartTime: $("#jq_date").val()
+        });
+
+
+        $.ajax({
+            url: 'http://api.ubi001.com/v1/offerStep/stepThree',
+            type: "get",
+            dataType: 'json',
+            data: {
+                quote_number: store.get("dtstep1").orderid,
+                insuranceType: store.get("dutys").dutys,
+                businessDate: store.get("dtinsurscheme").busiInsureStartTime,
+                strongDate: store.get("dtinsurscheme").trafficInsureStartTime
+            },
+            //jsonp:'callback',
+            success: function (respon) {
+
+
+                if (respon.errcode == 0) {
+
+                    window.location.href = "cx-quote-result.html" + (params('packageId') ? '?action=doPackageEnquiry' : '');
+
+
+                }
+
+
+            }
+
+        })
+
+
+    }
+
+
+    function params(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+        var tmpStr = window.location.href.substr(window.location.href.indexOf("?") + 1).match(reg);
+        if (tmpStr != null) {
+            return unescape(tmpStr[2]);
+        }
+        return null;
+            }
+
+</script>
+
+
+<div class="dw-hidden" role="alert"></div>
+<script src="http://7xq870.com1.z0.glb.clouddn.com/baidu.js"></script>
+</body>
+</html>

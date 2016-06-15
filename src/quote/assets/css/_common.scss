@@ -1,0 +1,88 @@
+@mixin display-box() {
+	display: -webkit-box;
+	display: box;
+}
+@mixin  box-pack($args) {
+	-webkit-box-pack: $args;
+	box-pack: $args;
+}
+@mixin box-flex($args: 0) {
+	// <number>：使用浮点数指定对象所分配其父元素剩余空间的比例。
+	-webkit-box-flex: $args;
+	box-flex: $args;
+}
+//字体大小
+@mixin fz($fz) {  
+	font-size:$fz/$gbfsize*1rem;
+}
+//高度
+@mixin h($hz){
+	height: $hz/$gbfsize*1rem;
+}
+//最小高度
+@mixin minh($hz){
+	min-height:$hz/$gbfsize*1rem;
+}
+//最大高度
+@mixin maxh($hz){
+	max-height:$hz/$gbfsize*1rem;
+}
+//宽度
+@mixin w($wz){
+	width: $wz/$gbfsize*1rem;
+}
+//最小宽度
+@mixin minw($wz){
+	min-width: $wz/$gbfsize*1rem;
+}
+//最大宽度
+@mixin maxw($wz){
+	max-width: $wz/$gbfsize*1rem;
+}
+//行高
+@mixin lh($wz){
+	line-height: $wz/$gbfsize*1rem;
+}
+// top、right, bottom, left
+@mixin top($tp){
+	top: $tp/$gbfsize*1rem;
+}
+@mixin right($rt){
+	right:$rt/$gbfsize*1rem;
+}
+@mixin bottom($bt){
+	bottom: $bt/$gbfsize*1rem;
+}
+@mixin left($bt){
+	left: $bt/$gbfsize*1rem;
+}
+//margin-left,margin-right,margin-top,margin-bototm
+@mixin ml($size){
+	margin-left: $size/$gbfsize*1rem;
+}
+@mixin mr($size){
+	margin-right: $size/$gbfsize*1rem;
+}
+@mixin mt($size){
+	margin-top:$size/$gbfsize*1rem;
+}
+@mixin mb($size){
+	margin-bottom:$size/$gbfsize*1rem;
+}
+//padding-left,padding-right,padding-top,padding-bottom
+@mixin pl($size){
+	padding-left:$size/$gbfsize*1rem;
+}
+@mixin pr($size){
+	padding-right:$size/$gbfsize*1rem;
+}
+@mixin pt($size){
+	padding-top:$size/$gbfsize*1rem;
+}
+@mixin pb($size){
+	padding-bottom: $size/$gbfsize*1rem;
+}
+//border-radius
+@mixin bdr($top,$right:$top,$bottom:$top,$left:$top){
+	border-radius: $top/$gbfsize*1rem ($right/$gbfsize*1rem) ($bottom/$gbfsize*1rem) ($left/$gbfsize*1rem);
+}

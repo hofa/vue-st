@@ -1,0 +1,276 @@
+<html style="font-size: 75px;">
+<head>
+    <meta charset="utf-8">
+    <title>提交订单</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <link href="css/base/base.css" type="text/css" rel="stylesheet">
+    <link href="css/base/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/base/layer.css">
+    <link rel="stylesheet" type="text/css" href="css/cx-step2.css">
+    <link href="skins/all.css?v=1.0.2" rel="stylesheet">
+    <script src="js/lib/flexible.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/lib/store.min.js"></script>
+
+<style>.laymshade{ background-color: #666666;}</style>
+</head>
+<body style="font-size: 24px; ">
+<div id="wrapper">
+    <header id="cx-app-heaer">
+        <a class="icon-back " href="javascript:history.go(-1);"></a>
+        提交订单
+    </header>
+    <section id="step2-wrap" class="com-frm-input">
+        <div class="clearcor"></div>
+
+        <div class="input-wrap  order">
+            <label>商业险</label>
+            <input id="bunn" type="text" value="" readonly="readonly">
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>交强险/车船税</label>
+            <input id="jq" type="text" value="" readonly>
+        </div>
+
+        <div class="input-wrap order">
+            <label>车牌号</label>
+            <input id="carnumber" type="text" name="mobilecode" value="" readonly>
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>投保人</label>
+            <input id="applicantname" type="text" value="" readonly>
+        </div>
+
+        <div class="input-wrap order">
+            <label>投保城市</label>
+            <input id="city" type="text" value="" readonly>
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>交强险保障时间</label>
+            <input id="jqdate" type="text" value="" readonly>
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>商业险保障时间</label>
+            <input id="bunndate" type="text" value="" readonly>
+        </div>
+
+
+        <div class="xieyi"><input type="checkbox" id="inputcar">我同意,并了解<a style=" color: #333;" href="deatail.html">《路比UBI产品相关注意事项》</a> </div>
+        <div class="total" style="text-align:right; padding-right:0.46875rem; margin-top:0.50313rem;"> 合计：<span
+                id="totalmoney" style=" color:#ff9933;">¥6888.88</span></div>
+
+        <div class="order_info" style="text-align:center; margin-top:0.50313rem; font-size:0.8em; color:#999999; ">
+            承保成功后，返￥<span id="totalre" style="font-weight: bold;"></span>元现金＋<span style="font-weight: bold;">100</span>元奖励给您
+        </div>
+
+
+        <div class="btn-two" id="payPut">提交订单</div>
+
+    </section>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script src="js/icheck.js?v=1.0.2"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+
+
+<script>
+
+
+    prevdata = store.get("dtinsurscheme");
+    prevdatatwo = store.get("dtstep1");
+    prevdatathree = store.get("dtstep2");
+    dtTalentQuote = store.get("dtTalentQuote");
+
+    resultorder = store.get("resultorder");
+
+    var carnumber = prevdatatwo.platenum + prevdatatwo.platenumtxt;
+
+
+    var tax = resultorder.carmoney;
+    $("#applicantname").val(prevdatatwo.hzname);
+
+    $("#bunn").val(resultorder.bunn);
+
+    $("#jq").val(resultorder.jq+'/'+ tax);
+    $("#carnumber").val(carnumber);
+    $("#city").val(prevdatatwo.areaname);
+
+    var total = Number(tax) + Number(resultorder.bunn) + Number(resultorder.jq);
+
+    var totalre = total * 0.15 - 100;
+    $('#inputcar').iCheck({
+        labelHover: false,
+        cursor: true,
+        checkboxClass: 'icheckbox_flat-red',
+        radioClass: 'iradio_flat-red'
+
+    });
+    $('#inputcar').iCheck('check');
+    //var totaljl = total*0.15;
+
+    $("#totalre").html(totalre.toFixed(2));
+
+    $('#inputcar').on('ifUnchecked', function (event) {
+        layer.open({
+            content:'请勾选车险相关条款协议及注意事项',
+            style: 'background-color:#000; color:#fff; border:none;',
+            time: 3
+        });
+        $('.btn-two').css({"pointer-events":"none" ,"backgroundColor":"#ddd"});
+    });
+    $('#inputcar').on('ifChecked', function (event) {
+        $('.btn-two').css({"pointer-events":"" ,"backgroundColor":""});
+    });
+
+
+    // $("#totaljl").html("¥"+total);
+    $('.btn-two').on('click', function (){
+
+
+        layer.open({
+            content:'<div id="uqInsurPopLayer"  > <h4 style="height:1.35938rem;line-height:1.35938rem;border-bottom:1px solid #ddd; text-align: center;font-size:0.4375rem;color:#999;">返现及奖励提示</h4> <div class="uqInsurPopLayer-in" style="visibility: visible;">  <div class="com-frm-input"> <div style="width: 100%; text-align: left;">返现</div> <p><div style="text-align:left; margin-top: 1em; ">订单支付成功后，您可关注路比微信公众号，进入"我的路比-现金红包"，输入车牌号，<span id="wxmoney"></span>元微信返现红包马上到手</div></p> </div> <div class="input-wrap posi-rela" > <p style="text-align: left; margin-top: 1em;">奖励</p> <p><div style="text-align: left; margin-top: 1em;">进入路比公众号，绑定OBD设备并产生数据，100元现金红包轻松拿</div></p></div> </div> <div id="payPutttt"  class="btn-two">我知道了</div> </div> </div>',
+            style: ' border:none;'
+
+        });
+        $("#wxmoney").html(totalre.toFixed(2));
+
+
+
+
+
+
+        var channel = resultorder.tb;
+        var q = params('q');
+
+        $('#payPutttt').bind('click', function () {
+            var apiHost = "http://api.ubi001.com/v1/offer/";
+            var serverIp = '112.74.95.105';
+            var serverPort = 2111;
+            var m = this;
+
+
+            /*  var channel = $('#pay input[name="channel"]').val();
+             var q = $('#pay input[name="q"]').val();*/
+            var struct = {};
+            $.ajax({
+                type: "POST",
+                url: apiHost + "pay?q=" + q + '&channel=' + channel,
+                data: JSON.stringify(struct),
+                dataType: "json",
+              /*  beforeSend: function () {
+                    $(m).text('正在提交...');
+                },*/
+                success: function (data) {
+
+                    if (data.errcode == 0) {
+
+                        window.location.href = data.data.errorContent;
+                        //$('#pay-res').html(data.data);
+                    }
+                    else {
+
+
+                        window.location.href = "orderwr.html";
+                       // var errmg = data.errmsg;
+                      /*  layer.open({
+                            content: "无法完成支付,请联系官方客服",
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });*/
+
+                    }
+
+                    //$(m).text('知道了');
+                }
+            });
+        });
+
+
+        function params(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+            var tmpStr = window.location.href.substr(window.location.href.indexOf("?") + 1).match(reg);
+            if (tmpStr != null) {
+                return unescape(tmpStr[2]);
+            }
+            return null;
+        }
+        /* $(".btn-two").on("click",function(){
+         var txtIdCarmobile = $("#txtIdCarmobile").val();
+
+         if(!txtIdCarmobile){
+         layer.open({
+         content:'手机号码格式不正确',
+         style: 'background-color:#000; color:#fff; border:none;',
+         time: 3
+         });
+         }
+         })*/
+
+
+    })
+
+
+
+    $("#totalmoney").html("¥" + total);
+
+
+    var bndate = moment(prevdata.busiInsureStartTime).add(1, 'years').subtract(1, 'days').format('YYYY-MM-DD');
+
+    var jqdate = moment(prevdata.trafficInsureStartTime).add(1, 'years').subtract(1, 'days').format('YYYY-MM-DD');
+
+    $("#jqdate").val(moment(prevdata.trafficInsureStartTime).format('YYYY-MM-DD') + '至' + jqdate);
+    $("#bunndate").val(moment(prevdata.busiInsureStartTime).format('YYYY-MM-DD') + '至' + bndate);
+
+
+</script>
+
+<script>
+
+
+
+
+
+</script>
+
+<div class="dw-hidden" role="alert"></div>
+<script src="http://7xq870.com1.z0.glb.clouddn.com/baidu.js"></script>
+</body>
+</html>

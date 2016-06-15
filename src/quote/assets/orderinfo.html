@@ -1,0 +1,501 @@
+<html style="font-size: 34px;">
+<head>
+    <meta charset="utf-8">
+    <title>信息确认</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/area.js"></script>
+    <script type="text/javascript" src="js/location.js"></script>
+    <script src="js/select2.js"></script>
+    <script src="js/select2_locale_zh-CN.js"></script>
+    <link href="css/select2.css" rel="stylesheet"/>
+    <link href="css/base/base.css" type="text/css" rel="stylesheet">
+    <link href="css/base/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/base/layer.css">
+    <link rel="stylesheet" type="text/css" href="css/cx-step2.css">
+    <link href="skins/all.css?v=1.0.2" rel="stylesheet">
+    <script src="js/lib/flexible.js"></script>
+    <script type="text/javascript" src="js/lib/store.min.js"></script>
+    <script src='js/lib/socket.io.js'></script>
+
+
+</head>
+<body style="font-size: 24px; ">
+<div id="wrapper">
+    <header id="cx-app-heaer">
+        <a class="icon-back " href="index.html"></a>
+        信息确认
+    </header>
+    <section id="step2-wrap" class="com-frm-input">
+        <div class="clearcor"></div>
+
+        <div class="input-wrap  order">
+            <label>投保人信息</label>
+            <div class="in_check"><input id="insurant" type="checkbox">与车主一致</div>
+        </div>
+
+<div id="infoone"  style="display: none">
+        <div class="input-wrap order">
+            <label>姓名</label>
+            <input id="insurantname" type="text" name="mobilecode" placeholder="请输入姓名" value="">
+        </div>
+
+        <div class="input-wrap order">
+            <label>手机号码</label>
+            <input id="insurantmobile" type="text" name="mobilecode" placeholder="请输入手机号码" value="">
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>身份证号</label>
+            <input id="insurantidcar" type="text" name="mobilecode" placeholder="请输入身份证号" value="">
+
+        </div>
+</div>
+        <div class="clearcor"></div>
+
+
+        <div class="input-wrap order">
+            <label>被投保人信息</label>
+            <div class="in_check"><input id="applicant" type="checkbox">与车主一致</div>
+        </div>
+
+        <div id="infotwo" style="display: none">
+        <div class="input-wrap order">
+            <label>姓名</label>
+            <input id="applicantname" type="text" placeholder="请输入姓名" value="">
+        </div>
+
+        <div class="input-wrap order">
+            <label>手机号码</label>
+            <input id="applicantmobile" type="text" placeholder="请输入手机号码" value="">
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>身份证号</label>
+            <input id="applicantidcar" type="text" placeholder="请输入身份证号" value="">
+
+        </div>
+            </div>
+        <div class="clearcor"></div>
+
+
+        <div class="input-wrap order">
+            <label>保单配送信息</label>
+
+        </div>
+
+
+        <div class="input-wrap order">
+            <label>收件人</label>
+            <input id="ownername" type="text" name="ownername" value="">
+        </div>
+
+        <div class="input-wrap order">
+            <label>手机号码</label>
+            <input type="text" id="ownermobile" name="ownermobile" value="">
+        </div>
+
+
+        <div class="input-wrap order">
+            <label style="width: 2.21875rem">地址</label>
+
+            <div style="line-height:1.35938rem; margin-left: -1rem; "><select id="loc_province" style="width:5em;">
+            </select>
+                <select id="loc_city" style="width:5em; margin-left: 5px">
+                </select>
+                <select id="loc_town" style="width:5em;margin-left: 5px">
+                </select></div>
+        </div>
+
+        <div class="input-wrap order">
+            <input id="acceptAddress" type="text" style="text-align: left;" placeholder="请输入详细地址" value="">
+        </div>
+
+
+        <input id="insurantsex" hidden="hidden" type="text" value="">
+        <input id="insurantbirthday" hidden="hidden" type="text" value="">
+        <input id="applicantsex" hidden="hidden" type="text" n value="">
+        <input id="applicantbirthday" hidden="hidden" type="text" value="">
+
+
+        <div class="btn-two" id="insurePut">提交订单</div>
+
+    </section>
+</div>
+
+
+<script src="js/icheck.js?v=1.0.2"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+
+
+<script>
+
+    prevdata = store.get("dtinsurscheme");
+    prevdatatwo = store.get("dtstep1");
+    prevdatathree = store.get("dtstep2");
+    dtTalentQuote = store.get("dtTalentQuote");
+    resultorder = store.get("resultorder");
+
+   $('#ownername').val(prevdatatwo.hzname) ;
+    $('#ownermobile').val(prevdatatwo.drmobile) ;
+
+    $('#inputcar,#insurant,#applicant').iCheck({
+        labelHover: false,
+        cursor: true,
+        checkboxClass: 'icheckbox_flat-red',
+        radioClass: 'iradio_flat-red'
+
+    });
+    $('#insurant,#applicant').iCheck('check');
+
+    $("#insurantname").val(prevdatatwo.hzname);
+    $("#insurantsex").val(prevdatathree.sex);
+    $("#insurantbirthday").val(prevdatathree.birthday);
+    $("#insurantmobile").val(prevdatatwo.drmobile);
+    $("#insurantidcar").val(prevdatathree.ownercardnum);
+    $("#applicantname").val(prevdatatwo.hzname);
+    $("#applicantmobile").val(prevdatatwo.drmobile);
+    $("#applicantidcar").val(prevdatathree.ownercardnum);
+    $("#applicantsex").val(prevdatathree.sex);
+    $("#applicantbirthday").val(prevdatathree.birthday);
+
+
+    $('#insurant').on('ifChecked', function (event) {
+        $("#insurantname").val(prevdatatwo.hzname);
+        $("#insurantsex").val(prevdatathree.sex);
+        $("#insurantbirthday").val(prevdatathree.birthday);
+        $("#insurantmobile").val(prevdatatwo.drmobile);
+        $("#insurantidcar").val(prevdatathree.ownercardnum);
+        $("#infoone").css("display","none");
+
+
+    });
+    $('#insurant').on('ifUnchecked', function (event) {
+        $("#insurantname").val("");
+        $("#insurantsex").val("");
+        $("#insurantbirthday").val("");
+        $("#insurantmobile").val("");
+        $("#insurantidcar").val("");
+        $("#infoone").css("display","block");
+    });
+
+    $('#applicant').on('ifChecked', function (event) {
+        $("#applicantname").val(prevdatatwo.hzname);
+        $("#applicantmobile").val(prevdatatwo.drmobile);
+        $("#applicantidcar").val(prevdatathree.ownercardnum);
+        $("#applicantsex").val(prevdatathree.sex);
+        $("#applicantbirthday").val(prevdatathree.birthday);
+        $("#infotwo").css("display","none");
+
+    });
+    $('#applicant').on('ifUnchecked', function (event) {
+
+        $("#applicantname").val("");
+        $("#applicantmobile").val("");
+        $("#applicantidcar").val("");
+        $("#applicantsex").val("");
+        $("#applicantbirthday").val("");
+        $("#infotwo").css("display","block");
+
+    });
+
+
+    function params(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+        var tmpStr = window.location.href.substr(window.location.href.indexOf("?") + 1).match(reg);
+        if (tmpStr != null) {
+            return unescape(tmpStr[2]);
+        }
+        return null;
+    }
+
+    var jq = params('jq');
+    var carmoney = params('carmoney');
+    var bunn = params('bunn');
+      var channel = resultorder.tb;
+    /*if (jq) {
+
+        store.set("resultordertwo", {jq: jq, carmoney: carmoney, bunn: bunn, tb: prevdatatwo.hzname});
+    }
+*/
+
+    var insureFu = {
+
+        insure: function (channel, company) {
+
+            prevdata = store.get("dtinsurscheme");
+            prevdatatwo = store.get("dtstep1");
+            prevdatathree = store.get("dtstep2");
+            dtTalentQuote = store.get("dtTalentQuote");
+            var q = prevdatatwo.orderid;
+            var apiHost = "http://api.ubi001.com/v1/offer/";
+            var serverIp = '112.74.95.105';
+            var serverPort = 2111;
+
+            var UUserCard = $("#insurantidcar").val();
+            var brithdate = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
+
+            if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
+                var sex = 1;
+            } else {
+
+                var sex = 0;
+            }
+
+            var UUserCardtwo = $("#applicantidcar").val();
+            var brithdatetwo = UUserCardtwo.substring(6, 10) + "-" + UUserCardtwo.substring(10, 12) + "-" + UUserCardtwo.substring(12, 14);
+
+            if (parseInt(UUserCardtwo.substr(16, 1)) % 2 == 1) {
+                var sextwo = 1;
+            } else {
+
+                var sextwo = 0;
+            }
+            var mydate = new Date;
+
+            var newdate = "2016-07-07";
+
+            var socket_insure = $('#insurePut').data('socket');
+            $('#insurePut').bind('click', function (event) {
+
+                var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+                // event.preventDefault();
+                if(!myreg.test($("#ownermobile").val()))
+                {
+                    layer.open({
+                        content: "手机号码格式不正确",
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                    return false;
+                }
+
+
+
+
+
+
+
+                var struct = {
+                    "company": company,
+                    "applicant": {
+                        "name": $('#applicantname').val(),
+                        "type": "01",
+                        "id": $('#applicantidcar').val(),
+                        "birthday": brithdatetwo,
+                        "sex": sextwo
+                    },
+                    "insurant": {
+                        "name": $('#insurantname').val(),
+                        "type": "01",
+                        "id": $('#insurantidcar').val(),
+                        "birthday": brithdate,
+                        "sex": sex
+                    },
+                    "delivery": {
+                        "acceptName": $('#ownername').val(),
+                        "acceptTelephone": $('#ownermobile ').val(),
+                        "acceptProvince": $('#loc_province').select2('data').text,
+                        "acceptCity": $('#loc_city').select2('data').text,
+                        "acceptTown": $('#loc_town').select2('data').text,
+                        "acceptAddress": $('#acceptAddress ').val(),
+                        "deliveryType": 1,
+                        "appointmentTime": newdate
+                    }
+                };
+
+                var structpot = {
+                    "applicant": {
+                        "name": $('#applicantname').val(),
+                        "type": "01",
+                        "id": $('#applicantidcar').val(),
+                        "birthday": brithdatetwo,
+                        "sex": sextwo
+                    },
+                    "insurant": {
+                        "name": $('#insurantname').val(),
+                        "type": "01",
+                        "id": $('#insurantidcar').val(),
+                        "birthday": brithdate,
+                        "sex": sex
+                    },
+                    "delivery": {
+                        "acceptName": $('#ownername').val(),
+                        "acceptTelephone": $('#ownermobile ').val(),
+                        "acceptProvince": $('#loc_province').select2('data').text,
+                        "acceptCity": $('#loc_city').select2('data').text,
+                        "acceptTown": $('#loc_town').select2('data').text,
+                        "acceptAddress": $('#acceptAddress ').val(),
+                        "deliveryType": 1,
+                        "appointmentTime": newdate
+                    }
+                };
+
+                var m = this;
+                var q = prevdatatwo.orderid;
+
+
+
+
+
+                $.ajax({
+                    type: "POST",
+                    url: apiHost + "insure?q=" + q + '&channel=' + channel,
+                    data: JSON.stringify(struct),
+                    // contentType:"application/json",
+                    dataType: "json",
+                    beforeSend: function () {
+                        $(m).text('正在提交...');
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        console.log(channel);
+                        $(m).text('提交');
+                        if (channel == 'hz') {
+                            if (data.errcode == 0) {
+                                $('#insure-res').html(renderjson(data.data));
+                                var uid = data.data.insureNum;
+                                console.log('uid:' + uid);
+                                if (!socket_insure) {
+                                    // 连接服务端
+                                    socket_insure = io('http://' + serverIp + ':' + serverPort, {multiplex: false});
+                                    socket_insure.on('connect', function () {
+                                        socket_insure.emit('login', uid);
+                                        // console.log(uid);
+                                    });
+                                    // 后端推送来消息时
+                                    socket_insure.on('new_msg', function (msg) {
+                                        // console.log(msg);
+                                        if (msg.indexOf('hzCarInsureNotification') > 0) {
+
+                                            //console.log(renderjson(JSON.parse(msg));
+                                            $('#insure-callback').append(renderjson(JSON.parse(msg)));
+                                            $('#insure-callback').append('<hr>');
+                                        }
+                                    });
+                                }
+                                else {
+                                    socket_insure.emit('login', uid);
+                                }
+                            }
+                            else {
+                                layer.open({
+                                    content: "数据保存异常",
+                                    style: 'background-color:#000; color:#fff; border:none;',
+                                    time: 3
+                                });
+                                return false;
+
+                                $('#insure-res').html(data.errmsg);
+                            }
+                        }
+                        else {
+
+                            if (data.errcode == 0) {
+
+                               // console.log(data.data)
+
+                                window.location.href = "order.html?q=" + q + '&channel=' + channel;
+                                // $('#insure-res').html(renderjson(data.data));
+                            }
+                            else {
+                                console.log(data.errmsg);
+                                layer.open({
+                                    content: data.errmsg,
+                                    style: 'background-color:#000; color:#fff; border:none;',
+                                    time: 3
+                                });
+                                return false;
+                                //$('#insure-res').html(data.errmsg);
+                            }
+                        }
+                    }
+                });
+                $.ajax({
+                    url: 'http://api.ubi001.com/v1/offerStep/stepSix?quote_number=' + q,
+                    type: "POST",
+                    dataType: 'json',
+                    data: JSON.stringify(structpot),
+                    //jsonp:'callback',
+                    success: function (respon) {
+                        if (respon.errcode == 0) {
+                        } else {
+                            layer.open({
+                                content: "数据保存异常",
+                                style: 'background-color:#000; color:#fff; border:none;',
+                                time: 3
+                            });
+                            return false;
+                        }
+                    }
+
+                });
+
+                return false;
+            });
+
+
+        },
+
+        init: function () {
+            resultorder = store.get("resultorder");
+            var channel = resultorder.tb;
+            //var channel = params('channel');
+            var company = resultorder.company;
+
+            $(".btn-two").on("click", function () {
+
+
+                var txtIdCarmobile = $("#ownermobile").val();
+
+                if (!txtIdCarmobile) {
+
+
+                    layer.open({
+                        content: '手机号码格式不正确',
+                        style: 'background-color:#000; color:#fff; border:none;',
+                        time: 3
+                    });
+                }
+
+                insureFu.insure(channel, company);
+
+            });
+        }
+    }
+    insureFu.init();
+</script>
+
+<div class="dw-hidden" role="alert"></div>
+</body>
+</html>

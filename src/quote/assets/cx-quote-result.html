@@ -1,0 +1,348 @@
+<html style="font-size: 54px;">
+<head>
+    <meta charset="utf-8"/>
+    <title>报价结果</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <link rel="stylesheet" type="text/css" href="css/base/base.css">
+    <link rel="stylesheet" type="text/css" href="css/base/style.css">
+
+    <link rel="stylesheet" type="text/css" href="css/result.css">
+    <script src='js/lib/flexible.js'></script>
+    <script src='js/widget/config.js'></script>
+    <script src='js/lib/socket.io.js'></script>
+    <style>
+        .insur-name a{ color:#666; font-size：0.375rem;}
+
+
+    </style>
+</head>
+<body>
+<header id="cx-app-heaer">
+    <a class="icon-back " href="javascript:history.go(-1);"></a>
+    报价结果
+</header>
+<section id="quote_result_wrap">
+    <div class="compn-count" style="display:none;">
+        <span class="fz-nrml">查询完毕</span>
+        <span class="compn-count-total">共有<font class="cor-red" id="ftCompanyCount"></font>家公司给出报价</span>
+    </div>
+    <!-- <div id="agent_enquiry_url" class="compn-ing" style="display:none;">
+    </div> -->
+    <!-- <div class="compn-ing">
+               <span class="fz-nrml">正在为您询价中...</span>
+               <div class="progress-bar-wrap">
+                   <div class="progress-bar-in">
+                       <span id="spaProgress" data-percent="40"></span>
+                   </div>
+               </div>
+           </div>-->
+    <div class="list-box">
+        <p id="agentEnquiryUrl" class="insur-tit" style="display:none;" onClick="showFailReason(this)">代询价地址<i
+                class="icon-arrow-hollow-tel"></i></p>
+        <div class="com-corn-box fail-wrap hide">
+            <em class="ico_corner"></em>
+            <p id="agentEnquiryUrlContent" class="fail-reason"></p>
+        </div>
+        <span id="spaBusinTit" class="insur-tit" style="display:none;"></span>
+        <ul class="busin-insur-list">
+            <li class="busin-insur-item fail " data-ifsucc="fail">
+                <img src="image/5.png">
+
+
+                <span class="insur-name">暂时无法报价，请联系路比保险客服</span>
+               <span class="insur-price" data-compnyid="" data-branchid="" > <a href="tel:075584357001">&nbsp;<i
+                        class="icon-arrow-hollow-tel"></i></a></span>
+
+                <div class="com-corn-box fail-wrap hide">
+                    <em class="ico_corner"></em>
+
+
+                    <div class="btn-two"><a href="tel:075584357001">电话下单</a></div>
+                    <p class="fail-info">（以上数据来自平安保险公司实时反馈）</p>
+                </div>
+
+            </li>
+
+            <li class="busin-insur-item fail " data-ifsucc="fail">
+                <img src="image/3.png">
+
+
+                <span class="insur-name">暂时无法报价，请联系路比保险客服</span>
+                <span class="insur-price" data-compnyid="" data-branchid="[%=errcode%]" ><a href="tel:075584357001">&nbsp;<i
+                        class="icon-arrow-hollow-tel"></i></a></span>
+
+                <div class="com-corn-box fail-wrap hide">
+                    <em class="ico_corner"></em>
+
+
+                    <div class="btn-two"><a href="tel:075584357001">电话下单</a></div>
+                    <p class="fail-info">（以上数据来自太平洋保险公司实时反馈）</p>
+                </div>
+
+            </li>
+
+            <li class="busin-insur-item fail " data-ifsucc="fail">
+                <img src="image/1.png">
+
+
+                <span class="insur-name">暂时无法报价，请联系路比保险客服</span>
+                <span class="insur-price" data-compnyid="" data-branchid="[%=errcode%]"><a href="tel:075584357001">&nbsp;<i
+                        class="icon-arrow-hollow-tel"></i></a></span>
+
+                <div class="com-corn-box fail-wrap hide">
+                    <em class="ico_corner"></em>
+
+
+                    <div class="btn-two"><a href="tel:075584357001">电话下单</a></div>
+                    <p class="fail-info">（以上数据来自安盛天平保险公司实时反馈）</p>
+                </div>
+
+            </li>
+
+            <li class="busin-insur-item fail " data-ifsucc="fail">
+                <img src="image/6.png">
+
+
+                <span class="insur-name"><a href=tel:075584357001>暂时无法报价，请联系路比保险客服</a></span>
+                <span class="insur-price" data-compnyid="" data-branchid="[%=errcode%]" ><a href="tel:075584357001">&nbsp;<i
+                        class="icon-arrow-hollow-tel"></i></a></span>
+
+                <div class="com-corn-box fail-wrap hide">
+                    <em class="ico_corner"></em>
+
+
+                    <div class="btn-two"><a href="tel:075584357001">电话下单</a></div>
+                    <p class="fail-info">（以上数据来自阳光保险公司实时反馈）</p>
+                </div>
+
+            </li>
+
+
+        </ul>
+        <!--<div id="loading_wrap" style="padding-top:0.5rem;">
+            <img  src="image/loading.gif">
+        </div>-->
+        <button style="width: 400px;" id="carEnPut" class="btn btn-large" hidden="hidden">查询</button>
+    </div>
+</section>
+<script type="text/html" id="tplBusiness">
+    <li class="busin-insur-item [%=dt.respCode!=1 ? "fail" : ""%]" data-ifsucc="[%=dt.respCode==1 ? "succ" : "fail"%]" >
+    <img src="image/[%=dt.content.branchId%].png">
+    <span class="insur-name"> [%if(dt.respCode==1){%] [%=dt.branchName%]  [%}%] [%if(dt.respCode!==1){%] <a href="tel:075584357001">暂时无法报价，请联系路比保险客服 </a> [%}%] </span>
+
+    <span class="insur-price" data-compnyid="[%=dt.content.branchId%]" data-branchid="[%=dt.content.branchId%]"
+         [%=dt.respCode==1 ? " onclick=showsussReason(this)" : " "%]>[%=dt.respCode==1 ? "折后价：￥"+dt.content.busiPremium : ""%]&nbsp;
+    <a href="tel:075584357001"><i class="icon-arrow-hollow-tel"></i></a></span>
+    [%if(dt.respCode!=1){%]
+    <div class="com-corn-box fail-wrap hide">
+        <em class="ico_corner"></em>
+        <p class="fail-reason">失败原因：[%=dt.respError%]</p>
+
+        <div class="btn-two"><a href="tel:075584357001">电话下单</a></div>
+        <p class="fail-info">（以上数据来自保险公司实时反馈）</p>
+
+    </div>
+    [%}%]
+
+    [%if(dt.respCode==1){%]
+    <div class="com-corn-box fail-wrap hide">
+        <em class="ico_corner"></em>
+        <div class="" style="clear: both;"></div>
+        <p class="fail-reason">报价成功：</p>
+        <p class="fail-reason">交强险[%=dt.content.taxationPremium%]</p>
+        <p class="fail-reason">车船税[%=dt.content.trafficPremium%]</p>
+
+        <div class="" style="clear: both;"></div>
+        <div class="btn-two"><a href="yz.html?channel=hz&company=[%=dt.content.branchId%]&carmoney=[%=dt.content.taxationPremium%]&jq=[%=dt.content.trafficPremium%]&bunn=[%=dt.content.busiPremium%]">立即购买</a></div>
+        <p class="fail-info">（以上数据来自保险公司实时反馈）</p>
+
+    </div>
+    [%}%]
+
+
+    </li>
+</script>
+
+<script type="text/html" id="tplsys">
+    <li class="busin-insur-item [%=dt.errcode!=0 ? "fail" : "succ"%]" data-ifsucc="[%=dt.errcode==0 ? "succ" : "fail"%]" >
+    <img src="image/[%=company%].png">
+
+    <span class="insur-name" >  [%if(dt.errcode!=0){%]   <a href=tel:075584357001>暂时无法报价，请联系路比保险客服</a> [%}%]  </span>
+    <span class="insur-price" data-compnyid="[%=dd.mainDto.sumGrossPremium%]" data-branchid="[%=dd.insuredCompay%]"
+          [%=dt.errcode==0 ? "onclick=showsussReason(this)" : "onclick=showFailReason(this)"%]> 实付:[%=dd.mainDto.sumGrossPremium%]&nbsp;<i class="icon-arrow-hollow-right"></i></span>
+    <div style="padding-top: 1rem; text-align: left; font-size: 0.3rem;">返￥[%=   (dd.mainDto.sumGrossPremium *0.15-100).toFixed(2) %]元，奖￥100</div>
+    [%if(dt.errcode!=0){%]
+    <div class="com-corn-box fail-wrap hide">
+        <em class="ico_corner"></em>
+        <p class="fail-reason">失败原因：[%=dt.errmsg%]</p>
+        <p class="fail-info">（以上数据来自保险公司实时反馈）</p>
+    </div>
+    [%}%]
+    [%if(dt.errcode==0){%]
+    <div class="com-corn-box fail-wrap hide">
+        <em class="ico_corner"></em>
+
+        <style>
+            .bxcat{ margin: 0 auto;}
+            .bxcatlist{ margin-top: 0.5em;}
+            .bxcat  li{ float: left; width: 25%; font-size: 0.4rem; text-align: center; margin-bottom: 0.2rem;}
+            .bxcatlist li{float: left; width: 25%; font-size: 0.3rem; margin-top: 0.1rem; text-align: center; }
+
+        </style>
+
+        <div class="" style="clear: both;"></div>
+
+        <ul class="bxcat"><li>险种</li><li>承保金额</li><li>不计免赔</li><li>参考价格</li></ul>
+
+        <ul class="bxcatlist">
+                 [%for( var i= 0; i< dd.clauseList.length; i++){%]
+
+
+            [%if(dd.clauseList[i].kindCode == "01"){%]<li>机动车损失保险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="601" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "02"){%]<li>第三者责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="602" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "03"){%]<li>全车盗抢险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="603" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "041"){%]<li>司机责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="604" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "044"){%]<li>乘客责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="605" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "21"){%]<li>自燃损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="61" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "13"){%]<li>自燃损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="61" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "SW"){%]<li>涉水行驶损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="61" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "11"){%]<li>玻璃单独破碎险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="61" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+
+        <!--民安-->
+            [%if(dd.clauseList[i].kindCode == "A"){%]<li>机动车损失保险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M11" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "B"){%]<li>第三者责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M12" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "G"){%]<li>全车盗抢险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M15" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "D1"){%]<li>司机责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M13" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "D2"){%]<li>乘客责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M14" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "Z"){%]<li>自燃损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M2" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "L"){%]<li>自燃损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M2" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "SW"){%]<li>涉水行驶损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="M2" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "F"){%]<li>玻璃单独破碎险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+
+
+
+            <!--天安-->
+            [%if(dd.clauseList[i].kindCode == "63"){%]<li>机动车损失保险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="A63" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "68"){%]<li>第三者责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="A68" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "74"){%]<li>全车盗抢险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="A74" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "73"){%]<li>司机责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="A7389" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "89"){%]<li>乘客责任险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="A7389" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "36"){%]<li>自燃损失险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="A36" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+            <div class="" style="clear: both;"></div>
+            [%if(dd.clauseList[i].kindCode == "34"){%]<li>玻璃单独破碎险</li><li>[%=dd.clauseList[i].amount%]</li><li>[%=dd.clauseList[i].kindCode="0" ? "是" : "否"%]</li><li>[%=dd.clauseList[i].benchmarkPremium%]</li>[%}%]
+
+
+
+
+            [%}%]
+            <div class="" style="clear: both;"></div>
+            [%for( var i= 0; i< dd.riskDtoList.length; i++){%]
+            <li> [%if(dd.riskDtoList[i].riskCode == "0102"){%]交强险[%}%]</li><li></li><li></li><li>[%if(dd.riskDtoList[i].riskCode == "0102"){%][%=dd.riskDtoList[i].sumGrossPremium%][%}%]</li>
+            [%}%]
+            <div class="" style="clear: both;"></div>
+            <li>车船税</li><li></li><li></li><li>[%=dd.carShipTaxDto.sumPayTax%]</li>
+        </ul>
+
+        <div class="" style="clear: both;"></div>
+
+   <!--     [%for( var i= 0; i< dd.riskDtoList.length; i++){%]
+        <p class="fail-reason"> [%if(dd.riskDtoList[i].riskCode == "0102"){%]交强险：[%=dd.riskDtoList[i].sumGrossPremium%][%}%]
+
+        </p>
+        [%}%] <p class="fail-reason">车船税：[%=dd.carShipTaxDto.sumPayTax%]</p>-->
+
+
+        <div class="btn-two"><a id="btnsum" data-jq="" data-carmoney="[%=dd.carShipTaxDto.sumPayTax%]"
+                                data-bunn=""
+                                href="yz.html?channel=sys&company=[%=company%]&jq= [%for( var i= 0; i< dd.riskDtoList.length; i++){%][%if(dd.riskDtoList[i].riskCode == "0102"){%][%=dd.riskDtoList[i].sumGrossPremium%][%}%] [%}%]&carmoney=[%=dd.carShipTaxDto.sumPayTax%]&bunn=[%for( var i= 0; i< dd.riskDtoList.length; i++){%][%if(dd.riskDtoList[i].riskCode == "0101"){%][%=dd.riskDtoList[i].sumGrossPremium%][%}%] [%}%]">立即购买</a>
+        </div>
+        <p class="fail-info" style="text-align: center;">（以上数据来自保险公司实时反馈）</p>
+    </div>
+
+    [%}%]
+
+    </li>
+</script>
+
+
+<script type="text/html" id="tplsystwo">
+    <li class="busin-insur-item ">
+        <img src="image/[%=company%].png">
+
+        <span class="insur-name"><a href=tel:075584357001>暂时无法报价，请联系路比保险客服</a> </span>
+        <span class="insur-price" data-compnyid="" data-branchid="[%=errcode%]" onclick=""><a href=tel:075584357001>&nbsp;<i
+                class="icon-arrow-hollow-tel"></i></a></span>
+    </li>
+</script>
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+<script type="text/javascript" src="js/lib/store.min.js"></script>
+<script type="text/javascript" src="js/lib/art-template.js"></script>
+
+<script src='js/lib/socket.io.js'></script>
+<script type="text/javascript" src="js/insure.js"></script>
+
+
+<script type="text/javascript">
+    $(".btn-two a").on("click", function () {
+
+        console.log(this);
+
+        //var   $(".btn-two").data("compnyid")
+
+    })
+
+</script>
+<script src="http://7xq870.com1.z0.glb.clouddn.com/baidu.js"></script>
+</body>
+</html>

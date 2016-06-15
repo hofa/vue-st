@@ -1,0 +1,233 @@
+// 基本字体大小
+$gbfsize: 64;
+@import "./_common.scss";
+input[type="text"]::-webkit-input-placeholder {
+  color: #ccc;
+  font-family: "Microsoft Yahei", "Arial";
+}
+.com-header{
+	position:relative;
+
+}
+.com-header>img{
+	display:block;
+	width:100%;
+	height:auto;
+}
+.com-header-in{
+	width:100%;
+}
+.com-header-in>.icon-back,.com-header-in>.icon-share{
+	position:absolute;
+	@include top(58);
+	color:#fff;
+	@include fz(40);
+}
+.com-header-in>.icon-back{
+	@include left(13);
+}
+.com-header-in>.icon-share{
+	@include right(13);
+}
+.select-wrap{
+	@include display-box();
+	@include h(86);
+	border-bottom:2px solid #e5e5e5;
+	@include fz(28);
+	@include ml(30);
+	@include mr(30);
+}
+.select-wrap>label{
+	display:block;
+	@include lh(86);
+	@include w(180);
+}
+.select-wrap>span{
+	display:block;
+	@include box-flex(1);
+	@include h(57);
+	@include lh(57);
+	@include mt(15);
+	@include mr(24);
+	border:0 none;
+	color:#ccc;
+	background:url('../image/index_arrow.png') no-repeat right center;
+	background-size:(30/64)+rem auto;
+}
+.select-wrap .js-highlight {
+	color: #333;
+}
+.step1-wrap{
+	@include mt(30);
+}
+.step1-wrap>.input-wrap{
+	position:relative;
+	@include ml(30);
+	@include mr(30);
+}
+.step1-wrap>.input-wrap>.ico{
+	position:absolute;
+	@include left(30);
+	@include lh(86);
+	@include fz(40);
+}
+.step1-wrap>.input-wrap>.input-inner-wrap{
+	@include h(86);
+	border-bottom:2px solid #e5e5e5;
+	@include display-box();
+	@include fz(28);
+}
+.step1-wrap>.input-wrap>.input-inner-wrap>input{
+	display:block;
+	@include box-flex(1);
+	@include pl(0);
+	@include pr(0);
+	@include mr(10);
+	@include h(60);
+	@include mt(13);
+	@include mb(13);
+	border:0 none;
+	@include fz(28);
+	color: #333;
+	font-family: "Microsoft Yahei", "Arial";
+}
+.step1-wrap>.input-wrap>.input-inner-wrap>input:focus{
+	outline:1px solid #ff6700;
+	box-shadow:0 0 2px 1px #ff6700;
+}
+.step1-wrap>.btn-blue{
+	@include mt(30);
+	@include h(80);
+	@include lh(80);
+	@include ml(30);
+	@include mr(30);
+	@include bdr(6);
+	background-color:#458bff;
+	@include fz(32);
+	color:#fff;
+	text-align:center;
+}
+.step1-wrap>.a-blue{
+	display:block;
+	@include mt(25);
+	@include fz(24);
+	color:#458bff;
+	text-align:center;
+}
+/*城市弹层*/
+#pop_city_layer{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:996;
+	width:100%;
+	height:100%;
+	background-color:#f9f9f9;
+}
+#pop_city_layer .white-box{
+	background-color:#fff;
+}
+#pop_city_layer>.pop-tit{
+	position:relative;;
+	width:100%;
+	@include h(90);
+	@include lh(90);
+	border-bottom:2px solid #d8d8d8;
+	@include fz(36);
+	color:#333;
+	text-align:center;
+	background-color:#fff;
+}
+#pop_city_layer>.pop-tit>.icon-close{
+	position:absolute;
+	@include left(0);
+	@include pl(15);
+	@include pr(15);
+	top:0;
+	@include lh(90);
+	@include fz(38);
+	color:#458bff;
+}
+#pop_city_layer .tit-box{
+	@include h(68);
+	@include lh(68);
+	@include pl(30);
+	@include pr(30);
+	background-color:#f9f9f9;
+	@include fz(24);
+	color:#333;
+}
+#pop_city_layer .block-box{
+	@include pt(30);
+	@include pl(30);
+	@include pr(30);
+}
+#pop_city_layer .block-box>li{
+	float:left;
+	width:33.33333333333333%;
+	@include mb(30);
+}
+#pop_city_layer .block-box>li>span,#pop_city_layer .line-box>li{
+	@include fz(28);
+	color:#666;
+}
+#pop_city_layer .block-box>li>span{
+	display:block;
+	@include ml(15);
+	@include mr(15);
+	@include h(68);
+	@include lh(68);
+	border:1px solid #ddd;
+	@include bdr(4);
+	text-align:center;
+
+}
+#pop_city_layer .line-box>li{
+	@include pl(30);
+	@include pr(30);
+	@include h(88);
+	@include lh(88);
+	border-bottom:1px solid #ddd;
+}
+#pop_city_layer .pop-con-wrap{
+	@include pr(30);
+	overflow:scroll;
+}
+#pop_city_layer .letters-wrap{
+	@include pt(30);
+	@include pl(30);
+	@include pr(30);
+	
+}
+#pop_city_layer .letters-wrap>a{
+	float:left;
+	display:block;
+	width:16.666%;
+	@include pt(10);
+	@include pb(10);
+	line-height:1;
+	@include fz(28);
+	color:#666;
+	text-align:center;
+}
+#gototop{
+	@include w(74);
+	@include h(74);
+	background:url('/public/m/image/gototop.png') center center;
+	background-size:100% auto;
+	position:fixed;
+	z-index:999;
+	bottom:57px;
+	right:8px;
+}
+.fail-wrap{
+	@include pt(30);
+	@include pb(30);
+	@include pl(30);
+	@include pr(30);
+	color:#fe0000;
+}
+
+.layermbtn {
+	box-sizing: content-box;
+}

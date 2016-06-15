@@ -1,0 +1,680 @@
+<html style="font-size: 75px;">
+<head>
+    <meta charset="utf-8">
+    <title>详情录入</title>
+    <meta name="viewport" content="width=640，initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- 适应移动端end -->
+    <link href="css/base/base.css" type="text/css" rel="stylesheet">
+    <link href="css/base/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/base/layer.css">
+    <link rel="stylesheet" type="text/css" href="css/drmobiscroll.css">
+    <link rel="stylesheet" type="text/css" href="css/cx-step2.css">
+    <script src="js/lib/flexible.js"></script>
+    <script src="js/widget/config.js"></script>
+    <link href="js/third/need/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+</head>
+<body style="font-size: 24px;">
+<div id="wrapper">
+    <header id="cx-app-heaer">
+        <a class="icon-back " href="javascript:history.go(-1);"></a>
+        详情录入
+    </header>
+    <section id="step2-wrap" class="com-frm-input">
+
+        <div class="infotips">请准确填写车辆信息，仅支持9座以下家庭自用客车比价 </div>
+
+        <div class="infoone">机动车行驶证信息<span class="infohelp"><img style=" width: 1em; margin-left: 0.5em;" src="image/help.png"  ></span>
+            <div class="infohelptwo"><a href="upphoto.html"> <img src="image/photo.png" style="width: 30%; margin-top: 0.2rem; margin-left: 0.8em;" ></a></div>
+        </div>
+
+        <form class="binder-form-submit" action="http://api.ubi001.com" data-command="addUserCarInfoForManual"
+              data-submit="addUserCarInfoForManual()">
+
+            <div class="input-wrap">
+                <label>车辆识别代码</label>
+                <input id="txtFrameNo" style="text-transform:uppercase;" type="text" name="frameNo" placeholder="车辆识别代码" validator="required min_length:17 max_length:17"
+                       valid-name="车辆识别代码">
+            </div>
+
+
+            <div class="input-wrap posi-rela">
+                <label>品牌款型</label>
+                <input id="txtBrandNo" type="text" name="brandModel" class="ui-text-uppercase" placeholder="请输入品牌型号关键字"
+                       validator="required" valid-name="品牌型号">
+                <!--<em class="icon-arrow-hollow-right ico-dn-arrow" data-img="1"></em>-->
+            </div>
+
+            <div class="input-wrap posi-rela">
+                <label>注册日期</label>
+                <input id="txtRegisterDate" type="text" placeholder="请选择注册日期" valid-name="注册日期">
+                <em class="icon-arrow-hollow-right ico-dn-arrow"></em>
+            </div>
+
+
+            <div class="input-wrap posi-rela">
+                <label>发动机号</label>
+                <input id="txtEngineeNo" type="text" name="engineNum" class="ui-text-uppercase" placeholder="请准确输入发动机号"
+                       validator="required" valid-name="发动机号">
+
+            </div>
+
+            <div id="ifPass" class="input-wrap chk-wrap" style="position: relative; z-index: 10;">
+                <label>是否过户</label>
+                <span class="chk-item" value="1">是</span>
+                <span class="chk-item  chosen" value="0">否</span>
+            </div>
+            <div class="input-wrap posi-rela" style="display:none;">
+                <label>过户时间</label>
+                <input id="txtTransferTime" type="text" placeholder="请选择过户时间" readonly="readonly">
+                <em class="icon-arrow-hollow-right ico-dn-arrow"></em>
+            </div>
+
+
+            <div class="clear" style="height: 1em; background-color: #efeff4;"></div>
+            <div class="carowner">车主信息(保险公司要求必填)</div>
+
+            <div class="input-wrap">
+                <label>车主身份证号</label>
+                <input id="txtIdCard" type="text" name="ownercardnum" placeholder="请输入车主身份证号"
+                       validator="required   id_card min_length:15 " valid-name="车主身份证号">
+            </div>
+
+            <span class="btn-two validator_btn">提交</span>
+            <input type="hidden" name="newCarLicenseFlag" value="0">
+            <input id="hidIsTransfer" type="hidden" name="isTransfer" value="0">
+            <input id="hidAreaId" type="hidden" name="insureAreaId" value="">
+            <input id="hidAreaName" type="hidden" name="insureAreaName" value="">
+            <input id="hidAreaNum" type="hidden" name="insureAreaNum" value="">
+            <input type="hidden" name="talentUserId" value="1">
+            <input type="hidden" id="hidRegisterDate" name="registerDate">
+            <input type="hidden" id="hidTransferTime" name="transferTime">
+            <input id="txtCarNo" type="hidden" name="plateNum" value="粤B100JX">
+            <input id="txtName" type="hidden" name="owner" value="叶佳翔">
+        </form>
+
+    </section>
+        </div>
+<div id="pop_type_layer" class="hide">
+    <div class="pop-tit">
+        选择车型
+        <span id="icon-close" class="icon-close"></span>
+            </div>
+    <section id="cs-type-wrap" class="com-frm-input">
+        <p class="tip-info">请选择一个与您的车辆最为匹配的车型</p>
+        <div id="carModelList"></div>
+        <a id="loadMore" class="norm-a" style="display:none;">加载更多</a>
+        <a id="btnChooseInsur" class="btn-choose btn-blue" href="javascript:void(0);">选择投保方案</a>
+        <!-- <a class="norm-a">没有找到</a> -->
+    </section>
+        </div>
+<script type="text/html" id="tplTypeList">
+    <ul id="carModelListUl" class="type-list" data-tauserid="" data-id="1">
+        [% for(var i=0;i
+        <data.length
+        ; i++){
+        %]
+        <li class="type-lt-item  [%=data.isChosen ? 'chosen' : '' %]" data-carcode="[%=data[i].code%]"
+            data-vechileid="[%=data[i].vehicleId%]" onclick="chooseCarType(this)">
+            <div class="type-lt-item-in">
+                <em class="icon-radio-nor"></em>
+                <p class="item-intro">[%=data[i]["name"]%]</p>
+                <p class="item-price">参考价格：<span class="pri">￥[%=data[i]["price"]%]</span></p>
+            </div>
+        </li>
+        [%}%]
+    </ul>
+</script>
+<script type="text/html" id="tplTypeListNext">
+    [%for(var i=0;i
+    <data.length;i++){
+    %]
+    <li class="type-lt-item [%=tptype.isChosen ? 'chosen' : '' %]" data-carcode="[%=data[i].code%]"
+        data-vechileid="[%=data[i].vehicleId%]" onclick="chooseCarType(this)">
+        <div class="type-lt-item-in">
+            <em class="icon-radio-nor"></em>
+            <p class="item-intro">[%=data[i]["name"]%]</p>
+            <p class="item-price">参考价格：<span class="pri">￥[%=data[i]["price"]%]</span></p>
+        </div>
+    </li>
+    [%}%]
+</script>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="js/third/layer.js"></script>
+<script type="text/javascript" src="js/lib/store.min.js"></script>
+<script type="text/javascript" src="js/widget/notification.js"></script>
+<script type="text/javascript" src="js/widget/validator.js"></script>
+<script type="text/javascript" src="js/widget/form-step2.js"></script>
+<script type="text/javascript" src="js/lib/art-template.js"></script>
+<script src="js/moment.js"></script>
+<script type="text/javascript">
+    var pageNo = 0,
+            pageSize = 10,
+            currentPage = 0,
+            globalTpdata;
+
+    $(function () {
+
+        //$("#step2-wrap").children().eq(0).after(template.render("tplInfo"));
+
+        FastClick.attach(document.body);
+        initPage();
+
+        $(".binder-form-submit").attr('action', ipPort);
+
+        var localSearch = location.search,//URL参数
+                carId,//车型ID
+                userId,//用户ID
+                userCarInfo = window.userCarInfo = null;
+
+        var dt = store.get("dtstep1");
+
+        var owner = dt.hzname;
+
+        var car = dt.platenum + dt.platenumtxt;
+
+
+        //解析URL参数
+        localSearch.replace(/(\w+)=(\w+)&?/g, function (str, key, val) {
+
+            if (key == 'carId') {
+                carId = val
+            } else if (key == 'userId') {
+                userId = val
+            }
+
+        });
+
+        //如果有carId,从后台获取车型
+        if (car) {
+            $.ajax({
+                url: 'http://api.ubi001.com/v1/offer/query?carcard=' + car+'&owner='+owner,
+                type: "get",
+
+                success: function (respon) {
+                    if (respon && respon.errcode == 0) {
+                        var data = respon.data;
+                        $('#txtBrandNo').val(data.autoModelName);//汽车品牌
+                        $('#txtFrameNo').val(data.vehicleFrameNo);//车架号
+                        $('#txtEngineeNo').val(data.engineNo);//发动机号
+                        $('#txtRegisterDate').val(data.firstRegisterDate);//注册日期
+                        window.userCarInfo = respon.result;//后台获取的车型信息
+                    }
+                },
+                error: function (httpReq, textStatus, errorThrown) {
+                    if (textStatus && textStatus == 'timeout') {
+                        $("#loading_wrap").remove();
+                        layer.open({
+                            content: "请求超时，请稍后刷新重试",
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                        return;
+                    }
+                        layer.open({
+                            content: httpReq.responseText,
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                    }
+            })
+        }
+
+        $(".chk-wrap>.chk-item").on("click", function () {
+            var _this = $(this);
+            if (_this.hasClass("chosen")) {
+                return false;
+                }
+            if (_this.attr("value") == "1") {
+                var posiRela = $('.posi-rela');
+                posiRela.show();
+                posiRela.find('#txtTransferTime').show();
+            } else {
+                _this.parent().next().hide();
+            }
+            _this.addClass("chosen").siblings(".chk-item").removeClass("chosen");
+            $("#hidIsTransfer").val(_this.attr("value"));
+               
+            })
+
+        //pop三大问号
+        $(".ico-why").on("click", function () {
+            var dtindex = $(this).data("img");
+            switch (dtindex) {
+                case 1:
+                    layer.open({
+                        title: [
+                            '品牌型号'
+                        ],
+                        content: '<div class="img-wrap"><img src="image/brand_layer.jpg"/></div>'
+
+                    });
+                    break;
+                case 2:
+                    layer.open({
+                        title: [
+                            '车架号'
+                        ],
+                        content: '<div class="img-wrap"><img src="image/frame_layer.jpg"/></div>'
+
+                    });
+                    break;
+                case 3:
+                    layer.open({
+                        title: [
+                            '发动机号'
+                        ],
+                        content: '<div class="img-wrap"><img src="image/enginee_layer.jpg"/></div>'
+
+                    });
+            }
+
+        })
+
+
+        $(".infohelp").on("click", function () {
+            layer.open({
+                title: [
+                    '填写指南'
+                ],
+                content: '<div class="img-wrap"><img src="image/jiaz.png"/></div>'
+
+            });
+        })
+
+
+        //click提交保险方案
+        $("#btnChooseInsur").on("click", function () {
+
+
+
+            //var _this=$(this);
+            //if(_this.prev().find(">.chosen").length>0){
+            var carModelListUl = $("#carModelListUl");
+            if (carModelListUl.find(">.chosen").length > 0) {
+
+                var tauserid = carModelListUl.data("tauserid"),
+                        id = carModelListUl.data("id"), carcode = carModelListUl.find(">.chosen").eq(0).data("carcode"),
+                        vechileid = carModelListUl.find(">.chosen").eq(0).data("vechileid");
+                var mindex = layer.open({
+                    shadeClose: false, type: 2,
+                    content: "加载中"
+                });
+                $.ajax({
+                    url: 'http://api.ubi001.com/v1/offer/search',
+                    type: "get",
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    async: true,
+                    data: '',
+
+                    success: function (respon) {
+                        layer.close(mindex);
+                        store.set('carId', id);
+                        window.location.href = "cx-insur-scheme.html?clid=" + id + "&cxid=" + vechileid + "&carcode=" + carcode + '&' + sessionStorage.localSearch;
+                    },
+                    error: function (httpReq, textStatus, errorThrown,respon) {
+                        if (textStatus && textStatus == 'timeout') {
+                            $("#loading_wrap").remove();
+                            layer.open({
+                                content: "请求超时，请稍后刷新重试",
+                                style: 'background-color:#000; color:#fff; border:none;',
+                                time: 3
+                            });
+                            return;
+                        }
+                        layer.open({
+                            content: "找不到车型",
+                            style: 'background-color:#000; color:#fff; border:none;',
+                            time: 3
+                        });
+                    }
+                })
+            } else {
+                layer.open({
+                    content: "请选择车型",
+                    style: 'background-color:#000; color:#fff; border:none;',
+                    time: 3
+                    });
+            }
+
+        })
+        $("#icon-close").on("click", function () {
+            $("#pop_type_layer").addClass('hide');
+            $('#wrapper').removeClass('hide');
+            $("#cs-type-wrap>ul").remove();
+        })
+        Q.notify.listen(G_BIND_FORM_BEFORE_SUBMIT, function () {
+            //save step2 数据
+            var UUserCard = $("#txtIdCard").val();
+            var brithdate = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
+            var tempifpass = $("#ifPass").find(">span.chosen").eq(0).attr("value");
+            if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
+                var sex = 1;
+            } else {
+
+                var sex = 0;
+            }
+            if (dt.hascar == 0) {
+                $("#txtTransferTime").val("");
+            }
+
+            store.set("dtstep2", {
+                ownercardnum: $("#txtIdCard").val(),
+                brandModel: $("#txtBrandNo").val(),
+                frameNo: $("#txtFrameNo").val(),
+                birthday: brithdate,
+                sex: sex,
+
+                engineNum: $("#txtEngineeNo").val(),
+                registerDate: $("#txtRegisterDate").val(),
+                ifPass: tempifpass,
+                transferdate: $("#txtTransferTime").val()
+            });
+
+            $.ajax({
+                url: 'http://api.ubi001.com/v1/offerStep/stepTwo',
+                type: "get",
+                dataType: 'json',
+                data: {
+                    quote_number: store.get("dtstep1").orderid,
+                    vehicle_vin: store.get("dtstep2").frameNo,
+                    vehicle_engine: store.get("dtstep2").engineNum,
+                    vehicle_register: store.get("dtstep2").registerDate,
+                    vehicle_model: store.get("dtstep2").brandModel,
+                    owner_id: store.get("dtstep2").ownercardnum,
+                    vehicle_transfer: store.get("dtstep2").ifPass,
+                    vehicle_transdate: store.get("dtstep2").transferdate
+                },
+                //jsonp:'callback',
+                success: function (respon) {
+
+
+                    if (respon.errcode == 0) {
+
+                        //window.location.href = "cx-step2.html?" + localSearch;
+
+
+                    } else {
+                            layer.open({
+                                content: "数据保存异常",
+                                style: 'background-color:#000; color:#fff; border:none;',
+                                time: 3
+                            });
+
+                        }
+
+
+                }
+
+            })
+
+
+            //deal submit 数据
+            if ($("#hidIsTransfer").val() == "0") {
+                $("#txtTransferTime").val("");
+                }
+            $("#txtIdCard").val($.trim($("#txtIdCard").val()));
+            $("#hidAreaId").val(store.get("dtstep1").areaid);
+            $("#hidAreaName").val(store.get("dtstep1").areaname);
+            $("#hidAreaNum").val(store.get("dtstep1").areanumber);
+            $("#hidRegisterDate").val($("#txtRegisterDate").val() + " 00:00:00" || "");
+            $("#hidTransferTime").val($("#txtTransferTime").is(":visible") ? $("#txtTransferTime").val() + " 00:00:00" : "");
+        })
+
+        Q.notify.listen(G_BIND_FORM_SUBMIT_SUCC, function (data) {
+            var tpdata = {"tptype": userCarInfo || data.data};
+            globalTpdata = tpdata;
+
+            getCarModelListInfo();
+            })
+
+        $("#loadMore").on("click", function () {
+            getCarModelListInfoNext();
+        })
+
+        Q.notify.listen(G_BIND_FORM_SUBMIT_ERROR, function (data) {
+            layer.open({
+                content: "找不到车型",
+                style: 'background-color:#000; color:#fff; border:none;',
+                time: 3
+            });
+        })
+    });
+
+    function getCarModelListInfo() {
+
+        $("#loadMore").hide();
+        $.ajax({
+            url: 'http://api.ubi001.com/v1/offer/search',
+            type: "get",
+            contentType: 'application/json',
+            dataType: 'json',
+            async: true,
+            timeout: 10000,
+            data: {key: $("#txtBrandNo").val()},
+
+            success: function (respon) {
+                var result = respon;
+
+
+                globalTpdata.talentCarModelList = result;
+
+
+                for (var i = 0; i < result.data.length; i++) {
+                    var item = result.data[i];
+
+                    var name = item.name;
+
+                    var name = name.split("/");
+
+                    var carname = name[1];
+                    var carlx = name[3];
+
+                    var carnprice = name[4];
+                    var caryear = name[5];
+
+
+                    var caresult = carname + carlx + carnprice + caryear;
+
+
+                }
+
+
+                //$("#cs-type-wrap").children().eq(0).after(template.render("tplTypeList",globalTpdata));
+                $('#carModelListUl').remove();
+                $("#carModelList").append(template.render("tplTypeList", result, caresult));
+                $("#pop_type_layer").removeClass('hide');
+                $("#wrapper").addClass('hide');
+            },
+            error: function (httpReq, textStatus, errorThrown) {
+            }
+            });
+    }
+
+    function getCarModelListInfoNext() {
+        $("#loadMore").hide();
+        $.ajax({
+            url: 'http://api.ubi001.com/v1/offer/search',
+            type: "get",
+            contentType: 'application/json',
+            dataType: 'json',
+            async: true,
+            timeout: 10000,
+            data: {key: $("#txtBrandNo").val()},
+
+            success: function (respon) {
+                console.log(respon.data)
+                var result = respon.data;
+                globalTpdata.talentCarModelList = result.data;
+                var tmpTotalPage = result.solrPage.totalPage;
+                if (tmpTotalPage > 1 && pageNo < tmpTotalPage) {
+                    $("#loadMore").show();
+                    pageNo += 1;
+                } else {
+                    $("#loadMore").hide();
+                }
+                //$("#cs-type-wrap").children().eq(0).after(template.render("tplTypeList",globalTpdata));
+                $("#carModelListUl").append(template.render("tplTypeListNext", globalTpdata));
+                $("#pop_type_layer").removeClass('hide');
+                $("#wrapper").addClass('hide');
+            },
+            error: function (httpReq, textStatus, errorThrown) {
+                }
+        });
+    }
+
+    function addUserCarInfoForManual() {
+
+        var _userCarInfo = userCarInfo;
+        if (_userCarInfo) {
+            _userCarInfo.talentCarModelList = [{
+                name: _userCarInfo.brandModel + ' ' + _userCarInfo.emissions,
+                taxPrice: _userCarInfo.price,
+                vehicleId: _userCarInfo.vehicleId
+            }];
+            _userCarInfo.isChosen = true;
+                $('#carModelListUl').remove();
+            $("#cs-type-wrap").children().eq(0).after(template.render("tplTypeList", {"tptype": _userCarInfo}));
+            $("#pop_type_layer").show();
+            return false;
+
+        } else {
+
+            return true;
+
+            }
+
+        }
+
+    //选择车型
+    function chooseCarType(ele) {
+        var _this = $(ele);
+        _this.addClass("chosen").siblings(".type-lt-item").removeClass("chosen");
+        }
+    //初始化input
+    function initPage() {
+        if (store && typeof(store.get("dtstep1")) != "undefined") {
+            $("#spaCarNo").text(store.get("dtstep1").platenum + store.get("dtstep1").platenumtxt);
+            $("#txtCarNo").val(store.get("dtstep1").platenum + store.get("dtstep1").platenumtxt);
+            $("#spaName").text(store.get("dtstep1").hzname);
+            $("#txtName").val(store.get("dtstep1").hzname);
+            }
+        var tempsave = store.get("dtstep2");
+        if (typeof(tempsave) != "undefined") {
+            $("#txtIdCard").val("");
+            $("#txtBrandNo").val(tempsave.brandModel.toUpperCase() || "");
+            $("#txtFrameNo").val(tempsave.frameNo.toUpperCase() || "");
+            $("#txtEngineeNo").val(tempsave.engineNum || "");
+            $("#txtRegisterDate").val(tempsave.registerDate || "");
+            $("#txtTransferTime").val("");
+            if (typeof(tempsave.transferdate) != "undefined" && tempsave.transferdate == 1) {
+                $("#txtTransferTime").show();
+            } else {
+                $("#txtTransferTime").hide();
+            }
+            }
+        }
+</script>
+<script type="text/javascript" src="js/third/hz-mobiscroll-delt.js"></script>
+<script type="text/javascript">
+    $(function () {
+        initDate();
+    })
+    function initDate() {
+        //txtRegisterDate
+        if ($('#txtRegisterDate').val() == '') {
+            $('#txtRegisterDate').val(defaultInsStartDate());
+        }
+
+        fitInsStartDate($('#txtRegisterDate'), {
+            onSelect: function () {
+                $('#txtRegisterDate').val($('#txtRegisterDate').val());
+            }
+        });
+
+        if ($('#txtRegisterDate').val() == '') {
+            $('#txtRegisterDate').val(defaultInsStartDate());
+        }
+        //txtTransferTime
+        if ($('#txtTransferTime').val() == '') {
+            $('#txtTransferTime').val(defaultInsStartDate());
+        }
+        fitInsStartDate($('#txtTransferTime'), {
+            onSelect: function () {
+                $('#txtTransferTime').val($('#txtTransferTime').val());
+            }
+        });
+        if ($('#txtTransferTime').val() == '') {
+            $('#txtTransferTime').val(defaultInsStartDate());
+        }
+            }
+    function defaultInsStartDate() {
+        return moment().format('YYYY-MM-DD');
+            }
+    function fitInsStartDate(e, extra) {
+
+        var now = new Date();
+
+        extra = !!extra ? extra : {};
+
+        fitMiniScrollDate($(e), $.extend({
+            maxDate: new Date(now.getFullYear(), now.getMonth(), now.getDate())
+        }, extra));
+    }
+    function fitMiniScrollDate(e, extra) {
+        var opts = {
+            preset: 'date',
+            seconds: false,
+            ampm: false,
+            dateOrder: 'yymmdd',
+            dateFormat: 'yy-mm-dd', // 日期格式
+            mode: 'scroller',
+            theme: 'android-ics light',
+            setText: '确定',
+            cancelText: '取消', dayText: '日', monthText: '月', yearText: '年', //面板中年月日文字
+            endYear: new Date().getFullYear() + 1
+        };
+
+        if (extra) {
+            for (var k in extra) {
+                opts[k] = extra[k];
+            }
+        }
+
+        $(e).scroller(opts);
+    }
+</script>
+
+
+<div class="dw-hidden" role="alert"></div>
+<script src="http://7xq870.com1.z0.glb.clouddn.com/baidu.js"></script>
+</body>
+</html>
