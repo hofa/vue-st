@@ -11,6 +11,8 @@
 # [awesome-vue](https://github.com/vuejs/awesome-vue)
 
 # [vue-resource](https://github.com/vuejs/vue-resource)
+
+# [ECMA 6教程](http://es6.ruanyifeng.com/)
 # lol
 
 > lol
@@ -38,3 +40,5 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
