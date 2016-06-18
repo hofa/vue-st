@@ -7,8 +7,11 @@ import VueRouter from 'vue-router'
 // components
 import appLogin from './components/app-login'
 import quoteFirst from './quote/quote-first'
+import quoteSecond from './quote/quote-second'
 
-import {store} from './setting'
+import {config} from './setting'
+
+// import {store} from './setting'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
@@ -32,14 +35,14 @@ var Bar = Vue.extend({
     template: '<p>This is bar!</p>'
 })
 
-var quote2 = Vue.extend({
-    data: function() {
-      return {
-        store: store
-      }
-    },
-    template: '<p>This is quote <a style="color:red" v-link="{ path: \'/quote\' }">click me {{store.a}}</a></p>'
-})
+// var quote2 = Vue.extend({
+//     data: function() {
+//       return {
+//         store: store
+//       }
+//     },
+//     template: '<p>This is quote <a style="color:red" v-link="{ path: \'/quote\' }">click me {{store.a}}</a></p>'
+// })
 // 路由器需要一个根组件。
 // 出于演示的目的，这里使用一个空的组件，直接使用 HTML 作为应用的模板
 // var App = Vue.extend({})
@@ -66,11 +69,13 @@ router.map({
       component: appLogin
     },
     '/quote': {
-      component: quoteFirst
+      component: quoteFirst,
+      config: config
     },
-    '/quote/2': {
-      component: quote2
-    },
+    '/quote-second': {
+      component: quoteSecond,
+      config: config
+    }
 })
 
 router.beforeEach(function(transition) {
