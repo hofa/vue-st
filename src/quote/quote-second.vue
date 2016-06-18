@@ -191,7 +191,7 @@
         if (!this.chooseModel) {
           return alert('请选择车型')
         }
-
+        this.$route.router.go('/quote-third')
       }
     },
     watch: watcher

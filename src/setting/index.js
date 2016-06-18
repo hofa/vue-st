@@ -68,12 +68,64 @@ var dataStore = {
   vehicle_code: "TYD1029BDC",
   vehicle_transfer: 0, // 是否过户 0 1
 
+  // c01
+  // 车辆损失险
+  c01_duty_01: 1,
+  c01_duty_01_deduction: 1,
+
+  // 第三者责任险
+  c01_duty_02: 1,
+  c01_duty_02_deduction: 1,
+  c01_duty_02_amount: 50,
+
+  // 司机座位责任险
+  c01_duty_04: 1,
+  c01_duty_04_deduction: 1,
+  c01_duty_04_amount: 50000,
+
+  // 乘客座位责任险
+  c01_duty_05: 1,
+  c01_duty_05_deduction: 1,
+  c01_duty_05_amount: 10000,
+  c01_duty_05_seat: 4,
+
+  // 玻璃单独破碎险
+  c01_duty_08: 1,
+  c01_duty_08_kind: 0,
+  c01_duty_08_deduction: 1,
+
+  // 车身划痕损失险
+  c01_duty_17: 1,
+  c01_duty_17_amount: 2000,
+  c01_duty_17_deduction: 1,
+
+  // 涉水损失险损失险
+  c01_duty_41: 1,
+  c01_duty_41_deduction: 1,
+
+  // 盗抢险
+  c01_duty_03: 1,
+  c01_duty_03_deduction: 1,
+
+  // 自燃损失险
+  c01_duty_18: 1,
+  c01_duty_18_deduction: 1,
+
+  // 交强险起期
+  c51_startDate: '',
+
+  // 商业险起期
+  c01_startDate: '',
+
+  // 车船税
+  tax_type: 1,
+
   applicant_id: "412927197812141714", // 身份证号码
 
   ref: "",
   refType: "",
 
-
+  // 刷新quoteNumber
   refreshQuoterNumber: 1
 }
 

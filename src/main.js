@@ -8,6 +8,8 @@ import VueRouter from 'vue-router'
 import appLogin from './components/app-login'
 import quoteFirst from './quote/quote-first'
 import quoteSecond from './quote/quote-second'
+import quoteThird from './quote/quote-third'
+import quoteFourth from './quote/quote-Fourth'
 
 import {config} from './setting'
 
@@ -74,6 +76,14 @@ router.map({
     },
     '/quote-second': {
       component: quoteSecond,
+      config: config
+    },
+    '/quote-third': {
+      component: quoteThird,
+      config: config
+    },
+    '/quote-fourth': {
+      component: quoteFourth,
       config: config
     }
 })
