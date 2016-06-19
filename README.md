@@ -33,6 +33,20 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## widget-modal
 
 ```
+    data() {
+      return {
+        showModal: false,
+        showModal2: false,
+        cityPanel: {
+          display: 'none'
+        },
+        cityListLetter: [],
+        cityList: [],
+        letterCities: [],
+        DS: dataStore
+      }
+    }
+
 <button @click="showModal = true">Show Modal</button>
 <!-- use the modal component, pass in the prop -->
 <modal :show.sync="showModal" :timeout="3000" :type="1" :style=`background-color:red`>
