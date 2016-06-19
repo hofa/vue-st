@@ -32,8 +32,8 @@
 
               <div class="input-wrap posi-rela">
                   <label>注册日期</label>
-                  <input v-model="DS.vehicle_register" id="txtRegisterDate" type="text" placeholder="请选择注册日期" valid-name="注册日期">
-                  <em class="icon-arrow-hollow-right ico-dn-arrow"></em>
+                  <input v-model="DS.vehicle_register" id="txtRegisterDate" type="date" placeholder="请选择注册日期" valid-name="注册日期">
+                  <!-- <em class="icon-arrow-hollow-right ico-dn-arrow"></em> -->
               </div>
 
 
@@ -49,10 +49,10 @@
                   <span class="chk-item" v-bind:class="{'chosen': DS.vehicle_transfer}" @click="tranferClick(1)" value="1">是</span>
                   <span class="chk-item" v-bind:class="{'chosen': !DS.vehicle_transfer}" @click="tranferClick(0)" value="0">否</span>
               </div>
-              <div class="input-wrap posi-rela" style="display:none;">
+              <div class="input-wrap posi-rela" v-bind:class="{'hide': !DS.vehicle_transfer}">
                   <label>过户时间</label>
-                  <input id="txtTransferTime" type="text" placeholder="请选择过户时间" readonly="readonly">
-                  <em class="icon-arrow-hollow-right ico-dn-arrow"></em>
+                  <input id="txtTransferTime" v-model="DS.vehicle_transferDate" type="date" placeholder="请选择过户时间">
+                  <!-- <em class="icon-arrow-hollow-right ico-dn-arrow"></em> -->
               </div>
 
 
@@ -180,7 +180,7 @@
 
       changCar: function(code, vehicleId) {
         this.DS.vehicle_code = code
-        this.DS.vehicle_vin = vehicleId
+        this.DS.vehicle_id = vehicleId
         $('.chosen').removeClass('chosen')
         $('#' + code).addClass('chosen')
         // console.log(domObj)

@@ -258,7 +258,7 @@ select:focus {
 #gototop {
   width: 1.15625rem;
   height: 1.15625rem;
-  background: url("/public/m/image/gototop.png") center center;
+
   background-size: 100% auto;
   position: fixed;
   z-index: 999;
@@ -317,8 +317,8 @@ select:focus {
 
 .layermchild.layermanim {
   max-width: 9.375rem; }
-  
-  
+
+
   .btn-org {
   display: block;
   margin-left: 0.4375rem;
@@ -335,8 +335,8 @@ select:focus {
 
 
  .insurance-buttn  {   width:100%; clear:both; }
-.insurance-buttn  .btn_blue{ width:40%; float:left; margin-left:1em;  border-radius: 0.125rem 0.125rem 0.125rem 0.125rem;  } 
-.insurance-buttn  .btn_org{ width:40%; float:left; margin-left:1em;  border-radius: 0.125rem 0.125rem 0.125rem 0.125rem;   } 
+.insurance-buttn  .btn_blue{ width:40%; float:left; margin-left:1em;  border-radius: 0.125rem 0.125rem 0.125rem 0.125rem;  }
+.insurance-buttn  .btn_org{ width:40%; float:left; margin-left:1em;  border-radius: 0.125rem 0.125rem 0.125rem 0.125rem;   }
 
 .btn_blue {display:block;
     width:90%;height: 2em; line-height: 2em; font-size:0.5rem; color:#fff; text-align:center; background:#ff9500;

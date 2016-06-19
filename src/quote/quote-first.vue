@@ -9,7 +9,7 @@
         <div class="input-wrap ico2-out" >
             <div class="input-inner-wrap">
                 <div class="inptname">是否未上牌：</div>
-                <input  type="checkbox" id="hascar" style="" value="0"><div style="height: 1.34375rem;  line-height:1.34375rem; ">未上牌</div>
+                <input v-model="DS.vehicle_newcar" type="checkbox" id="hascar" style="" value="0"><div style="height: 1.34375rem;  line-height:1.34375rem; ">未上牌</div>
         </div>
         </div>
         <div class="input-wrap ico1-out" id="chenumber">
@@ -61,6 +61,8 @@
     </div>
 
     <div id="top" @click="toTop()">Top</div>
+
+
   </div>
 </template>
 
@@ -77,12 +79,21 @@
   // import './assets/js/widget/form-submit.js'
   import {watcher, dataStore} from '../setting'
 
+  import modal from './widget-modal'
+
   export default {
     ready() {
       // console.log(this.$route)
+      var ua = window.navigator.userAgent.toLowerCase();
+      if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        this.DS.refType = "WX"
+        this.DS.ref = "WX"
+      }
     },
     data() {
       return {
+        showModal: false,
+        showModal2: false,
         cityPanel: {
           display: 'none'
         },
@@ -122,6 +133,9 @@
        * @return {[type]} [description]
        */
       changeCity: function() {
+
+        this.getLocation()
+
         $('#top').show();
         if (this.cityList.length == 0) {
           var resource = this.$resource(this.$route.config.APIServer + 'offer/getCityList')
@@ -192,9 +206,9 @@
         }
 
         // 生成quoteNumber
-        if (this.DS.quoteNumber == "" || typeof this.DS.quoteNumber == "undefined" || typeof parseInt(this.DS.refreshQuoterNumber) == 1) {
+        if (this.DS.quoteNumber == "" || typeof this.DS.quoteNumber == "undefined" || parseInt(this.DS.refreshQuoterNumber) == 1) {
           var resource = this.$resource(this.$route.config.APIServer + 'offer/generator')
-          resource.save({area: this.DS.areaNumber, ref: this.DS.ref, ref: this.DS.refType}).then(function (response) {
+          resource.save({area: this.DS.areaNumber, ref: this.DS.ref, refType: this.DS.refType}).then(function (response) {
             if (response.data.errcode == 0) {
               this.DS.quoteNumber = response.data.data
               this.DS.refreshQuoterNumber = 0
@@ -207,9 +221,114 @@
         } else {
           this.$route.router.go('/quote-second')
         }
+      },
+
+      getLocation: function() {
+        //检查浏览器是否支持地理位置获取
+        if (navigator.geolocation) {
+            //若支持地理位置获取,成功调用showPosition(),失败调用showError
+            // tempindex = layer.open({
+            //     shadeClose: false, type: 2,
+            //     content: "加载中"
+            // });
+            var config = {
+                timeout: 20000,
+                enableHighAccuracy: true
+            }
+            navigator.geolocation.getCurrentPosition(this.defyPosiSuccess, this.showError, config);
+        } else {
+            //alert("Geolocation is not supported by this browser.");
+            // layer.open({
+            //     content: "定位失败,用户已禁用位置获取权限",
+            //     style: 'background-color:#000; color:#fff; border:none;',
+            //     time: 3
+            // });
+            alert("定位失败,用户已禁用位置获取权限")
+        }
+      },
+
+      defyPosiSuccess: function (position) {
+          //获得经度纬度
+          var x = position.coords.latitude;
+          var y = position.coords.longitude;
+          var locatedCity;
+          //配置Baidu Geocoding API
+          var url = "http://api.map.baidu.com/geocoder/v2/";
+          $.ajax({
+              type: "post",
+              data: {
+                  ak: 'G4eGG6TRibG59eNd6tNZ4MvinEPWYNAS',
+                  output: 'json',
+                  pois: '1',
+                  location: x + ',' + y
+              },
+              dataType: "jsonp",
+              url: url,
+              success: function (json) {
+                  //alert(json);
+                  if (json == null || typeof (json) == "undefined") {
+                      return;
+                  }
+                  if (json.status != "0") {
+                      return;
+                  }
+                  locatedCity = json.result.addressComponent.city
+                  console.log(locateCity)
+              },
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  // layer.close(tempindex);
+                  // layer.open({
+                  //     content: "定位失败，请手动选择城市！",
+                  //     style: 'background-color:#000; color:#fff; border:none;',
+                  //     time: 3
+                  // });
+                  alert("定位失败，请手动选择城市！")
+              }
+          })
+      },
+
+      showError: function (error) {
+          // layer.close(tempindex);
+          switch (error.code) {
+              case error.PERMISSION_DENIED:
+                  // layer.open({
+                  //     content: "定位失败,用户拒绝请求地理定位!",
+                  //     style: 'background-color:#000; color:#fff; border:none;',
+                  //     time: 3
+                  // });
+                  alert("定位失败,用户拒绝请求地理定位!")
+                  break
+              case error.POSITION_UNAVAILABLE:
+                  // layer.open({
+                  //     content: "定位失败,位置信息是不可用！",
+                  //     style: 'background-color:#000; color:#fff; border:none;',
+                  //     time: 3
+                  // });
+                  alert("定位失败,位置信息是不可用！")
+                  break;
+              case error.TIMEOUT:
+                  // layer.open({
+                  //     content: "定位失败,请求获取用户位置超时！",
+                  //     style: 'background-color:#000; color:#fff; border:none;',
+                  //     time: 3
+                  // });
+                  alert("定位失败,请求获取用户位置超时！")
+                  break;
+              case error.UNKNOWN_ERROR:
+                  // layer.open({
+                  //     content: "定位失败,定位系统失效！",
+                  //     style: 'background-color:#000; color:#fff; border:none;',
+                  //     time: 3
+                  // });
+                  alert("定位失败,定位系统失效！")
+                  break;
+          }
       }
     },
-    watch: watcher
+    watch: watcher,
+    components: {
+      modal: modal
+    }
   }
 </script>
 

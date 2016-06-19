@@ -197,7 +197,7 @@ input[type="text"]::-webkit-input-placeholder {
 	@include pt(30);
 	@include pl(30);
 	@include pr(30);
-	
+
 }
 #pop_city_layer .letters-wrap>a{
 	float:left;
@@ -213,7 +213,7 @@ input[type="text"]::-webkit-input-placeholder {
 #gototop{
 	@include w(74);
 	@include h(74);
-	background:url('/public/m/image/gototop.png') center center;
+
 	background-size:100% auto;
 	position:fixed;
 	z-index:999;

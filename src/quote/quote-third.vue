@@ -336,7 +336,7 @@
         $('#layermbox2').addClass('hide')
         $('#layermbox2 .laymshade').unbind('click')
 
-        this.$route.router.go('/quote-Fourth')
+        this.$route.router.go('/quote-fourth')
       }
     },
     watch: watcher

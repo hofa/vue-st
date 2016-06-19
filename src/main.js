@@ -9,7 +9,7 @@ import appLogin from './components/app-login'
 import quoteFirst from './quote/quote-first'
 import quoteSecond from './quote/quote-second'
 import quoteThird from './quote/quote-third'
-import quoteFourth from './quote/quote-Fourth'
+import quoteFourth from './quote/quote-fourth'
 
 import {config} from './setting'
 
