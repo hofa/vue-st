@@ -62,7 +62,17 @@
 
     <div id="top" @click="toTop()">Top</div>
 
+    <modal :show.sync="loadingModal" :type="2" :lock="true">
+      <h3 slot="body"><img src="./assets/image/loading_5.gif"></h3>
+    </modal>
 
+    <modal :show.sync="msgModal" :type="3" :lock="false">
+      <h3 slot="body">{{msg}}</h3>
+    </modal>
+
+    <modal :show.sync="tipsModal" :type="1" :lock="false" :timeout="1500">
+      <h3 slot="body">{{msg}}</h3>
+    </modal>
   </div>
 </template>
 
@@ -89,11 +99,17 @@
         this.DS.refType = "WX"
         this.DS.ref = "WX"
       }
+
+      // this.alert("imya")
+      // this.loadingModal = true
     },
     data() {
       return {
-        showModal: false,
-        showModal2: false,
+        loadingModal: false,
+        msgModal: false,
+        tipsModal: false,
+        msg: "",
+
         cityPanel: {
           display: 'none'
         },
@@ -134,15 +150,16 @@
        */
       changeCity: function() {
 
-        this.getLocation()
 
         $('#top').show();
         if (this.cityList.length == 0) {
           var resource = this.$resource(this.$route.config.APIServer + 'offer/getCityList')
           var cityListLetter = []
           var letterCities = []
+          this.loadingModal = true
           resource.get().then(function (response) {
             if (response.data.errcode == 0) {
+              this.loadingModal = false
               this.cityList = response.data.data
               if (response.data.data) {
                 for (var i = 0; i < response.data.data.length; i++) {
@@ -158,6 +175,9 @@
                     cityListLetter.push(templetter)
                   }
                 }
+
+
+                this.getLocation()
               }
               cityListLetter.sort()
               this.letterCities = letterCities
@@ -165,7 +185,7 @@
               this.cityPanel.display = 'block'
             }
           }, function(response) {
-            alert('读取地址失败');
+            this.alert('读取地址失败');
           });
         }
         else {
@@ -190,19 +210,19 @@
       toNext: function() {
 
         if (parseInt(this.DS.areaNumber) == 0) {
-          return alert('请选择地址')
+          return this.alert('请选择地址')
         }
 
         if (this.DS.mobile.length != 11) {
-          return alert('请正确填写手机号码')
+          return this.alert('请正确填写手机号码')
         }
 
         if (this.DS.ownName.length == 0) {
-          return alert('请填写你的名字')
+          return this.alert('请填写你的名字')
         }
 
         if (this.DS.carNO.length != 7) {
-          return alert('请正确填写你的车牌')
+          return this.alert('请正确填写你的车牌')
         }
 
         // 生成quoteNumber
@@ -216,7 +236,7 @@
               this.$route.router.go('/quote-second')
             }
           }, function(response) {
-            alert('读取地址失败');
+            this.alert('读取地址失败');
           });
         } else {
           this.$route.router.go('/quote-second')
@@ -243,7 +263,7 @@
             //     style: 'background-color:#000; color:#fff; border:none;',
             //     time: 3
             // });
-            alert("定位失败,用户已禁用位置获取权限")
+            this.alert("定位失败,用户已禁用位置获取权限")
         }
       },
 
@@ -274,6 +294,7 @@
                   }
                   locatedCity = json.result.addressComponent.city
                   console.log(locateCity)
+                  // this.loadingModal = false
               },
               error: function (XMLHttpRequest, textStatus, errorThrown) {
                   // layer.close(tempindex);
@@ -282,7 +303,8 @@
                   //     style: 'background-color:#000; color:#fff; border:none;',
                   //     time: 3
                   // });
-                  alert("定位失败，请手动选择城市！")
+                  this.alert("定位失败，请手动选择城市！")
+                  // this.loadingModal = false
               }
           })
       },
@@ -296,7 +318,7 @@
                   //     style: 'background-color:#000; color:#fff; border:none;',
                   //     time: 3
                   // });
-                  alert("定位失败,用户拒绝请求地理定位!")
+                  this.alert("定位失败,用户拒绝请求地理定位!")
                   break
               case error.POSITION_UNAVAILABLE:
                   // layer.open({
@@ -304,7 +326,7 @@
                   //     style: 'background-color:#000; color:#fff; border:none;',
                   //     time: 3
                   // });
-                  alert("定位失败,位置信息是不可用！")
+                  this.alert("定位失败,位置信息是不可用！")
                   break;
               case error.TIMEOUT:
                   // layer.open({
@@ -312,7 +334,7 @@
                   //     style: 'background-color:#000; color:#fff; border:none;',
                   //     time: 3
                   // });
-                  alert("定位失败,请求获取用户位置超时！")
+                  this.alert("定位失败,请求获取用户位置超时！")
                   break;
               case error.UNKNOWN_ERROR:
                   // layer.open({
@@ -320,9 +342,21 @@
                   //     style: 'background-color:#000; color:#fff; border:none;',
                   //     time: 3
                   // });
-                  alert("定位失败,定位系统失效！")
+                  this.alert("定位失败,定位系统失效！")
                   break;
           }
+
+          // this.loadingModal = false
+      },
+
+      alert: function(msg) {
+        this.msgModal = true
+        this.msg = msg
+      },
+
+      tips: function(msg) {
+        this.tipsModal = true
+        this.msg = msg
       }
     },
     watch: watcher,

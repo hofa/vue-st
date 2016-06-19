@@ -5,6 +5,7 @@
 
         <div class="modal-header">
           <slot name="header">
+            <h3>#信息提示</h3>
           </slot>
         </div>
 
@@ -139,9 +140,30 @@ module.exports = {
     }
   }
 
+  .modal-container-3 {
+    width: 300px;
+    margin: 0px auto;
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: left;
+
+    .modal-header{
+      display: none;
+    }
+    .modal-footer{
+      border-top: 1px solid #0F0F0F;
+      text-align: center;
+    }
+  }
+
   .modal-header h3 {
     margin-top: 0;
-    color: #42b983;
+    /*color: #42b983;*/
+    font-size: 0.4rem;
   }
 
   .modal-body {
@@ -149,7 +171,8 @@ module.exports = {
   }
 
   .modal-default-button {
-    float: right;
+    /*float: right;*/
+    background-color: white;
   }
 
   /*
