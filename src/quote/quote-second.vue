@@ -2,7 +2,7 @@
   <div id="quote-second">
     <div id="wrapper" v-bind:class="{hide: panel}">
       <header id="cx-app-heaer">
-          <a class="icon-back " href="javascript:history.go(-1);"></a>
+          <a class="icon-back " v-link="{path: '/quote'}"></a>
           详情录入
       </header>
       <section id="step2-wrap" class="com-frm-input">
@@ -99,8 +99,8 @@
 
 
 <script>
-  import $ from 'jquery'
-  import './assets/js/lib/flexible.js'
+  // import $ from 'jquery'
+  // import './assets/js/lib/flexible.js'
   import {watcher, dataStore} from '../setting'
 
   export default {
@@ -117,6 +117,16 @@
         DS: dataStore
       }
     },
+    route: {
+      activate: function (transition) {
+        console.log('hook-example activated!')
+        transition.next()
+      },
+      deactivate: function (transition) {
+        console.log('hook-example deactivated!')
+        transition.next()
+      }
+    },
     methods: {
       // 查车牌自动填充
       autoSetCarData: function() {
@@ -131,7 +141,6 @@
                 this.DS.vehicle_model = response.data.data.autoModelName
                 this.DS.vehicle_vin = response.data.data.vehicleFrameNo
                 this.DS.vehicle_register = response.data.data.firstRegisterDate
-
                 this.DS.searchCarNO = this.DS.carNO
               }
             }
@@ -155,6 +164,7 @@
               this.panel = true
             } else{
               alert('无法查询到车型数据')
+              // console.log('填充失败');
             }
           }, function(response) {
             console.log('填充失败');
@@ -204,4 +214,5 @@
   @import "./assets/css/cx-step2.css";
   html, #cx-app-heaer, .binder-form-submit, .infoone, #step2-wrap{background-color: white;}
   .btn-blue{background-color: #ff9933}
+  #carModelListUl{margin-bottom:1.375rem;}
 </style>

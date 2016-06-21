@@ -37,7 +37,7 @@
 
 
         <div class="frhelp">填写太麻烦？</div>
-        <div class="insurance-buttn"><a href="upphoto.html" class="btn_blue" id="btn-success">拍照报价</a> <a
+        <div class="insurance-buttn"><a v-link="{path:'/quote-photograph'}" class="btn_blue " id="btn-brr">拍照报价</a> <a
                 href="tel:075584357001" class="btn_org" id="btn-success">电话询价</a></div>
         <div id="gototop" onclick="gototop();" style="display:none;"></div>
 
@@ -70,16 +70,16 @@
       <h3 slot="body">{{msg}}</h3>
     </modal>
 
-    <modal :show.sync="tipsModal" :type="1" :lock="false" :timeout="1500">
+    <modal :show.sync="tipsModal" :type="1" :lock="false" :timeout="2000">
       <h3 slot="body">{{msg}}</h3>
     </modal>
   </div>
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
   // import request from '../request'
-  import './assets/js/lib/flexible.js'
+  // import './assets/js/lib/flexible.js'
   // import $ from './assets/js/jquery-2.2.3.min.js'
   // import './assets/js/lib/fastclick.min.js'
   // import './assets/js/third/layer.js'
@@ -117,6 +117,16 @@
         cityList: [],
         letterCities: [],
         DS: dataStore
+      }
+    },
+    route: {
+      activate: function (transition) {
+        console.log('hook-example activated!')
+        transition.next()
+      },
+      deactivate: function (transition) {
+        console.log('hook-example deactivated!')
+        transition.next()
       }
     },
     methods: {
@@ -397,4 +407,5 @@
   #toubao_ciick{color:white;}
   #toubao_city{color:#333;}
   /*.pop-tit{position: fixed;top:0;left:0;}*/
+  #btn-brr{color: #fff;background-color:#31c27c;}
 </style>

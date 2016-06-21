@@ -2,7 +2,7 @@
   <div id="quote-third">
     <div id="page-scheme">
       <header id="cx-app-heaer">
-          <a class="icon-back " href="javascript:history.go(-1);"></a>
+          <a class="icon-back " v-link="{path: '/quote-second'}"></a>
           投保方案
       </header>
       <section id="scheme-wrap">
@@ -273,8 +273,8 @@
 </template>
 
 <script>
-  import $ from 'jquery'
-  import './assets/js/lib/flexible.js'
+  // import $ from 'jquery'
+  // import './assets/js/lib/flexible.js'
   import {watcher, dataStore} from '../setting'
   // import layer from './assets/js/third/layer.js'
 

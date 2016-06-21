@@ -1,4 +1,4 @@
-var $ = require('jquery')
+// var $ = require('jquery')
 var request = {
    timeout: 30,
     uid: 0,

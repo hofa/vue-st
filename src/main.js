@@ -5,11 +5,12 @@ import VueRouter from 'vue-router'
 
 
 // components
-import appLogin from './components/app-login'
+// import appLogin from './components/app-login'
 import quoteFirst from './quote/quote-first'
 import quoteSecond from './quote/quote-second'
 import quoteThird from './quote/quote-third'
 import quoteFourth from './quote/quote-fourth'
+import quotePhotograph from './quote/quote-photograph'
 
 import {config} from './setting'
 
@@ -17,7 +18,7 @@ import {config} from './setting'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
-Vue.http.options.emulateJSON = true;
+Vue.http.options.emulateJSON = true
 
 var router = new VueRouter()
 
@@ -37,6 +38,14 @@ var Bar = Vue.extend({
     template: '<p>This is bar!</p>'
 })
 
+var Page404 = Vue.extend({
+  template: '<p> 404 Not Found! redirect <h3><a style="color:blue" v-link="{path:\'/quote\'}">/</a> </p>' +
+            '<p><a style="color:blue" v-link="{path:\'/async\'}">async test</a></h3></p>'
+})
+
+var ParamsPage = Vue.extend({
+    template: '<p>params: {{$route.params.userId}}</p>'
+})
 // var quote2 = Vue.extend({
 //     data: function() {
 //       return {
@@ -61,15 +70,15 @@ router.map({
     '/': {
       component: Home
     },
-    '/foo': {
-        component: Foo
-    },
-    '/bar': {
-        component: Bar
-    },
-    '/login': {
-      component: appLogin
-    },
+    // '/foo': {
+    //     component: Foo
+    // },
+    // '/bar': {
+    //     component: Bar
+    // },
+    // '/login': {
+    //   component: appLogin
+    // },
     '/quote': {
       component: quoteFirst,
       config: config
@@ -85,7 +94,25 @@ router.map({
     '/quote-fourth': {
       component: quoteFourth,
       config: config
+    },
+    '/404': {
+      component: Page404
+    },
+    '/async': {
+      component: function (resolve) {
+        require(['./quote/test-async.vue'], resolve)
+      }
+    },
+    '/params/:userId': {
+      component: ParamsPage
+    },
+    '/quote-photograph': {
+      component: quotePhotograph
     }
+})
+
+router.redirect({
+  '*' : '/404'
 })
 
 router.beforeEach(function(transition) {

@@ -91,8 +91,15 @@ module.exports = {
 
   watch: {
     show: function(oldVal, newVal) {
-      if (this.timeout != 0) {
+      // console.log(newVal, this.timeout)
+      if (newVal == false && this.timeout != 0) {
         this.countdown()
+      }
+
+      if (newVal == true) {
+        if (this.t != null) {
+          clearTimeout(this.t)
+        }
       }
     }
   }

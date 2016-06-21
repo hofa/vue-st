@@ -1,7 +1,7 @@
 <template>
   <div id="quote-fourth">
     <header id="cx-app-heaer">
-    <a class="icon-back " href="javascript:history.go(-1);"></a>
+    <a class="icon-back " v-link="{path: '/quote-third'}"></a>
     报价结果
     </header>
     <section id="quote_result_wrap">
@@ -110,8 +110,8 @@
 </template>
 
 <script>
-  import $ from 'jquery'
-  import './assets/js/lib/flexible.js'
+  // import $ from 'jquery'
+  // import './assets/js/lib/flexible.js'
   import {watcher, dataStore} from '../setting'
 
   export default {
@@ -145,7 +145,9 @@
     methods: {
       quote: function() {
         for(let s in this.qc) {
-          this._quote(this.qc[s].code, this.qc[s].name, this.qc[s].channel)
+          if (this.qc[s].code == 'FDBX') {
+            this._quote(this.qc[s].code, this.qc[s].name, this.qc[s].channel)
+          }
         }
       },
 
@@ -156,12 +158,12 @@
             "type": "01",
             "id": this.DS.applicant_id,
             "birthday": this.getBirthday(this.DS.applicant_id),
-            "sex": this.getSexById(this.DS.applicant_id)
+            "sex": '' + this.getSexById(this.DS.applicant_id)
           },
 
           "vehicle": {
-            "newcar": this.DS.vehicle_newcar ? 1 : 0,
-            "transfer": this.DS.vehicle_transfer,
+            "newcar": '' + (this.DS.vehicle_newcar ? 1 : 0),
+            "transfer": '' + this.DS.vehicle_transfer,
             "transdate": this.DS.vehicle_transferDate,
             "carcard": this.DS.carNO.toUpperCase(),
             "engine": this.DS.vehicle_engine,
@@ -179,7 +181,7 @@
             "startDate": this.DS.c51_startDate
           },
           "tax": {
-            "type": this.DS.tax_type
+            "type": '' + this.DS.tax_type
           },
           "company": company
         }
@@ -187,69 +189,69 @@
         if (this.DS.c01_duty_01) {
           struct['c01']['dutys'].push({
                         'code': '01',
-                        'deduction': this.DS.c01_duty_01_deduction,
+                        'deduction': '' + this.DS.c01_duty_01_deduction,
                       })
         }
 
         if (this.DS.c01_duty_02) {
           struct['c01']['dutys'].push({
                         'code': '02',
-                        'deduction': this.DS.c01_duty_02_deduction,
-                        'amount': this.DS.c01_duty_02_amount,
+                        'deduction': '' + this.DS.c01_duty_02_deduction,
+                        'amount': '' + this.DS.c01_duty_02_amount,
                       })
         }
 
         if (this.DS.c01_duty_04) {
           struct['c01']['dutys'].push({
                         'code': '04',
-                        'deduction': this.DS.c01_duty_04_deduction,
-                        'amount': this.DS.c01_duty_04_amount,
+                        'deduction': '' + this.DS.c01_duty_04_deduction,
+                        'amount': '' + this.DS.c01_duty_04_amount,
                       })
         }
 
         if (this.DS.c01_duty_05) {
           struct['c01']['dutys'].push({
                         'code': '05',
-                        'deduction': this.DS.c01_duty_05_deduction,
-                        'amount': this.DS.c01_duty_05_amount,
-                        'seat': this.DS.c01_duty_05_seat,
+                        'deduction': '' + this.DS.c01_duty_05_deduction,
+                        'amount': '' + this.DS.c01_duty_05_amount,
+                        'seat': '' + this.DS.c01_duty_05_seat,
                       })
         }
 
         if (this.DS.c01_duty_08) {
           struct['c01']['dutys'].push({
                         'code': '08',
-                        'deduction': this.DS.c01_duty_08_deduction,
-                        'kind': this.DS.c01_duty_08_kind,
+                        'deduction': '' + this.DS.c01_duty_08_deduction,
+                        'kind': '' + this.DS.c01_duty_08_kind,
                       })
         }
 
         if (this.DS.c01_duty_17) {
           struct['c01']['dutys'].push({
                         'code': '17',
-                        'deduction': this.DS.c01_duty_17_deduction,
-                        'amount': this.DS.c01_duty_17_amount,
+                        'deduction': '' + this.DS.c01_duty_17_deduction,
+                        'amount': '' + this.DS.c01_duty_17_amount,
                       })
         }
 
         if (this.DS.c01_duty_41) {
           struct['c01']['dutys'].push({
                         'code': '41',
-                        'deduction': this.DS.c01_duty_41_deduction,
+                        'deduction': '' + this.DS.c01_duty_41_deduction,
                       })
         }
 
         if (this.DS.c01_duty_03) {
           struct['c01']['dutys'].push({
                         'code': '03',
-                        'deduction': this.DS.c01_duty_03_deduction,
+                        'deduction': '' + this.DS.c01_duty_03_deduction,
                       })
         }
 
         if (this.DS.c01_duty_18) {
           struct['c01']['dutys'].push({
                         'code': '18',
-                        'deduction': this.DS.c01_duty_18_deduction,
+                        'deduction': '' + this.DS.c01_duty_18_deduction,
                       })
         }
 
