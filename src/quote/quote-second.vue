@@ -209,8 +209,7 @@
 </script>
 
 
-<style lang=less>
-  body{font-size: 24px;}
+<style lang=less scoped>
   @import "./assets/css/cx-step2.css";
   html, #cx-app-heaer, .binder-form-submit, .infoone, #step2-wrap{background-color: white;}
   .btn-blue{background-color: #ff9933}

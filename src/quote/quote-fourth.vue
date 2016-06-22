@@ -294,7 +294,7 @@
   }
 
 </script>
-<style lang=less>
+<style lang=less scoped>
   @import "./assets/css/result.css";
   .insur-name a{color:#666; font-size: 0.375rem;}
   .bxcat{margin: 0 auto;}

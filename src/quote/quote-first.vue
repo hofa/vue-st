@@ -39,14 +39,19 @@
         <div class="frhelp">填写太麻烦？</div>
         <div class="insurance-buttn"><a v-link="{path:'/quote-photograph'}" class="btn_blue " id="btn-brr">拍照报价</a> <a
                 href="tel:075584357001" class="btn_org" id="btn-success">电话询价</a></div>
-        <div id="gototop" onclick="gototop();" style="display:none;"></div>
+        <div id="gototop"  style="display:none;"></div>
 
     </section>
     <div class="foote"><img src="./assets/image/Information.png"></div>
     <div id="pop_city_layer" v-bind:style="cityPanel">
       <div class="pop-tit"> 选择城市 <span id="icon-close" class="icon-close" @click="closeCity()"></span></div>
       <div class="pop-con-wrap"></div>
-      <div class="white-box fail-wrap ">X&nbsp;定位失败</div>
+
+      <ul class="white-box block-box clearfix" v-show="autoPoi">
+        <li><span>{{autoAreaName}}</span> </li>
+      </ul>
+      <div class="white-box fail-wrap" v-show="!autoPoi">X&nbsp;定位失败</div>
+
       <div class="tit-box">全部城市（按首字母顺序）</div>
       <div class="letters-wrap white-box  clearfix">
         <a v-for="cl in cityListLetter" @click="redirectToDiv(cl)"> {{cl}} </a>
@@ -77,31 +82,16 @@
 </template>
 
 <script>
-  // import $ from 'jquery'
-  // import request from '../request'
-  // import './assets/js/lib/flexible.js'
-  // import $ from './assets/js/jquery-2.2.3.min.js'
-  // import './assets/js/lib/fastclick.min.js'
-  // import './assets/js/third/layer.js'
-  // import store from './assets/js/lib/store.min.js'
-  // import './assets/js/widget/notification.js'
-  // import './assets/js/widget/validator.js'
-  // import './assets/js/widget/form-submit.js'
   import {watcher, dataStore} from '../setting'
-
   import modal from './widget-modal'
 
   export default {
     ready() {
-      // console.log(this.$route)
       var ua = window.navigator.userAgent.toLowerCase();
       if(ua.match(/MicroMessenger/i) == 'micromessenger'){
         this.DS.refType = "WX"
         this.DS.ref = "WX"
       }
-
-      // this.alert("imya")
-      // this.loadingModal = true
     },
     data() {
       return {
@@ -113,6 +103,12 @@
         cityPanel: {
           display: 'none'
         },
+
+        autoPoi: false,
+        autoAreaName: "",
+        autoAreaNumber: "",
+        autoPlateNum: "",
+
         cityListLetter: [],
         cityList: [],
         letterCities: [],
@@ -159,8 +155,6 @@
        * @return {[type]} [description]
        */
       changeCity: function() {
-
-
         $('#top').show();
         if (this.cityList.length == 0) {
           var resource = this.$resource(this.$route.config.APIServer + 'offer/getCityList')
@@ -256,23 +250,12 @@
       getLocation: function() {
         //检查浏览器是否支持地理位置获取
         if (navigator.geolocation) {
-            //若支持地理位置获取,成功调用showPosition(),失败调用showError
-            // tempindex = layer.open({
-            //     shadeClose: false, type: 2,
-            //     content: "加载中"
-            // });
             var config = {
                 timeout: 20000,
                 enableHighAccuracy: true
             }
             navigator.geolocation.getCurrentPosition(this.defyPosiSuccess, this.showError, config);
         } else {
-            //alert("Geolocation is not supported by this browser.");
-            // layer.open({
-            //     content: "定位失败,用户已禁用位置获取权限",
-            //     style: 'background-color:#000; color:#fff; border:none;',
-            //     time: 3
-            // });
             this.alert("定位失败,用户已禁用位置获取权限")
         }
       },
@@ -303,18 +286,15 @@
                       return;
                   }
                   locatedCity = json.result.addressComponent.city
-                  console.log(locateCity)
-                  // this.loadingModal = false
+                  // console.log(locateCity)
+                  this.alert(locatedCity)
+
+                  this.autoPoi = true
+                  this.autoAreaName = locatedCity
+
               },
               error: function (XMLHttpRequest, textStatus, errorThrown) {
-                  // layer.close(tempindex);
-                  // layer.open({
-                  //     content: "定位失败，请手动选择城市！",
-                  //     style: 'background-color:#000; color:#fff; border:none;',
-                  //     time: 3
-                  // });
                   this.alert("定位失败，请手动选择城市！")
-                  // this.loadingModal = false
               }
           })
       },
@@ -376,12 +356,10 @@
   }
 </script>
 
-<style lang=less>
-  @import "./assets/css/base.css";
-  @import "./assets/css/style.css";
-  @import "./assets/css/layer.css";
+<style lang=less scoped>
+
+  /*@import "./assets/css/layer.css";*/
   @import "./assets/css/cx-step1.css";
-  @import "./assets/skins/all.css";
   body{background:#f0f0f0;}
 
 /*  #quote-first {

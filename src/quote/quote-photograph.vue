@@ -82,9 +82,32 @@
   var $script = require("scriptjs")
   export default {
     ready() {
+      var that = this
+      $script("http://m.ubi001.com/web/quote/qiniujs/moxie.js", function () {
+          $script("http://m.ubi001.com/web/quote/qiniujs/plupload.dev.js", function () {
+              $script("http://m.ubi001.com/web/quote/qiniujs/qiniu.min.js", function () {
+                that.bindUpload()
+              })
+          })
+      })
+    },
+    data() {
+      return {
+        loadingModal: false,
+        msgModal: false,
+        tipsModal: false,
+        msg: "",
+        DS: dataStore,
 
-      $script(["http://m.ubi001.com/web/quote/qiniujs/moxie.js", "http://m.ubi001.com/web/quote/qiniujs/plupload.dev.js", "http://m.ubi001.com/web/quote/qiniujs/qiniu.min.js"], function() {
+        // 驾驶证图片
+        driverImage: '',
+        // 行驶证图片
+        travelImage: ''
+      }
+    },
+    methods: {
 
+      bindUpload: function () {
         var uploader= Qiniu.uploader({
             runtimes: 'html5,flash,html4',    //上传模式,依次退化
             browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
@@ -205,23 +228,8 @@
                 }
             }
         })
-      })
-    },
-    data() {
-      return {
-        loadingModal: false,
-        msgModal: false,
-        tipsModal: false,
-        msg: "",
-        DS: dataStore,
+      },
 
-        // 驾驶证图片
-        driverImage: '',
-        // 行驶证图片
-        travelImage: ''
-      }
-    },
-    methods: {
       uploading: function() {
         var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/;
 
@@ -278,6 +286,7 @@
   }
 </script>
 
-<style lang=less>
+<style lang=less scoped>
 
+@import "./assets/css/cx-step2.css";
 </style>

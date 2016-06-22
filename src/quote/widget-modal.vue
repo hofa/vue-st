@@ -106,7 +106,7 @@ module.exports = {
 }
 </script>
 
-<style lang=less>
+<style lang=less scoped>
   .modal-mask {
     position: fixed;
     z-index: 9998;

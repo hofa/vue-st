@@ -343,9 +343,9 @@
   }
 
 </script>
-<style lang=less>
+<style lang=less scoped>
   @import "./assets/css/cx-insur-scheme.css";
-  body{font-size: 36px;background-color: white;}
+  body{background-color: white;}
   .seatt .sg-insur-item-mp {
             margin-left: 0.375rem;
             margin-right: 0.15625rem;
@@ -361,5 +361,6 @@
 
   .seatt .gray{ background-color: #ddd;}
   #scheme-wrap{background-color: white;}
-
+/*  #cx-app-heaer{position: fixed;top:0;left: 0;}
+  #scheme-wrap{margin-top: 40px;}*/
 </style>
